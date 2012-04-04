@@ -6,7 +6,7 @@ String journal, volume, pagenumber,source;
 		super(first, last, title, date, publisher);	
 		this.journal=journal;
 		this.volume=volume;
-		this.pagenumbeaar=pagenumber;
+		this.pagenumber=pagenumber;
 	}
 	public String getjournal(){
 		return journal;
