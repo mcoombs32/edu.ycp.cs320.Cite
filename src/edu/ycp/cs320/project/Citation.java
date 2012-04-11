@@ -1,6 +1,6 @@
 package edu.ycp.cs320.project;
 
-public class Citiation {
+public class Citation {
 	private String format;
 	private Book book;
 	private Website website;
@@ -8,32 +8,32 @@ public class Citiation {
 	private Journal journal;
 	private Source source;
 	private String source2;
-	public Citiation(Book book,String format,String source2){
+	public Citation(Book book,String format,String source2){
 		
 	this.format=format;
 	this.book=book;
 	this.source2=source2;
 	}
 
-	public Citiation(Website website,String format,String source2){
+	public Citation(Website website,String format,String source2){
 		
 		this.website=website;
 		this.format=format;
 		this.source2=source2;
 	}
-	public Citiation(Magazine magazine,String format,String source2){
+	public Citation(Magazine magazine,String format,String source2){
 	this.magazine=magazine;
 	this.format=format;
 	this.source2=source2;
 	}
 
-	public Citiation(Journal journal,String format,String source2){
+	public Citation(Journal journal,String format,String source2){
 	this.journal=journal;
 	this.format=format;
 	this.source2=source2;
 	}
 
-	public Citiation() {
+	public Citation() {
 		this.journal=null;
 		this.format=null;
 		this.source2=null;

@@ -22,7 +22,7 @@ public class Main {
 }
 
 	public static void enterinformation(String source) throws IOException {
-		Citiation citiation = null;
+		Citation citation = null;
 		Book book = null;
 		Website website1=null;
 		Magazine magazine1=null;
@@ -43,7 +43,7 @@ public class Main {
 			String city = keyboard.next().toLowerCase();
 			 book=new Book(source,first, last, title, date, publisher, city);
 			 String format=enterformat();
-			citiation=new Citiation(book,format,source);
+			citation=new Citation(book,format,source);
 			
 			
 			
@@ -58,7 +58,7 @@ public class Main {
 			String website= keyboard.next().toLowerCase();
 			website1=new Website(source,first,last,title,date, publisher,url,access,website);
 			String format=enterformat();
-			citiation=new Citiation(website1,format, source);
+			citation=new Citation(website1,format, source);
 			
 		}	
 		
@@ -71,7 +71,7 @@ public class Main {
 			String volumenumber= keyboard.next().toLowerCase();
 			magazine1=new Magazine(source,first, last,  title,date,publisher,magazine, pagenumber, volumenumber);
 			String format=enterformat();
-			citiation=new Citiation(magazine1,format, source);
+			citation=new Citation(magazine1,format, source);
 			
 		}
 		if(source.equals("journal")){
@@ -83,10 +83,10 @@ public class Main {
 			String pagenumber= keyboard.next().toLowerCase();
 			journal1= new Journal(source,first,last,title,  date, publisher, journal, volume,  pagenumber);
 			String format=enterformat();
-			citiation=new Citiation(journal1,format,source);
+			citation=new Citation(journal1,format,source);
 			
 		}
-		String cit=citiation.formatcit();
+		String cit=citation.formatcit();
 		System.out.print(cit);
 		writetextfile(cit);
 	}

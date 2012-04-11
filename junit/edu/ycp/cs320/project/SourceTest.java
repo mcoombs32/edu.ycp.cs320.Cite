@@ -12,6 +12,7 @@ public class SourceTest {
 	private Journal journal;
 	private Website website;
 	private Magazine magazine;
+	private Citation magazineCite;
 	
 	
 	@Before
@@ -20,7 +21,7 @@ public class SourceTest {
 		journal=new Journal("Book","Chris","Campagnola", "Title","1994", "book","york","a","a");
 		website=new Website("Book","Chris","Campagnola", "Title","1994", "book","york","a","a");
 		magazine=new Magazine("Book","Chris","Campagnola", "Title","1994", "book","york","a","a");
-		
+		magazineCite = new Citation(magazine,"mla",null);
 		
 	}
 	
@@ -67,6 +68,10 @@ public class SourceTest {
 		assertEquals("york",journal.getjournal());
 		assertEquals("a", journal.getpagenumber());
 		assertEquals("a", journal.getvolume());
+	}
+	@Test
+	public void testMag() throws Exception {
+		//TODO: Implelment 
 	}
 }
 
