@@ -21,7 +21,7 @@ public class SourceTest {
 		journal=new Journal("Book","Chris","Campagnola", "Title","1994", "book","york","a","a");
 		website=new Website("Book","Chris","Campagnola", "Title","1994", "book","york","a","a");
 		magazine=new Magazine("Book","Chris","Campagnola", "Title","1994", "book","york","a","a");
-		magazineCite = new Citation(magazine,"mla",null);
+		magazineCite = new Citation(magazine,"mla","magazine");
 		
 	}
 	
@@ -71,7 +71,9 @@ public class SourceTest {
 	}
 	@Test
 	public void testMag() throws Exception {
-		//TODO: Implelment 
+		assertEquals(magazine,magazineCite.getmagazine());
+		assertEquals("mla", magazineCite.getformat());
+		assertEquals("Campagnola,Chris,Title,york,1994,a",magazineCite.formatcit());
 	}
 }
 
