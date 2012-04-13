@@ -70,7 +70,7 @@ public class SourceTest {
 		assertEquals("a", journal.getvolume());
 	}
 	@Test
-	ff
+	
 	public void testMag() throws Exception {
 		assertEquals(magazine,magazineCite.getmagazine());
 		assertEquals("mla", magazineCite.getformat());
