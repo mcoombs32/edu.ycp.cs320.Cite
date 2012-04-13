@@ -22,7 +22,7 @@ public class Main {
 }
 
 	public static void enterinformation(String source) throws IOException {
-		Citiation citiation = null;
+		Citation citation = null;
 		Book book = null;
 		Website website1=null;
 		Magazine magazine1=null;
@@ -41,9 +41,9 @@ public class Main {
 		if(source.equals("book")){
 			System.out.print("What is the city?");
 			String city = keyboard.next().toLowerCase();
-			 book=new Book(first, last, title, date, publisher, city);
+			 book=new Book(source,first, last, title, date, publisher, city);
 			 String format=enterformat();
-			citiation=new Citiation(book,format,source);
+			citation=new Citation(book,format,source);
 			
 			
 			
@@ -56,9 +56,9 @@ public class Main {
 			String access = keyboard.next().toLowerCase();
 			System.out.print("What is the website?");
 			String website= keyboard.next().toLowerCase();
-			website1=new Website(first,last,title,date, publisher,url,access,website);
+			website1=new Website(source,first,last,title,date, publisher,url,access,website);
 			String format=enterformat();
-			citiation=new Citiation(website1,format, source);
+			citation=new Citation(website1,format, source);
 			
 		}	
 		
@@ -69,9 +69,9 @@ public class Main {
 			String pagenumber= keyboard.next().toLowerCase();
 			System.out.print("What is the volume number?");
 			String volumenumber= keyboard.next().toLowerCase();
-			magazine1=new Magazine(first, last,  title,date,publisher,magazine, pagenumber, volumenumber);
+			magazine1=new Magazine(source,first, last,  title,date,publisher,magazine, pagenumber, volumenumber);
 			String format=enterformat();
-			citiation=new Citiation(magazine1,format, source);
+			citation=new Citation(magazine1,format, source);
 			
 		}
 		if(source.equals("journal")){
@@ -81,12 +81,12 @@ public class Main {
 			String volume = keyboard.next().toLowerCase();
 			System.out.print("What is the pagenumber?");
 			String pagenumber= keyboard.next().toLowerCase();
-			journal1= new Journal(first,last,title,  date, publisher, journal, volume,  pagenumber);
+			journal1= new Journal(source,first,last,title,  date, publisher, journal, volume,  pagenumber);
 			String format=enterformat();
-			citiation=new Citiation(journal1,format,source);
+			citation=new Citation(journal1,format,source);
 			
 		}
-		String cit=citiation.formatcit();
+		String cit=citation.formatcit();
 		System.out.print(cit);
 		writetextfile(cit);
 	}

@@ -2,8 +2,8 @@ package edu.ycp.cs320.project;
 
 public  class Source {
 private String source,first,last,title,date,publisher;
-public Source(String first,String last, String title,String date, String publisher){
-
+public Source(String source,String first,String last, String title,String date, String publisher){
+this.source=source;
 this.first=first;
 this.last=last;
 this.title=title;
