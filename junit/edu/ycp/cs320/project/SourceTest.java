@@ -17,10 +17,10 @@ public class SourceTest {
 	
 	@Before
 	public void setUp() {
-		book=new Book("Book","Chris","Campagnola", "Title","1994", "book","york");
-		journal=new Journal("Book","Chris","Campagnola", "Title","1994", "book","york","a","a");
-		website=new Website("Book","Chris","Campagnola", "Title","1994", "book","york","a","a");
-		magazine=new Magazine("Book","Chris","Campagnola", "Title","1994", "book","york","a","a");
+		book=new Book("Chris","Campagnola", "Title","1994", "book","york");
+		journal=new Journal("Chris","Campagnola", "Title","1994", "book","york","a","a");
+		website=new Website("Chris","Campagnola", "Title","1994", "book","york","a","a");
+		magazine=new Magazine("Chris","Campagnola", "Title","1994", "book","york","a","a");
 		magazineCite = new Citation(magazine,"mla","magazine");
 		
 	}
@@ -28,7 +28,8 @@ public class SourceTest {
 	@Test
 	public void testbook() throws Exception {
 		assertEquals("Chris", book.getfirst());
-		assertEquals("Book", book.getsource());
+		//assertEquals("Book", book.getsource());
+		assertEquals(SourceType.BOOK, book.getSourceType());
 		assertEquals("Campagnola", book.getlast());
 		assertEquals("Title", book.gettitle());
 		assertEquals("1994", book.getdate());
@@ -38,7 +39,8 @@ public class SourceTest {
 	@Test
 	public void testwebsite() throws Exception {
 		assertEquals("Chris", website.getfirst());
-		assertEquals("Book", website.getsource());
+		//assertEquals("Book", website.getsource());
+		assertEquals(SourceType.WEBSITE, website.getSourceType());
 		assertEquals("Campagnola", website.getlast());
 		assertEquals("Title", website.gettitle());
 		assertEquals("1994", website.getdate());
@@ -50,7 +52,8 @@ public class SourceTest {
 	@Test
 	public void testmagazine() throws Exception {
 		assertEquals("Chris", magazine.getfirst());
-		assertEquals("Book", magazine.getsource());
+		//assertEquals("Book", magazine.getsource());
+		assertEquals(SourceType.MAGAZINE, magazine.getSourceType());
 		assertEquals("Campagnola", magazine.getlast());
 		assertEquals("Title", magazine.gettitle());
 		assertEquals("1994", magazine.getdate());
@@ -61,7 +64,8 @@ public class SourceTest {
 	@Test
 	public void testjournal() throws Exception {
 		assertEquals("Chris", journal.getfirst());
-		assertEquals("Book", journal.getsource());
+		//assertEquals("Book", journal.getsource());
+		assertEquals(SourceType.JOURNAL, journal.getSourceType());
 		assertEquals("Campagnola", journal.getlast());
 		assertEquals("Title", journal.gettitle());
 		assertEquals("1994", journal.getdate());
