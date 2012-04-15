@@ -2,7 +2,7 @@ package edu.ycp.cs320.project;
 
 public class Book extends Source{
 private String city;
-	public Book(/*String source,*/String first, String last, String title, String date,
+	public Book(SourceType sourceType,String first, String last, String title, String date,
 			String publisher,String city) {
 		super(SourceType.BOOK,first, last, title,date,publisher);
 		this.city=city;

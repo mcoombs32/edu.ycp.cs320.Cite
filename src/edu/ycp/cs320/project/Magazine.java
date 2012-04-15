@@ -2,7 +2,7 @@ package edu.ycp.cs320.project;
 
 public class Magazine extends Source {
 private String magazine,pagenumber,volume;
-	public Magazine(/*String source,*/String first, String last, String title, String date,
+	public Magazine(SourceType sourceType,String first, String last, String title, String date,
 			String publisher,String magazine, String pagenumber, String volume) {
 		super(SourceType.MAGAZINE,first, last, title, date, publisher);
 		this.magazine=magazine;

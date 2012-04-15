@@ -33,13 +33,19 @@ public class Main {
 		}
 		throw new IllegalArgumentException("Unknown source type: " + source);
 	}
+	private static FormatType convertToFormatType(String format) {
+		for (FormatType formatType : FormatType.values()) {
+			String s = formatType.toString().replace("_", "").toLowerCase();
+			if (s.equals(format)) {
+				return formatType;
+			}
+		}
+		throw new IllegalArgumentException("Unknown source type: " + format);
+	}
 
 	public static void enterinformation(SourceType sourceType) throws IOException {
 		Citation citation = null;
-		Book book = null;
-		Website website1=null;
-		Magazine magazine1=null;
-		Journal journal1=null;
+		Source source=null;
 		Scanner keyboard = new Scanner(System.in);
 		System.out.print("What is the author first name?");
 		String first = keyboard.next().toLowerCase();
@@ -51,52 +57,52 @@ public class Main {
 		String date = keyboard.next().toLowerCase();
 		System.out.print("Who is the publisher?");
 		String publisher = keyboard.next().toLowerCase();
-		if(sourceType.equals("book")){
+		if(sourceType == SourceType.BOOK){
 			System.out.print("What is the city?");
 			String city = keyboard.next().toLowerCase();
-			 book=new Book(/*source,*/first, last, title, date, publisher, city);
-			 String format=enterformat();
-			citation=new Citation(book,format/*,source*/);
+			 source=new Book(sourceType, first, last, title, date, publisher, city);
+			 FormatType format=enterformat();
+			citation=new Citation(source,format);
 			
 			
 			
 			
 		}
-		if(/*source.equals("website")*/sourceType == SourceType.WEBSITE){
+		if(sourceType == SourceType.WEBSITE){
 			System.out.print("What is the url?");
 			String url = keyboard.next().toLowerCase();
 			System.out.print("What is the access?");
 			String access = keyboard.next().toLowerCase();
 			System.out.print("What is the website?");
 			String website= keyboard.next().toLowerCase();
-			website1=new Website(/*source,*/first,last,title,date, publisher,url,access,website);
-			String format=enterformat();
-			citation=new Citation(website1,format/*, source*/);
+			source=new Website(sourceType,first,last,title,date, publisher,url,access,website);
+			FormatType format=enterformat();
+			citation=new Citation(source,format);
 			
 		}	
 		
-		if(/*sourceType.equals("magazine")*/sourceType == SourceType.MAGAZINE){
+		if(sourceType == SourceType.MAGAZINE){
 			System.out.print("What is the magazine?");
 			String magazine = keyboard.next().toLowerCase();
 			System.out.print("What is the page number?");
 			String pagenumber= keyboard.next().toLowerCase();
 			System.out.print("What is the volume number?");
 			String volumenumber= keyboard.next().toLowerCase();
-			magazine1=new Magazine(/*sourceType,*/first, last,  title,date,publisher,magazine, pagenumber, volumenumber);
-			String format=enterformat();
-			citation=new Citation(magazine1,format/*, sourceType*/);
+			source=new Magazine(sourceType,first, last,  title,date,publisher,magazine, pagenumber, volumenumber);
+			FormatType format=enterformat();
+			citation=new Citation(source,format);
 			
 		}
-		if(sourceType.equals("journal")){
+		if(sourceType == SourceType.JOURNAL){
 			System.out.print("What is the journal?");
 			String journal = keyboard.next().toLowerCase();
 			System.out.print("What is the volume?");
 			String volume = keyboard.next().toLowerCase();
 			System.out.print("What is the pagenumber?");
 			String pagenumber= keyboard.next().toLowerCase();
-			journal1= new Journal(sourceType,first,last,title,  date, publisher, journal, volume,  pagenumber);
-			String format=enterformat();
-			citation=new Citation(journal1,format,sourceType);
+			source= new Journal(sourceType,first,last,title,  date, publisher, journal, volume,  pagenumber);
+			FormatType format=enterformat();
+			citation=new Citation(source,format);
 			
 		}
 		String cit=citation.formatcit();
@@ -119,12 +125,13 @@ public class Main {
 		
 	
 
-	private static String enterformat() {
+	private static FormatType enterformat() {
 		// TODO Auto-generated method stub
 		Scanner keyboard = new Scanner(System.in);
 		System.out.print("What kind of format do you want?");
-		String format= keyboard.next().toLowerCase();
-		return format;
+		String format = keyboard.next().toLowerCase();
+		FormatType formatType = convertToFormatType(format);
+		return formatType;
 	}
 }
 

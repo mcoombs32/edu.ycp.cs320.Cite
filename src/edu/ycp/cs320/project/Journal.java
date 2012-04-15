@@ -2,7 +2,7 @@ package edu.ycp.cs320.project;
 
 public class Journal extends Source {
 String journal, volume, pagenumber,source;
-	public Journal(/*String source,*/String first, String last, String title, String date, String publisher,String journal,String volume, String pagenumber ) {
+	public Journal(SourceType sourceType,String first, String last, String title, String date, String publisher,String journal,String volume, String pagenumber ) {
 		super(SourceType.JOURNAL,first, last, title, date, publisher);	
 		this.journal=journal;
 		this.volume=volume;

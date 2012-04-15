@@ -17,11 +17,11 @@ public class SourceTest {
 	
 	@Before
 	public void setUp() {
-		book=new Book("Chris","Campagnola", "Title","1994", "book","york");
-		journal=new Journal("Chris","Campagnola", "Title","1994", "book","york","a","a");
-		website=new Website("Chris","Campagnola", "Title","1994", "book","york","a","a");
-		magazine=new Magazine("Chris","Campagnola", "Title","1994", "book","york","a","a");
-		magazineCite = new Citation(magazine,"mla","magazine");
+		book=new Book(SourceType.BOOK, "Chris","Campagnola", "Title","1994", "book","york");
+		journal=new Journal(SourceType.JOURNAL, "Chris","Campagnola", "Title","1994", "book","york","a","a");
+		website=new Website(SourceType.WEBSITE, "Chris","Campagnola", "Title","1994", "book","york","a","a");
+		magazine=new Magazine(SourceType.MAGAZINE, "Chris","Campagnola", "Title","1994", "book","york","a","a");
+		magazineCite = new Citation(magazine,FormatType.MLA);
 		
 	}
 	
@@ -77,7 +77,7 @@ public class SourceTest {
 	
 	public void testMag() throws Exception {
 		assertEquals(magazine,magazineCite.getmagazine());
-		assertEquals("mla", magazineCite.getformat());
+		assertEquals(FormatType.MLA, magazineCite.getformat());
 		assertEquals("Campagnola,Chris,Title,york,1994,a",magazineCite.formatcit());
 	}
 }

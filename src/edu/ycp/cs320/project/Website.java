@@ -2,7 +2,7 @@ package edu.ycp.cs320.project;
 
 public class Website extends Source {
 	private String url,access,website;
-	public Website(/*String source,*/String first, String last, String title, String date,
+	public Website(SourceType sourceType,String first, String last, String title, String date,
 			String publisher,String url, String access, String website) {
 		super(SourceType.WEBSITE,first, last, title, date, publisher);
 		// TODO Auto-generated constructor stub
