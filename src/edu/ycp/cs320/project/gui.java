@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.DefaultComboBoxModel;
 
 public class gui {
 
@@ -50,6 +51,7 @@ public class gui {
 		frame.getContentPane().setLayout(null);
 		
 		JComboBox SourcecomboBox = new JComboBox();
+		SourcecomboBox.setModel(new DefaultComboBoxModel(SourceType.values()));
 		SourcecomboBox.setBounds(21, 30, 104, 20);
 		frame.getContentPane().add(SourcecomboBox);
 	}
