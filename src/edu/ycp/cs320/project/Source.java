@@ -1,8 +1,14 @@
 package edu.ycp.cs320.project;
 
-public abstract class Source {
+import java.util.Observable;
+
+public abstract class Source extends Observable {
 	private SourceType sourceType;
 	private String /*source,*/first,last,title,date,publisher;
+	
+	public Source(SourceType sourceType) {
+		this.sourceType = sourceType;
+	}
 	
 	/**
 	 * 
@@ -55,19 +61,30 @@ public abstract class Source {
 	}
 	*/
 	public void setfirst(String first){
+		System.out.println("Setting first name to " + first);
 		this.first=first;
+		setChanged();
+		notifyObservers();
 	}
 	public void setlast(String last){
+		System.out.println("Setting last name to " + last);
 		this.last=last;
+		setChanged();
+		notifyObservers();
 	}
 	public void settitle(String title){
 		this.title=title;
+		setChanged();
+		notifyObservers();
 	}
 	public void setdate(String date){
 		this.date=date;
+		setChanged();
+		notifyObservers();
 	}
 	public void setpublisher(String publisher){
 		this.publisher=publisher;
-
+		setChanged();
+		notifyObservers();
 	}
 }

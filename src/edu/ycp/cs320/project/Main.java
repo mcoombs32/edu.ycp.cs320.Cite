@@ -60,7 +60,7 @@ public class Main {
 		if(sourceType == SourceType.BOOK){
 			System.out.print("What is the city?");
 			String city = keyboard.next().toLowerCase();
-			 source=new Book(sourceType, first, last, title, date, publisher, city);
+			 source=new Book(first, last, title, date, publisher, city);
 			 FormatType format=enterformat();
 			citation=new Citation(source,format);
 			
