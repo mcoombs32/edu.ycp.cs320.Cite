@@ -3,7 +3,7 @@ package edu.ycp.cs320.project;
 public class Book extends Source{
 private String city;
 
-	//kerry
+	
 	public Book() {
 		super(SourceType.BOOK);
 	}
