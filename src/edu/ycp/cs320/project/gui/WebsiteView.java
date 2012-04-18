@@ -98,7 +98,7 @@ public class WebsiteView extends JPanel implements Observer {
 			public void focusLost(FocusEvent e){
 				handleURLChange();
 			}
-		})
+		});
 		
 		
 		URLtextFieldBox.setBounds(122, 68, 163, 20);
