@@ -17,6 +17,11 @@ public class WebsiteController {
 			model.setlast(text);
 		}
 
+		public void setURL(String text) {
+			model.seturl(text);
+			
+		}
+
 	}
 
 

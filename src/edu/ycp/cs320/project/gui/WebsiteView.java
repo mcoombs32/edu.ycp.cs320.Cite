@@ -1,5 +1,7 @@
 package edu.ycp.cs320.project.gui;
 
+
+
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.util.Observable;
@@ -67,7 +69,7 @@ public class WebsiteView extends JPanel implements Observer {
 		firstNameTextBox.setColumns(10);
 		
 		
-		// LAST NAME
+		// **************** LAST NAME
 		JLabel lastNameLabel = new JLabel("Author Last Name:");
 		lastNameLabel.setBounds(10, 46, 102, 14);
 		add(lastNameLabel);
@@ -84,10 +86,26 @@ public class WebsiteView extends JPanel implements Observer {
 		lastNameTextBox.setColumns(10);
 		
 		
-		// URL
+		//**************** URL
 		lblUrl = new JLabel("URL:");
 		lblUrl.setBounds(10, 71, 102, 14);
 		add(lblUrl);
+		
+		
+		URLtextFieldBox = new JTextField();
+		URLtextFieldBox.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e){
+				handleURLChange();
+			}
+		})
+		
+		
+		URLtextFieldBox.setBounds(122, 68, 163, 20);
+		add(URLtextFieldBox);
+		URLtextFieldBox.setColumns(10);
+		
+		
 		
 		
 		
@@ -101,10 +119,6 @@ public class WebsiteView extends JPanel implements Observer {
 		lblDate.setBounds(10, 121, 102, 14);
 		add(lblDate);
 		
-		URLtextFieldBox = new JTextField();
-		URLtextFieldBox.setBounds(122, 68, 163, 20);
-		add(URLtextFieldBox);
-		URLtextFieldBox.setColumns(10);
 		
 		
 		
@@ -129,6 +143,10 @@ public class WebsiteView extends JPanel implements Observer {
 	
 	protected void handleLastNameChange() {
 		controller.setLastName(lastNameTextBox.getText());
+	}
+	
+	protected void handleURLChange() {
+		controller.setURL(URLtextFieldBox.getText());
 	}
 
 	@Override
