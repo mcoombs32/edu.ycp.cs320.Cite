@@ -4,7 +4,7 @@ public class Book extends Source{
 private String city;
 private String pubDate;
 
-	//kerry
+	
 	public Book() {
 		super(SourceType.BOOK);
 	}
