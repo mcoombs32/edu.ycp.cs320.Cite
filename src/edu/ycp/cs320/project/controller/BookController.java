@@ -27,4 +27,9 @@ public class BookController {
 		
 	}
 
+	public void setPubDate(String text) {
+		model.setPubDate(text);
+		
+	}
+
 }

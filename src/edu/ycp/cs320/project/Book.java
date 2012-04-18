@@ -2,6 +2,7 @@ package edu.ycp.cs320.project;
 
 public class Book extends Source{
 private String city;
+private String pubDate;
 
 	//kerry
 	public Book() {
@@ -9,9 +10,10 @@ private String city;
 	}
 
 	public Book(String first, String last, String title, String date,
-			String publisher,String city) {
+			String publisher,String city, String pubDate) {
 		super(SourceType.BOOK,first, last, title,date,publisher);
 		this.city=city;
+		this.pubDate = pubDate;
 	}
 	public String getcity(){
 		return city;
@@ -23,5 +25,13 @@ private String city;
 	public void setcity(String city){
 		this.city=city;
 		}
+
+	public void setPubDate(String text) {
+		this.pubDate = text;
+	}
+
+	public String getPubDate() {
+		return pubDate;
+	}
 	
 }

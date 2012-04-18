@@ -27,6 +27,7 @@ public class BookView extends JPanel implements Observer {
 	private JTextField lastNameTextBox;
 	private JTextField titleBox;
 	private JTextField publisherBox;
+	private JTextField pubDateBox;
 	
 	public void setModel(Book model) {
 		this.model = model;
@@ -104,7 +105,27 @@ public class BookView extends JPanel implements Observer {
 		publisherBox.setBounds(122, 93, 163, 20);
 		add(publisherBox);
 		publisherBox.setColumns(10);
+		
+		JLabel pubDateLabel = new JLabel("Publish Date:");
+		pubDateLabel.setBounds(10, 121, 79, 14);
+		add(pubDateLabel);
+		
+		pubDateBox = new JTextField();
+		pubDateBox.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				handlePubDateChange();
+			}
+		});
+		pubDateBox.setBounds(122, 118, 163, 20);
+		add(pubDateBox);
+		pubDateBox.setColumns(10);
 
+	}
+
+	protected void handlePubDateChange() {
+		controller.setPubDate(pubDateBox.getText());
+		
 	}
 
 	protected void handlePublisherChange() {
@@ -128,6 +149,9 @@ public class BookView extends JPanel implements Observer {
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		System.out.println("updating book view!");
+		titleBox.setText(model.gettitle());
+		pubDateBox.setText(model.getPubDate());
+		publisherBox.setText(model.getpublisher());
 		firstNameTextBox.setText(model.getfirst());
 		lastNameTextBox.setText(model.getlast());
 	}
