@@ -106,16 +106,16 @@ public class Citation {
 	private String printapa() {
 		String cit=null;
 		if(source.getSourceType() == SourceType.BOOK){
-			 cit=getbook().getlast()+","+getbook().getfirst()+","+getbook().gettitle()+","+getbook().getcity()+","+getbook().getpublisher();
+			 cit=getbook().getlast()+","+getbook().getfirst()+".("+getbook().getdate()+")."+getbook().gettitle()+"."+getbook().getcity()+":"+getbook().getpublisher();
 				}
 		if(source.getSourceType() == SourceType.MAGAZINE){
-			cit=getmagazine().getlast()+","+getmagazine().getfirst()+","+getmagazine().gettitle()+","+getmagazine().getmagazine()+","+getmagazine().getdate()+","+getmagazine().getpagenumber();
+			cit=getmagazine().getlast()+","+getmagazine().getfirst()+". ("+getmagazine().getdate()+")."+ getmagazine().gettitle()+","+getmagazine().getmagazine()+","+getmagazine().getpagenumber();
 		}
 		if(source.getSourceType() == SourceType.WEBSITE){
-			cit=getwebsite().getlast()+","+getwebsite().getfirst()+","+getwebsite().gettitle()+","+getwebsite().getpublisher()+","+getwebsite().getdate()+","+getwebsite().getaccess();
+			cit=getwebsite().getlast()+","+getwebsite().getfirst()+". ("+getwebsite().getdate()+")"+getwebsite().gettitle()+"."+getwebsite().geturl();
 		}
 		if(source.getSourceType() == SourceType.JOURNAL){
-			cit=getjournal().getlast()+","+getjournal().getfirst()+","+getjournal().gettitle()+","+getjournal().getpublisher()+","+getjournal().getdate()+","+getjournal().getpagenumber();
+			cit=getjournal().getlast()+","+getjournal().getfirst()+". ("+getjournal().getdate()+")."+getjournal().gettitle()+","+getjournal().getpublisher()+","+getjournal().getvolume()+","+getjournal().getpagenumber();
 		}
 		return cit;
 	}
@@ -129,10 +129,10 @@ public class Citation {
 			cit=getbook().getlast()+","+getbook().getfirst()+"."+getbook().gettitle()+"."+getbook().getcity()+":"+getbook().getpublisher()+","+getbook().getdate()+".";
 				}
 		if(source.getSourceType() == SourceType.MAGAZINE){
-			cit=getmagazine().getlast()+","+getmagazine().getfirst()+","+getmagazine().gettitle()+","+getmagazine().getmagazine()+","+getmagazine().getdate()+","+getmagazine().getpagenumber();
+			cit=getmagazine().getlast()+","+getmagazine().getfirst()+"."+getmagazine().gettitle()+"."+getmagazine().getmagazine()+","+getmagazine().getdate()+":"+getmagazine().getpagenumber();
 		}
 		if(source.getSourceType() == SourceType.WEBSITE){
-			cit=getwebsite().getlast()+","+getwebsite().getfirst()+","+getwebsite().gettitle()+","+getwebsite().getpublisher()+","+getwebsite().getdate()+","+getwebsite().getaccess();
+			cit=getwebsite().getlast()+","+getwebsite().getfirst()+"."+getwebsite().gettitle()+"."+getwebsite().getpublisher()+","+getwebsite().getdate()+"."+getwebsite().getaccess();
 		}
 		if(source.getSourceType() == SourceType.JOURNAL){
 			cit=getjournal().getlast()+","+getjournal().getfirst()+"."+getjournal().gettitle()+"."+getjournal().getpublisher()+" "+getjournal().getvolume()+" ("+getjournal().getdate()+"):"+getjournal().getpagenumber();
