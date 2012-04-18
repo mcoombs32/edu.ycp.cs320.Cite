@@ -17,4 +17,9 @@ public class BookController {
 		model.setlast(text);
 	}
 
+	public void setTitle(String text) {
+		model.settitle(text);
+		
+	}
+
 }
