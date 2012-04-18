@@ -26,6 +26,7 @@ public class BookView extends JPanel implements Observer {
 	private BookController controller;
 	private JTextField lastNameTextBox;
 	private JTextField titleBox;
+	private JTextField publisherBox;
 	
 	public void setModel(Book model) {
 		this.model = model;
@@ -85,10 +86,30 @@ public class BookView extends JPanel implements Observer {
 			handleTitleChange();
 			}
 		});
-		titleBox.setBounds(122, 74, 163, 20);
+		titleBox.setBounds(122, 68, 163, 20);
 		add(titleBox);
 		titleBox.setColumns(10);
+		
+		JLabel publisherLabel = new JLabel("Publisher:");
+		publisherLabel.setBounds(10, 96, 79, 14);
+		add(publisherLabel);
+		
+		publisherBox = new JTextField();
+		publisherBox.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				handlePublisherChange();
+			}
+		});
+		publisherBox.setBounds(122, 93, 163, 20);
+		add(publisherBox);
+		publisherBox.setColumns(10);
 
+	}
+
+	protected void handlePublisherChange() {
+		controller.setPub(publisherBox.getText());
+		
 	}
 
 	protected void handleTitleChange() {

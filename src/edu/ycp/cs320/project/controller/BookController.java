@@ -22,4 +22,9 @@ public class BookController {
 		
 	}
 
+	public void setPub(String text) {
+		model.setpublisher(text);
+		
+	}
+
 }
