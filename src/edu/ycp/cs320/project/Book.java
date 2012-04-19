@@ -33,5 +33,7 @@ private String pubDate;
 	public String getPubDate() {
 		return pubDate;
 	}
+
+	
 	
 }

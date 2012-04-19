@@ -88,7 +88,7 @@ public class Main {
 			String pagenumber= keyboard.next().toLowerCase();
 			System.out.print("What is the volume number?");
 			String volumenumber= keyboard.next().toLowerCase();
-			source=new Magazine(sourceType,first, last,  title,date,publisher,magazine, pagenumber, volumenumber);
+			source=new Periodical(sourceType,first, last,  title,date,publisher,magazine, pagenumber, volumenumber);
 			FormatType format=enterformat();
 			citation=new Citation(source,format);
 			
