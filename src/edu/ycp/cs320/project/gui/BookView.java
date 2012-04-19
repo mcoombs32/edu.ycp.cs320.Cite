@@ -1,5 +1,6 @@
 package edu.ycp.cs320.project.gui;
 
+
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.util.Observable;
@@ -25,6 +26,9 @@ public class BookView extends JPanel implements Observer {
 	private Book model;
 	private BookController controller;
 	private JTextField lastNameTextBox;
+	private JTextField titleBox;
+	private JTextField publisherBox;
+	private JTextField pubDateBox;
 	
 	public void setModel(Book model) {
 		this.model = model;
@@ -72,7 +76,67 @@ public class BookView extends JPanel implements Observer {
 		lastNameTextBox.setBounds(122, 43, 163, 20);
 		add(lastNameTextBox);
 		lastNameTextBox.setColumns(10);
+		
+		JLabel titleLabel = new JLabel("Title:");
+		titleLabel.setBounds(10, 71, 46, 14);
+		add(titleLabel);
+		
+		titleBox = new JTextField();
+		titleBox.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+			handleTitleChange();
+			}
+		});
+		titleBox.setBounds(122, 68, 163, 20);
+		add(titleBox);
+		titleBox.setColumns(10);
+		
+		JLabel publisherLabel = new JLabel("Publisher:");
+		publisherLabel.setBounds(10, 96, 79, 14);
+		add(publisherLabel);
+		
+		publisherBox = new JTextField();
+		publisherBox.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				handlePublisherChange();
+			}
+		});
+		publisherBox.setBounds(122, 93, 163, 20);
+		add(publisherBox);
+		publisherBox.setColumns(10);
+		
+		JLabel pubDateLabel = new JLabel("Publish Date:");
+		pubDateLabel.setBounds(10, 121, 79, 14);
+		add(pubDateLabel);
+		
+		pubDateBox = new JTextField();
+		pubDateBox.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				handlePubDateChange();
+			}
+		});
+		pubDateBox.setBounds(122, 118, 163, 20);
+		add(pubDateBox);
+		pubDateBox.setColumns(10);
 
+	}
+
+	protected void handlePubDateChange() {
+		controller.setPubDate(pubDateBox.getText());
+		
+	}
+
+	protected void handlePublisherChange() {
+		controller.setPub(publisherBox.getText());
+		
+	}
+
+	protected void handleTitleChange() {
+		controller.setTitle(titleBox.getText());
+		
 	}
 
 	protected void handleFirstNameChange() {
@@ -86,6 +150,9 @@ public class BookView extends JPanel implements Observer {
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		System.out.println("updating book view!");
+		titleBox.setText(model.gettitle());
+		pubDateBox.setText(model.getPubDate());
+		publisherBox.setText(model.getpublisher());
 		firstNameTextBox.setText(model.getfirst());
 		lastNameTextBox.setText(model.getlast());
 	}

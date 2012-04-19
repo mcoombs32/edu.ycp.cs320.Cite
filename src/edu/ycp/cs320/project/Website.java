@@ -1,8 +1,14 @@
 package edu.ycp.cs320.project;
 
 public class Website extends Source {
+	
+	
+	public Website() {
+		super(SourceType.WEBSITE);
+	}
+	
 	private String url,access,website;
-	public Website(SourceType sourceType,String first, String last, String title, String date,
+	public Website (SourceType sourceType,String first, String last, String title, String date,
 			String publisher,String url, String access, String website) {
 		super(SourceType.WEBSITE,first, last, title, date, publisher);
 		// TODO Auto-generated constructor stub
@@ -10,6 +16,7 @@ public class Website extends Source {
 		this.access=access;
 		this.website=website;
 	}
+	
 	public String geturl(){
 		return url;
 		}
