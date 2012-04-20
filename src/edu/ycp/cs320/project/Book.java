@@ -10,10 +10,10 @@ private String pubDate;
 	}
 
 	public Book(String first, String last, String title, String date,
-			String publisher,String city, String pubDate) {
+			String publisher,String city) {
 		super(SourceType.BOOK,first, last, title,date,publisher);
 		this.city=city;
-		this.pubDate = pubDate;
+		
 	}
 	public String getcity(){
 		return city;
@@ -33,5 +33,7 @@ private String pubDate;
 	public String getPubDate() {
 		return pubDate;
 	}
+
+	
 	
 }

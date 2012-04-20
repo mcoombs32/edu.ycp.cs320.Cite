@@ -32,4 +32,9 @@ public class BookController {
 		
 	}
 
+	public void setcity(String text) {
+		model.setcity(text);
+		
+	}
+
 }

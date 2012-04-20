@@ -29,6 +29,7 @@ public class BookView extends JPanel implements Observer {
 	private JTextField titleBox;
 	private JTextField publisherBox;
 	private JTextField pubDateBox;
+	private JTextField cityTextBox;
 	
 	public void setModel(Book model) {
 		this.model = model;
@@ -121,7 +122,27 @@ public class BookView extends JPanel implements Observer {
 		pubDateBox.setBounds(122, 118, 163, 20);
 		add(pubDateBox);
 		pubDateBox.setColumns(10);
+		
+		JLabel cityLabel = new JLabel("City of Publication:");
+		cityLabel.setBounds(10, 146, 102, 14);
+		add(cityLabel);
+		
+		cityTextBox = new JTextField();
+		cityTextBox.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				handleCityChange();
+			}
+		});
+		cityTextBox.setBounds(122, 143, 163, 20);
+		add(cityTextBox);
+		cityTextBox.setColumns(10);
 
+	}
+
+	protected void handleCityChange() {
+		controller.setcity(cityTextBox.getText());
+		
 	}
 
 	protected void handlePubDateChange() {

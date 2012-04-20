@@ -57,8 +57,8 @@ public class Citation {
 	public Journal getjournal(){
 		return (Journal) source;
 	}
-	public Magazine getmagazine(){
-		return (Magazine) source;
+	public Periodical getmagazine(){
+		return (Periodical) source;
 	}
 	/*
 	public void setbook(Book book){
@@ -87,18 +87,17 @@ public class Citation {
 
 	private String printchicago() {
 		String cit = null;
-		// TODO Auto-generated method stub
 		if(source.getSourceType() == SourceType.BOOK){
-			cit=getbook().getlast()+","+getbook().getfirst()+"."+getbook().gettitle()+"."+getbook().getcity()+","+getbook().getpublisher()+","+getbook().getdate();
+			cit=getbook().getlast()+","+getbook().getfirst()+"."+getbook().gettitle()+"."+getbook().getcity()+":"+getbook().getpublisher()+","+getbook().getdate()+".";
 				}
 		if(source.getSourceType() == SourceType.MAGAZINE){
 			cit=getmagazine().getlast()+","+getmagazine().getfirst()+"."+getmagazine().gettitle()+"."+getmagazine().getmagazine()+","+getmagazine().getdate()+","+getmagazine().getpagenumber();
 		}
 		if(source.getSourceType() == SourceType.WEBSITE){
-			cit=getwebsite().getlast()+","+getwebsite().getfirst()+"."+getwebsite().gettitle()+"."+getwebsite().getdate()+","+getwebsite().geturl();
+			cit=getwebsite().getlast()+","+getwebsite().getfirst()+"."+getwebsite().gettitle()+"."+getwebsite().getdate()+"."+getwebsite().getaccess()+"."+getwebsite().geturl()+".";
 		}
 		if(source.getSourceType() == SourceType.JOURNAL){
-			cit=getjournal().getlast()+","+getjournal().getfirst()+"."+getjournal().gettitle()+"."+getjournal().getjournal()+","+getjournal().getvolume()+","+getjournal().getpagenumber();
+			cit=getjournal().getlast()+","+getjournal().getfirst()+"."+getjournal().gettitle()+"."+getjournal().getjournal()+","+getjournal().getvolume()+" ("+getjournal().getdate()+"):"+getjournal().getpagenumber();
 		}
 		return cit;
 	}

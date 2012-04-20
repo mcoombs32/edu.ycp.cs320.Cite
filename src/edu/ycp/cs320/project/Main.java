@@ -48,19 +48,19 @@ public class Main {
 		Source source=null;
 		Scanner keyboard = new Scanner(System.in);
 		System.out.print("What is the author first name?");
-		String first = keyboard.next().toLowerCase();
+		String first = keyboard.nextLine().toLowerCase();
 		System.out.print("What is the author last name?");
-		String last = keyboard.next().toLowerCase();
+		String last = keyboard.nextLine().toLowerCase();
 		System.out.print("What is the title?");
-		String title = keyboard.next().toLowerCase();
+		String title = keyboard.nextLine().toLowerCase();
 		System.out.print("What is the date?");
-		String date = keyboard.next().toLowerCase();
+		String date = keyboard.nextLine().toLowerCase();
 		System.out.print("Who is the publisher?");
-		String publisher = keyboard.next().toLowerCase();
+		String publisher = keyboard.nextLine().toLowerCase();
 		if(sourceType == SourceType.BOOK){
 			System.out.print("What is the city?");
 			String city = keyboard.next().toLowerCase();
-			 source=new Book(first, last, title, date, publisher, city,date);
+			 source=new Book(first, last, title, date, publisher, city);
 			 FormatType format=enterformat();
 			citation=new Citation(source,format);
 			
@@ -70,11 +70,11 @@ public class Main {
 		}
 		if(sourceType == SourceType.WEBSITE){
 			System.out.print("What is the url?");
-			String url = keyboard.next().toLowerCase();
+			String url = keyboard.nextLine().toLowerCase();
 			System.out.print("What is the access?");
-			String access = keyboard.next().toLowerCase();
+			String access = keyboard.nextLine().toLowerCase();
 			System.out.print("What is the website?");
-			String website= keyboard.next().toLowerCase();
+			String website= keyboard.nextLine().toLowerCase();
 			source=new Website(sourceType,first,last,title,date, publisher,url,access,website);
 			FormatType format=enterformat();
 			citation=new Citation(source,format);
@@ -88,7 +88,7 @@ public class Main {
 			String pagenumber= keyboard.next().toLowerCase();
 			System.out.print("What is the volume number?");
 			String volumenumber= keyboard.next().toLowerCase();
-			source=new Magazine(sourceType,first, last,  title,date,publisher,magazine, pagenumber, volumenumber);
+			source=new Periodical(sourceType,first, last,  title,date,publisher,magazine, pagenumber, volumenumber);
 			FormatType format=enterformat();
 			citation=new Citation(source,format);
 			
