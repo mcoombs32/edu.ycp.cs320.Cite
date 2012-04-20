@@ -19,7 +19,6 @@ public class WebsiteController {
 
 		public void setURL(String text) {
 			model.seturl(text);
-			
 		}
 
 	}

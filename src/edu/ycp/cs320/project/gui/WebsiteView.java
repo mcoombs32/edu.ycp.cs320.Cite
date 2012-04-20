@@ -28,12 +28,15 @@ public class WebsiteView extends JPanel implements Observer {
 	private Website model;
 	private WebsiteController controller;
 	private JTextField lastNameTextBox;
-	private JLabel lblUrl;
+	private JTextField URLtextFieldBox;
+	
 	private JLabel lblTitle;
 	private JLabel lblDate;
-	private JTextField URLtextFieldBox;
 	private JTextField TitleTextFieldBox;
 	private JTextField DateTextFieldBox;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
 	
 	public void setModel(Website model) {
 		this.model = model;
@@ -52,9 +55,9 @@ public class WebsiteView extends JPanel implements Observer {
 		setPreferredSize(new Dimension(600, 450));
 		setLayout(null);
 		
-		//FIRST NAME
+		//*************** FIRST NAME
 		JLabel firstNameLabel = new JLabel("Author First Name:");
-		firstNameLabel.setBounds(10, 21, 102, 14);
+		firstNameLabel.setBounds(10, 21, 130, 14);
 		add(firstNameLabel);
 		
 		firstNameTextBox = new JTextField();
@@ -64,14 +67,14 @@ public class WebsiteView extends JPanel implements Observer {
 				handleFirstNameChange();
 			}
 		});
-		firstNameTextBox.setBounds(122, 18, 163, 20);
+		firstNameTextBox.setBounds(167, 18, 163, 20);
 		add(firstNameTextBox);
 		firstNameTextBox.setColumns(10);
 		
 		
 		// **************** LAST NAME
 		JLabel lastNameLabel = new JLabel("Author Last Name:");
-		lastNameLabel.setBounds(10, 46, 102, 14);
+		lastNameLabel.setBounds(10, 46, 130, 14);
 		add(lastNameLabel);
 		
 		lastNameTextBox = new JTextField();
@@ -81,15 +84,15 @@ public class WebsiteView extends JPanel implements Observer {
 				handleLastNameChange();
 			}
 		});
-		lastNameTextBox.setBounds(122, 43, 163, 20);
+		lastNameTextBox.setBounds(167, 43, 163, 20);
 		add(lastNameTextBox);
 		lastNameTextBox.setColumns(10);
 		
 		
 		//**************** URL
-		lblUrl = new JLabel("URL:");
-		lblUrl.setBounds(10, 71, 102, 14);
-		add(lblUrl);
+		JLabel URLlabel = new JLabel("URL:");
+		URLlabel.setBounds(10, 71, 130, 14);
+		add(URLlabel);
 		
 		
 		URLtextFieldBox = new JTextField();
@@ -99,24 +102,23 @@ public class WebsiteView extends JPanel implements Observer {
 				handleURLChange();
 			}
 		});
+
 		
 		
 		URLtextFieldBox.setBounds(122, 68, 163, 20);
+
+		URLtextFieldBox.setBounds(167, 68, 163, 20);
+
 		add(URLtextFieldBox);
 		URLtextFieldBox.setColumns(10);
 		
-		
-		
-		
-		
-		
-		
+			
 		lblTitle = new JLabel("Title:");
-		lblTitle.setBounds(10, 96, 102, 14);
+		lblTitle.setBounds(10, 96, 130, 14);
 		add(lblTitle);
 		
 		lblDate = new JLabel("Date:");
-		lblDate.setBounds(10, 121, 102, 14);
+		lblDate.setBounds(10, 121, 130, 14);
 		add(lblDate);
 		
 		
@@ -124,16 +126,43 @@ public class WebsiteView extends JPanel implements Observer {
 		
 		// TITLE
 		TitleTextFieldBox = new JTextField();
-		TitleTextFieldBox.setBounds(122, 93, 163, 20);
+		TitleTextFieldBox.setBounds(167, 93, 163, 20);
 		add(TitleTextFieldBox);
 		TitleTextFieldBox.setColumns(10);
 		
 		
 		// DATE
 		DateTextFieldBox = new JTextField();
-		DateTextFieldBox.setBounds(122, 118, 163, 20);
+		DateTextFieldBox.setBounds(167, 118, 163, 20);
 		add(DateTextFieldBox);
 		DateTextFieldBox.setColumns(10);
+		
+		JLabel lblPublisher = new JLabel("Publisher: ");
+		lblPublisher.setBounds(10, 147, 130, 14);
+		add(lblPublisher);
+		
+		JLabel lblAccess = new JLabel("Access:");
+		lblAccess.setBounds(10, 172, 130, 14);
+		add(lblAccess);
+		
+		JLabel lblWebsite = new JLabel("Website:");
+		lblWebsite.setBounds(10, 197, 130, 14);
+		add(lblWebsite);
+		
+		textField = new JTextField();
+		textField.setBounds(167, 144, 163, 20);
+		add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(167, 169, 163, 20);
+		add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(167, 194, 163, 20);
+		add(textField_2);
+		textField_2.setColumns(10);
 
 	}
 
@@ -151,9 +180,10 @@ public class WebsiteView extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		System.out.println("updating book view!");
+		System.out.println("updating website view!");
 		firstNameTextBox.setText(model.getfirst());
 		lastNameTextBox.setText(model.getlast());
+		URLtextFieldBox.setText(model.geturl());
 	}
 	
 	public static void main(String[] args) {
