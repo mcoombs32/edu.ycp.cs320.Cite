@@ -127,8 +127,7 @@ public class WebsiteView extends JPanel implements Observer {
 		
 		
 		
-		// DATE
-		
+		//******** DATE
 		lblDate = new JLabel("Date Created:");
 		lblDate.setBounds(10, 121, 130, 14);
 		add(lblDate);
@@ -148,7 +147,7 @@ public class WebsiteView extends JPanel implements Observer {
 		
 		
 		
-		// publisher
+		// ********** PUBLISHER
 		JLabel lblPublisher = new JLabel("Publisher: ");
 		lblPublisher.setBounds(10, 147, 130, 14);
 		add(lblPublisher);
@@ -166,7 +165,7 @@ public class WebsiteView extends JPanel implements Observer {
 		
 		
 		
-		// DATE ACCESSED
+		// ********* DATE ACCESSED
 		JLabel lblAccess = new JLabel("Date Accessed:");
 		lblAccess.setBounds(10, 172, 130, 14);
 		add(lblAccess);
@@ -185,7 +184,7 @@ public class WebsiteView extends JPanel implements Observer {
 		
 		
 		
-		// WEBSITE NAME
+		// *********** WEBSITE NAME
 		JLabel lblWebsite = new JLabel("Website Name:");
 		lblWebsite.setBounds(10, 197, 130, 14);
 		add(lblWebsite);
