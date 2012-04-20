@@ -34,9 +34,9 @@ public class WebsiteView extends JPanel implements Observer {
 	private JLabel lblDate;
 	private JTextField TitleTextFieldBox;
 	private JTextField DateTextFieldBox;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField PublisherTextField;
+	private JTextField AccessDateField;
+	private JTextField WebsiteName;
 	
 	public void setModel(Website model) {
 		this.model = model;
@@ -107,61 +107,99 @@ public class WebsiteView extends JPanel implements Observer {
 		URLtextFieldBox.setColumns(10);
 		
 		
-		/////////////////
-		
-		
-		
-		
+		///////////////// TITLE
 		lblTitle = new JLabel("Title:");
 		lblTitle.setBounds(10, 96, 130, 14);
 		add(lblTitle);
 		
-		lblDate = new JLabel("Date:");
-		lblDate.setBounds(10, 121, 130, 14);
-		add(lblDate);
 		
-		
-		
-		
-		// TITLE
 		TitleTextFieldBox = new JTextField();
+		TitleTextFieldBox.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				handleTitleChange();
+			}
+		});
 		TitleTextFieldBox.setBounds(167, 93, 163, 20);
 		add(TitleTextFieldBox);
 		TitleTextFieldBox.setColumns(10);
 		
 		
+		
+		
 		// DATE
+		
+		lblDate = new JLabel("Date Created:");
+		lblDate.setBounds(10, 121, 130, 14);
+		add(lblDate);
+
+		
 		DateTextFieldBox = new JTextField();
+		DateTextFieldBox = new JTextField();
+		DateTextFieldBox.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				handleDateChange();
+			}
+		});
 		DateTextFieldBox.setBounds(167, 118, 163, 20);
 		add(DateTextFieldBox);
 		DateTextFieldBox.setColumns(10);
 		
+		
+		
+		// publisher
 		JLabel lblPublisher = new JLabel("Publisher: ");
 		lblPublisher.setBounds(10, 147, 130, 14);
 		add(lblPublisher);
 		
-		JLabel lblAccess = new JLabel("Access:");
+		PublisherTextField = new JTextField();
+		PublisherTextField.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				handlePublisherChange();
+			}
+		});
+		PublisherTextField.setBounds(167, 144, 163, 20);
+		add(PublisherTextField);
+		PublisherTextField.setColumns(10);
+		
+		
+		
+		// DATE ACCESSED
+		JLabel lblAccess = new JLabel("Date Accessed:");
 		lblAccess.setBounds(10, 172, 130, 14);
 		add(lblAccess);
 		
-		JLabel lblWebsite = new JLabel("Website:");
+		
+		AccessDateField = new JTextField();
+		AccessDateField.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				handleAccessChange();
+			}
+		});
+		AccessDateField.setBounds(167, 169, 163, 20);
+		add(AccessDateField);
+		AccessDateField.setColumns(10);
+		
+		
+		
+		// WEBSITE NAME
+		JLabel lblWebsite = new JLabel("Website Name:");
 		lblWebsite.setBounds(10, 197, 130, 14);
 		add(lblWebsite);
 		
-		textField = new JTextField();
-		textField.setBounds(167, 144, 163, 20);
-		add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(167, 169, 163, 20);
-		add(textField_1);
-		textField_1.setColumns(10);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(167, 194, 163, 20);
-		add(textField_2);
-		textField_2.setColumns(10);
+		WebsiteName = new JTextField();
+		WebsiteName.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				handleWebsiteChange();
+			}
+		});
+		WebsiteName.setBounds(167, 194, 163, 20);
+		add(WebsiteName);
+		WebsiteName.setColumns(10);
 
 	}
 
@@ -176,13 +214,38 @@ public class WebsiteView extends JPanel implements Observer {
 	protected void handleURLChange() {
 		controller.setURL(URLtextFieldBox.getText());
 	}
+	
+	protected void handleTitleChange(){
+		controller.setTitle(TitleTextFieldBox.getText());
+	}
+	
+	protected void handleDateChange(){
+		controller.setDate(DateTextFieldBox.getText());
+	}
+	
+	protected void handlePublisherChange(){
+		controller.setPublisher(PublisherTextField.getText());
+	}
+	
+	protected void handleAccessChange(){
+		controller.setAccess(AccessDateField.getText());
+	}
 
+	protected void handleWebsiteChange(){
+		controller.setWebsite(WebsiteName.getText());
+	}
+	
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		System.out.println("updating website view!");
 		firstNameTextBox.setText(model.getfirst());
 		lastNameTextBox.setText(model.getlast());
 		URLtextFieldBox.setText(model.geturl());
+		TitleTextFieldBox.setText(model.gettitle());
+		DateTextFieldBox.setText(model.getdate());
+		PublisherTextField.setText(model.getpublisher());
+		AccessDateField.setText(model.getaccess());
+		WebsiteName.setText(model.getwebsite());
 	}
 	
 	public static void main(String[] args) {

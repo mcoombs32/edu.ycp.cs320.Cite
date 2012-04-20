@@ -19,6 +19,7 @@ public abstract class Source extends Observable {
 	 * @param title
 	 * @param date
 	 * @param publisher
+	 * 
 	 */
 	public Source(/*String source,*/ SourceType sourceType, String first,String last, String title,String date, String publisher){
 		/*this.source=source;*/
@@ -55,6 +56,7 @@ public abstract class Source extends Observable {
 	public String getpublisher(){
 		return publisher;
 	}
+	
 	/*
 	public void setsource(String source){
 		this.source=source;
@@ -73,18 +75,24 @@ public abstract class Source extends Observable {
 		notifyObservers();
 	}
 	public void settitle(String title){
+		System.out.println("Setting title to " + title);
 		this.title=title;
 		setChanged();
 		notifyObservers();
 	}
 	public void setdate(String date){
+		System.out.println("Setting date to " + date);
 		this.date=date;
 		setChanged();
 		notifyObservers();
 	}
 	public void setpublisher(String publisher){
+		System.out.println("Setting publisher to " + publisher);
 		this.publisher=publisher;
 		setChanged();
 		notifyObservers();
 	}
+
+	
+	
 }
