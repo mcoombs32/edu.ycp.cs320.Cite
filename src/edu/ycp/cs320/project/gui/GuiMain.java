@@ -16,12 +16,16 @@ import edu.ycp.cs320.project.SourceType;
 import edu.ycp.cs320.project.Website;
 import edu.ycp.cs320.project.controller.BookController;
 import edu.ycp.cs320.project.controller.WebsiteController;
-
+import edu.ycp.cs320.project.gui.BookView;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
 public class GuiMain extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JComboBox sourceTypeComboBox;
 	private JPanel sourceViewContainerPanel;
 	

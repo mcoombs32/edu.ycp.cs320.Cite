@@ -27,12 +27,21 @@ public class Website extends Source {
 		return website;
 		}
 	public void seturl(String url){
+		System.out.println("Setting url to " + url);
 		this.url=url;
+		setChanged();
+		notifyObservers();
 		}
 	public void setaccess(String access){
+		System.out.println("Setting access to " + access);
 		this.access=access;
+		setChanged();
+		notifyObservers();
 		}
 	public void setwebsite(String website){
+		System.out.println("Setting website to " + website);
 		this.website=website;
+		setChanged();
+		notifyObservers();
 		}
 }
