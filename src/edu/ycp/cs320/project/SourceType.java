@@ -4,5 +4,6 @@ public enum SourceType {
 	BOOK,
 	WEBSITE,
 	MAGAZINE,
+	PERIODICAL,
 	JOURNAL;
 }

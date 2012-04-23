@@ -1,11 +1,11 @@
 package edu.ycp.cs320.project.controller;
 
-import edu.ycp.cs320.project.Magazine;
+import edu.ycp.cs320.project.Periodical;
 
 public class MagazineController {
-	private Magazine model;
+	private Periodical model;
 
-	public void setModel(Magazine model){
+	public void setModel(Periodical model){
 		this.model = model;
 	}
 

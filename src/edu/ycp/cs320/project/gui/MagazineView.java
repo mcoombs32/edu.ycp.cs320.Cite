@@ -9,7 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import edu.ycp.cs320.project.Magazine;
+
+import edu.ycp.cs320.project.Periodical;
 import edu.ycp.cs320.project.controller.MagazineController;
 import javax.swing.JLabel;
 import java.awt.event.FocusAdapter;
@@ -18,7 +19,7 @@ import java.awt.event.FocusEvent;
 public class MagazineView extends JPanel implements Observer {
 
 
-	private Magazine model;
+	private Periodical model;
 	private MagazineController controller;
 	private JTextField firstNameTextBox;
 	private JTextField lastNameTextBox;
@@ -34,7 +35,7 @@ public class MagazineView extends JPanel implements Observer {
 	private JTextField VolumeTextBox;
 	private JTextField MagazineNameTextBox;
 
-	public void setModel(Magazine model) {
+	public void setModel(Periodical model) {
 		this.model = model;
 
 		model.addObserver(this);
@@ -247,7 +248,7 @@ public class MagazineView extends JPanel implements Observer {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				Magazine model = new Magazine();
+				Periodical model = new Periodical();
 
 				MagazineView view = new MagazineView();
 				view.setModel(model);

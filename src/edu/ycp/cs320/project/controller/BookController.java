@@ -17,4 +17,24 @@ public class BookController {
 		model.setlast(text);
 	}
 
+	public void setTitle(String text) {
+		model.settitle(text);
+		
+	}
+
+	public void setPub(String text) {
+		model.setpublisher(text);
+		
+	}
+
+	public void setPubDate(String text) {
+		model.setPubDate(text);
+		
+	}
+
+	public void setcity(String text) {
+		model.setcity(text);
+		
+	}
+
 }

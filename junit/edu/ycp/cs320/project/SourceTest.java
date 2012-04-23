@@ -11,7 +11,7 @@ public class SourceTest {
 	private Book book;
 	private Journal journal;
 	private Website website;
-	private Magazine magazine;
+	private Periodical magazine;
 	private Citation magazineCite;
 	
 	
@@ -20,7 +20,7 @@ public class SourceTest {
 		book=new Book("Chris","Campagnola", "Title","1994", "book","york");
 		journal=new Journal(SourceType.JOURNAL, "Chris","Campagnola", "Title","1994", "book","york","a","a");
 		website=new Website(SourceType.WEBSITE, "Chris","Campagnola", "Title","1994", "book","york","a","a");
-		magazine=new Magazine(SourceType.MAGAZINE, "Chris","Campagnola", "Title","1994", "book","york","a","a");
+		magazine=new Periodical(SourceType.MAGAZINE, "Chris","Campagnola", "Title","1994", "book","york","a","a");
 		magazineCite = new Citation(magazine,FormatType.MLA);
 		
 	}

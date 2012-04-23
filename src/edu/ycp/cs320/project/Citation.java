@@ -57,8 +57,8 @@ public class Citation {
 	public Journal getjournal(){
 		return (Journal) source;
 	}
-	public Magazine getmagazine(){
-		return (Magazine) source;
+	public Periodical getmagazine(){
+		return (Periodical) source;
 	}
 	/*
 	public void setbook(Book book){
