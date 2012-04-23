@@ -25,18 +25,6 @@ public class Citation {
 	}
 
 
-
-	
-
-	
-
-	
-
-
-
-
-
-
 	public FormatType getformat() {
 		// TODO Auto-generated method stub
 		return format;
@@ -60,11 +48,11 @@ public class Citation {
 	public Periodical getmagazine(){
 		return (Periodical) source;
 	}
-	/*
-	public void setbook(Book book){
-		this.book=book;
+	
+	public void setformattype(FormatType format){
+		this.format=format;
 	}
-	*/
+	
 
 	/*public String createdmla(){
 		return source2;
@@ -87,18 +75,17 @@ public class Citation {
 
 	private String printchicago() {
 		String cit = null;
-		// TODO Auto-generated method stub
 		if(source.getSourceType() == SourceType.BOOK){
-			cit=getbook().getlast()+","+getbook().getfirst()+"."+getbook().gettitle()+"."+getbook().getcity()+","+getbook().getpublisher()+","+getbook().getdate();
+			cit=getbook().getlast()+", "+getbook().getfirst()+". "+getbook().gettitle()+" "+getbook().getcity()+": "+getbook().getpublisher()+", "+getbook().getdate()+".";
 				}
 		if(source.getSourceType() == SourceType.MAGAZINE){
-			cit=getmagazine().getlast()+","+getmagazine().getfirst()+"."+getmagazine().gettitle()+"."+getmagazine().getmagazine()+","+getmagazine().getdate()+","+getmagazine().getpagenumber();
+			cit=getmagazine().getlast()+", "+getmagazine().getfirst()+". \""+getmagazine().gettitle()+"\". "+getmagazine().getmagazine()+", "+getmagazine().getdate()+".";
 		}
 		if(source.getSourceType() == SourceType.WEBSITE){
-			cit=getwebsite().getlast()+","+getwebsite().getfirst()+"."+getwebsite().gettitle()+"."+getwebsite().getdate()+","+getwebsite().geturl();
+			cit=getwebsite().getlast()+", "+getwebsite().getfirst()+". \""+getwebsite().gettitle()+"\". "+getwebsite().getwebsite()+", Last modified "+getwebsite().getdate()+". "+"Accessed"+" "+((Website) source).getmonth(getwebsite().getaccess().substring(0,2))+" "+getwebsite().getaccess().substring(3,5)+", "+getwebsite().getaccess().substring(6,10)+". "+getwebsite().geturl()+".";
 		}
 		if(source.getSourceType() == SourceType.JOURNAL){
-			cit=getjournal().getlast()+","+getjournal().getfirst()+"."+getjournal().gettitle()+"."+getjournal().getjournal()+","+getjournal().getvolume()+","+getjournal().getpagenumber();
+			cit=getjournal().getlast()+", "+getjournal().getfirst()+". \""+getjournal().gettitle()+"\". "+getjournal().getjournal()+" "+getjournal().getvolume()+" ("+getjournal().getdate()+"): "+getjournal().getpagenumber();
 		}
 		return cit;
 	}
@@ -106,16 +93,16 @@ public class Citation {
 	private String printapa() {
 		String cit=null;
 		if(source.getSourceType() == SourceType.BOOK){
-			 cit=getbook().getlast()+","+getbook().getfirst()+".("+getbook().getdate()+")."+getbook().gettitle()+"."+getbook().getcity()+":"+getbook().getpublisher();
+			 cit=getbook().getlast()+", "+getbook().getfirst().charAt(0)+". ("+getbook().getdate()+"). "+getbook().gettitle()+". "+getbook().getcity()+": "+getbook().getpublisher()+".";
 				}
 		if(source.getSourceType() == SourceType.MAGAZINE){
-			cit=getmagazine().getlast()+","+getmagazine().getfirst()+". ("+getmagazine().getdate()+")."+ getmagazine().gettitle()+","+getmagazine().getmagazine()+","+getmagazine().getpagenumber();
+			cit=getmagazine().getlast()+", "+getmagazine().getfirst().charAt(0)+". ("+getmagazine().getdate()+"). \""+ getmagazine().gettitle()+"\". "+getmagazine().getmagazine()+", "+getmagazine().getvolumenumber()+", "+getmagazine().getpagenumber()+".";
 		}
 		if(source.getSourceType() == SourceType.WEBSITE){
-			cit=getwebsite().getlast()+","+getwebsite().getfirst()+". ("+getwebsite().getdate()+")"+getwebsite().gettitle()+"."+getwebsite().geturl();
+			cit=getwebsite().getlast()+", "+getwebsite().getfirst().charAt(0)+". ("+getwebsite().getdate()+"). \""+getwebsite().gettitle()+"\". Retrieved from "+getwebsite().geturl();
 		}
 		if(source.getSourceType() == SourceType.JOURNAL){
-			cit=getjournal().getlast()+","+getjournal().getfirst()+". ("+getjournal().getdate()+")."+getjournal().gettitle()+","+getjournal().getpublisher()+","+getjournal().getvolume()+","+getjournal().getpagenumber();
+			cit=getjournal().getlast()+", "+getjournal().getfirst().charAt(0)+". ("+getjournal().getdate()+"). \""+getjournal().gettitle()+"\". "+getjournal().getjournal()+", "+getjournal().getvolume()+", "+getjournal().getpagenumber()+".";
 		}
 		return cit;
 	}
@@ -126,18 +113,69 @@ public class Citation {
 		// TODO:title in quote
 		String cit=null;
 		if(source.getSourceType() == SourceType.BOOK){
-			cit=getbook().getlast()+","+getbook().getfirst()+"."+getbook().gettitle()+"."+getbook().getcity()+":"+getbook().getpublisher()+","+getbook().getdate()+".";
+			cit=getbook().getlast()+", "+getbook().getfirst()+". "+getbook().gettitle()+". "+getbook().getcity()+": "+getbook().getpublisher()+", "+getbook().getdate()+". "+getbook().getmedium()+".";
 				}
 		if(source.getSourceType() == SourceType.MAGAZINE){
-			cit=getmagazine().getlast()+","+getmagazine().getfirst()+"."+getmagazine().gettitle()+"."+getmagazine().getmagazine()+","+getmagazine().getdate()+":"+getmagazine().getpagenumber();
+			cit=getmagazine().getlast()+", "+getmagazine().getfirst()+". \""+getmagazine().gettitle()+"\". "+getmagazine().getmagazine()+" "+getmagazine().getdate()+": "+getmagazine().getpagenumber()+". "+getmagazine().getmedium()+".";
 		}
 		if(source.getSourceType() == SourceType.WEBSITE){
-			cit=getwebsite().getlast()+","+getwebsite().getfirst()+"."+getwebsite().gettitle()+"."+getwebsite().getpublisher()+","+getwebsite().getdate()+"."+getwebsite().getaccess();
+			cit=getwebsite().getlast()+", "+getwebsite().getfirst()+". \""+getwebsite().gettitle()+"\". "+getwebsite().getwebsite()+". "+getwebsite().getpublisher()+", " +getwebsite().getdate()+". "+getwebsite().getmedium()+". "+getwebsite().getaccess().substring(3,5)+" "+((Website) source).getmonth(getwebsite().getaccess().substring(0,2))+" "+getwebsite().getaccess().substring(6,10)+". <"+getwebsite().geturl()+">.";
 		}
 		if(source.getSourceType() == SourceType.JOURNAL){
-			cit=getjournal().getlast()+","+getjournal().getfirst()+"."+getjournal().gettitle()+"."+getjournal().getpublisher()+" "+getjournal().getvolume()+" ("+getjournal().getdate()+"):"+getjournal().getpagenumber();
+			cit=getjournal().getlast()+", "+getjournal().getfirst()+". \""+getjournal().gettitle()+"\". "+getjournal().getjournal()+" "+getjournal().getvolume()+" ("+getjournal().getdate()+"): "+getjournal().getpagenumber()+". "+getjournal().getmedium()+".";
 		}
 		return cit;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	private String getmonth(String substring) {
+		if(substring=="01"){
+		return "Jan";
+		}
+	if(substring=="02"){
+		return "Feb";
+		}
+if(substring=="03"){
+	return "Mar";
+	}
+	if(substring=="04"){
+		return "Apr";
+		}
+		if(substring=="05"){
+			return "May";
+			}
+			if(substring=="06"){
+				return "Jun";
+				}
+				if(substring=="07"){
+					return "Jul";
+					}
+					if(substring=="08"){
+						return "Aug";
+						}
+						if(substring=="09"){
+							return "Sep";
+							}	if(substring=="10"){
+								return "Oct";
+						}
+						if(substring=="11"){
+							return "Nov";
+							}	if(substring=="12"){
+								return "Dec";
+						}
+							return null;
 	}
 	}
 

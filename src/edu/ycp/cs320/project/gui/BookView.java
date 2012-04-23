@@ -142,7 +142,6 @@ public class BookView extends JPanel implements Observer {
 		cityTextBox.setBounds(122, 143, 163, 20);
 		add(cityTextBox);
 		cityTextBox.setColumns(10);
-
 	}
 
 	protected void handleCityChange() {
