@@ -24,12 +24,12 @@ public class SourceTest {
 		book=new Book("Chris","Campagnola", "Title","1994", "book","york", null);
 		journal=new Journal(SourceType.JOURNAL, "Chris","Campagnola", "Title","1994", "book","york","a","a", null);
 		website=new Website(SourceType.WEBSITE, "Chris","Campagnola", "Title","1994", "book","york","a","a", null);
-		magazine=new Periodical(SourceType.MAGAZINE, "Chris","Campagnola", "Title","1994", "book","york","a","a");
+		magazine=new Periodical(SourceType.PERIODICAL, "Chris","Campagnola", "Title","1994", "book","york","a","a");
 
 		book=new Book("Chris","Campagnola", "York College Student Review","2013", "York College of Pennsylvania","York,Pa","Print");
 		journal=new Journal(SourceType.JOURNAL, "Chris","Campagnola", "York Science On The Rise","1999", "York College of Pennsylvania","York Science Reporter","5","55-67","Print");
 		website=new Website(SourceType.WEBSITE, "Chris","Campagnola", "York College Problems","1111", "York College of Pennsylvania","www.ycp.edu","04/20/2012","York College of Pennsylvania","Web");
-		magazine=new Periodical(SourceType.MAGAZINE, "Chris","Campagnola", "York Is Rolling Away","1994", "York College of Pennsylvania","York Times","55-66","5");
+		magazine=new Periodical(SourceType.PERIODICAL, "Chris","Campagnola", "York Is Rolling Away","1994", "York College of Pennsylvania","York Times","55-66","5");
 		journalcite = new Citation(journal,FormatType.MLA);
 		bookcite = new Citation(book,FormatType.MLA);
 		websitecite = new Citation(website,FormatType.MLA);
@@ -67,7 +67,7 @@ public class SourceTest {
 	public void testmagazine() throws Exception {
 		assertEquals("Chris", magazine.getfirst());
 	
-		assertEquals(SourceType.MAGAZINE, magazine.getSourceType());
+		assertEquals(SourceType.PERIODICAL, magazine.getSourceType());
 		assertEquals("Campagnola", magazine.getlast());
 		assertEquals("York Is Rolling Away", magazine.gettitle());
 		assertEquals("1994", magazine.getdate());
