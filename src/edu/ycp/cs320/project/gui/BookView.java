@@ -52,7 +52,7 @@ public class BookView extends JPanel implements Observer {
 	 * Create the panel.
 	 */
 	public BookView() {
-		setPreferredSize(new Dimension(600, 450));
+		setPreferredSize(new Dimension(394, 233));
 		setLayout(null);
 		
 		JLabel firstNameLabel = new JLabel("First name:");
@@ -131,7 +131,7 @@ public class BookView extends JPanel implements Observer {
 		pubDateBox.setColumns(10);
 		
 		JLabel cityLabel = new JLabel("City of Publication:");
-		cityLabel.setBounds(10, 146, 102, 14);
+		cityLabel.setBounds(10, 146, 116, 14);
 		add(cityLabel);
 		
 		cityTextBox = new JTextField();

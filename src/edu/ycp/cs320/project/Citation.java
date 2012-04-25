@@ -35,7 +35,9 @@ public class Citation {
 	/*public String getsource(){
 		return source2;
 	}*/
-
+	public Source getSource(){
+		return this.source;
+	}
 	public Book getbook(){
 		return (Book) source;
 	}

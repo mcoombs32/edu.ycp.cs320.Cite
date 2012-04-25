@@ -1,17 +1,27 @@
 package edu.ycp.cs320.project;
 
-public class MapPersistance implements PersistanceInterface {
+import java.util.Map;
+import java.util.Observable;
 
+public class MapPersistance  extends Observable implements PersistanceInterface {
+
+	private Map<String,Citation> citeMap;
 	@Override
 	public void saveCitation(Citation cite) {
-		// TODO Auto-generated method stub
+		boolean exists = false;
+		if (citeMap.containsValue(cite)){
+			exists = true;
+		}else if (!exists)
+			citeMap.put(cite.getSource().gettitle(), cite);
 		
 	}
 
 	@Override
 	public Citation findCite(String title) {
-		// TODO Auto-generated method stub
-		return null;
+		if (citeMap.containsKey(title))
+			return citeMap.get(title);
+		else
+			return null;
 	}
 
 }
