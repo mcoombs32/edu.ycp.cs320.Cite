@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
 import edu.ycp.cs320.project.Book;
+import edu.ycp.cs320.project.Periodical;
 import edu.ycp.cs320.project.SourceType;
 import edu.ycp.cs320.project.Website;
 import edu.ycp.cs320.project.controller.BookController;
@@ -26,11 +27,13 @@ public class GuiMain extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JComboBox sourceTypeComboBox;
+	private JComboBox<SourceType> sourceTypeComboBox;
 	private JPanel sourceViewContainerPanel;
 	
 	private Book book;
 	private Website website;
+	private Periodical periodical;
+	private PeriodicalView periodicalView;
 	private BookView bookView;
 	private WebsiteView websiteView;
 
@@ -45,13 +48,13 @@ public class GuiMain extends JFrame {
 		getContentPane().add(sourceViewContainerPanel);
 		sourceViewContainerPanel.setLayout(new CardLayout(0, 0));
 		
-		sourceTypeComboBox = new JComboBox();
+		sourceTypeComboBox = new JComboBox<SourceType>();
 		sourceTypeComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sourceTypeChanged();
 			}
 		});
-		sourceTypeComboBox.setModel(new DefaultComboBoxModel(SourceType.values()));
+		sourceTypeComboBox.setModel(new DefaultComboBoxModel<SourceType>(SourceType.values()));
 		sourceTypeComboBox.setBounds(38, 27, 224, 20);
 		getContentPane().add(sourceTypeComboBox);
 		
@@ -75,6 +78,11 @@ public class GuiMain extends JFrame {
 		websiteView.setController(websiteController);
 		websiteController.setModel(website);
 		sourceViewContainerPanel.add(websiteView, SourceType.WEBSITE.toString());
+		
+		this.periodical = new Periodical();
+		this.periodicalView = new PeriodicalView();
+		periodicalView.setModel(periodical);
+		PeriodicalController periodicalController = new PeriodicalController();
 		
 		CardLayout cardLayout = (CardLayout) sourceViewContainerPanel.getLayout();
 		cardLayout.show(sourceViewContainerPanel, SourceType.BOOK.toString());
