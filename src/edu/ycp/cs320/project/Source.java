@@ -97,6 +97,7 @@ public abstract class Source extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+
 }
 	/*public String getmonth(String substring) {
 	if(substring.equals("04")){
@@ -104,3 +105,4 @@ public abstract class Source extends Observable {
 	}
 	return substring;
 	*///}
+

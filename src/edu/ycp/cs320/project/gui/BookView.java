@@ -21,10 +21,12 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
 public class BookView extends JPanel implements Observer {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 
 	private JTextField firstNameTextBox;
 	
@@ -142,6 +144,7 @@ public class BookView extends JPanel implements Observer {
 		cityTextBox.setBounds(122, 143, 163, 20);
 		add(cityTextBox);
 		cityTextBox.setColumns(10);
+
 	}
 
 	protected void handleCityChange() {

@@ -21,11 +21,6 @@ public class SourceTest {
 	@Before
 	public void setUp() {
 
-		book=new Book("Chris","Campagnola", "Title","1994", "book","york", null);
-		journal=new Journal(SourceType.JOURNAL, "Chris","Campagnola", "Title","1994", "book","york","a","a", null);
-		website=new Website(SourceType.WEBSITE, "Chris","Campagnola", "Title","1994", "book","york","a","a", null);
-		magazine=new Periodical(SourceType.PERIODICAL, "Chris","Campagnola", "Title","1994", "book","york","a","a");
-
 		book=new Book("Chris","Campagnola", "York College Student Review","2013", "York College of Pennsylvania","York,Pa","Print");
 		journal=new Journal(SourceType.JOURNAL, "Chris","Campagnola", "York Science On The Rise","1999", "York College of Pennsylvania","York Science Reporter","5","55-67","Print");
 		website=new Website(SourceType.WEBSITE, "Chris","Campagnola", "York College Problems","1111", "York College of Pennsylvania","www.ycp.edu","04/20/2012","York College of Pennsylvania","Web");
@@ -66,8 +61,9 @@ public class SourceTest {
 	@Test
 	public void testmagazine() throws Exception {
 		assertEquals("Chris", magazine.getfirst());
-	
+
 		assertEquals(SourceType.PERIODICAL, magazine.getSourceType());
+
 		assertEquals("Campagnola", magazine.getlast());
 		assertEquals("York Is Rolling Away", magazine.gettitle());
 		assertEquals("1994", magazine.getdate());

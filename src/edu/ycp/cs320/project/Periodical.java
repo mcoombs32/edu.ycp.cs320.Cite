@@ -2,6 +2,7 @@ package edu.ycp.cs320.project;
 
 public class Periodical extends Source {
 private String magazine,pagenumber,volume;
+
 	public Periodical(SourceType sourceType,String first, String last, String title, String date,String publisher,String magazine, String pagenumber, String volume) {
 		super(SourceType.PERIODICAL,first, last, title, date, publisher, volume);
 
@@ -9,10 +10,12 @@ private String magazine,pagenumber,volume;
 		this.pagenumber=pagenumber;
 		this.volume=volume;
 	}
+
 	public Periodical (){
 		super(SourceType.PERIODICAL);
 	}
 	
+
 	public String getmagazine(){
 		return magazine;
 	}

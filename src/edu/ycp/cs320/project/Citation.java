@@ -78,7 +78,9 @@ public class Citation {
 		if(source.getSourceType() == SourceType.BOOK){
 			cit=getbook().getlast()+", "+getbook().getfirst()+". "+getbook().gettitle()+" "+getbook().getcity()+": "+getbook().getpublisher()+", "+getbook().getdate()+".";
 				}
+
 		if(source.getSourceType() == SourceType.PERIODICAL){
+
 			cit=getmagazine().getlast()+", "+getmagazine().getfirst()+". \""+getmagazine().gettitle()+"\". "+getmagazine().getmagazine()+", "+getmagazine().getdate()+".";
 		}
 		if(source.getSourceType() == SourceType.WEBSITE){
@@ -95,7 +97,9 @@ public class Citation {
 		if(source.getSourceType() == SourceType.BOOK){
 			 cit=getbook().getlast()+", "+getbook().getfirst().charAt(0)+". ("+getbook().getdate()+"). "+getbook().gettitle()+". "+getbook().getcity()+": "+getbook().getpublisher()+".";
 				}
+
 		if(source.getSourceType() == SourceType.PERIODICAL){
+
 			cit=getmagazine().getlast()+", "+getmagazine().getfirst().charAt(0)+". ("+getmagazine().getdate()+"). \""+ getmagazine().gettitle()+"\". "+getmagazine().getmagazine()+", "+getmagazine().getvolumenumber()+", "+getmagazine().getpagenumber()+".";
 		}
 		if(source.getSourceType() == SourceType.WEBSITE){
@@ -115,7 +119,9 @@ public class Citation {
 		if(source.getSourceType() == SourceType.BOOK){
 			cit=getbook().getlast()+", "+getbook().getfirst()+". "+getbook().gettitle()+". "+getbook().getcity()+": "+getbook().getpublisher()+", "+getbook().getdate()+". "+getbook().getmedium()+".";
 				}
+
 		if(source.getSourceType() == SourceType.PERIODICAL){
+
 			cit=getmagazine().getlast()+", "+getmagazine().getfirst()+". \""+getmagazine().gettitle()+"\". "+getmagazine().getmagazine()+" "+getmagazine().getdate()+": "+getmagazine().getpagenumber()+". "+getmagazine().getmedium()+".";
 		}
 		if(source.getSourceType() == SourceType.WEBSITE){
