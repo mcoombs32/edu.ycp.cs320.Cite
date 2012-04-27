@@ -3,7 +3,7 @@ package edu.ycp.cs320.project;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-
+import edu.ycp.cs320.project.FormatType;
 
 
 public class Main {
@@ -48,19 +48,21 @@ public class Main {
 		Source source=null;
 		Scanner keyboard = new Scanner(System.in);
 		System.out.print("What is the author first name?");
-		String first = keyboard.next().toLowerCase();
+		String first = keyboard.nextLine().toLowerCase();
 		System.out.print("What is the author last name?");
-		String last = keyboard.next().toLowerCase();
+		String last = keyboard.nextLine().toLowerCase();
 		System.out.print("What is the title?");
-		String title = keyboard.next().toLowerCase();
+		String title = keyboard.nextLine().toLowerCase();
 		System.out.print("What is the date?");
-		String date = keyboard.next().toLowerCase();
+		String date = keyboard.nextLine().toLowerCase();
 		System.out.print("Who is the publisher?");
-		String publisher = keyboard.next().toLowerCase();
+		String publisher = keyboard.nextLine().toLowerCase();
+		System.out.print("What is the medium?");
+		String medium = keyboard.nextLine().toLowerCase();
 		if(sourceType == SourceType.BOOK){
 			System.out.print("What is the city?");
 			String city = keyboard.next().toLowerCase();
-			 source=new Book(first, last, title, date, publisher, city);
+			 source=new Book(first, last, title, date, publisher, city,medium);
 			 FormatType format=enterformat();
 			citation=new Citation(source,format);
 			
@@ -70,12 +72,12 @@ public class Main {
 		}
 		if(sourceType == SourceType.WEBSITE){
 			System.out.print("What is the url?");
-			String url = keyboard.next().toLowerCase();
+			String url = keyboard.nextLine().toLowerCase();
 			System.out.print("What is the access?");
-			String access = keyboard.next().toLowerCase();
+			String access = keyboard.nextLine().toLowerCase();
 			System.out.print("What is the website?");
-			String website= keyboard.next().toLowerCase();
-			source=new Website(sourceType,first,last,title,date, publisher,url,access,website);
+			String website= keyboard.nextLine().toLowerCase();
+			source=new Website(sourceType,first,last,title,date, publisher,medium,url,access,website);
 			FormatType format=enterformat();
 			citation=new Citation(source,format);
 			
@@ -83,12 +85,12 @@ public class Main {
 		
 		if(sourceType == SourceType.MAGAZINE){
 			System.out.print("What is the magazine?");
-			String magazine = keyboard.next().toLowerCase();
+			String magazine = keyboard.nextLine().toLowerCase();
 			System.out.print("What is the page number?");
-			String pagenumber= keyboard.next().toLowerCase();
+			String pagenumber= keyboard.nextLine().toLowerCase();
 			System.out.print("What is the volume number?");
-			String volumenumber= keyboard.next().toLowerCase();
-			source=new Periodical(sourceType,first, last,  title,date,publisher,magazine, pagenumber, volumenumber);
+			String volumenumber= keyboard.nextLine().toLowerCase();
+			source=new Periodical(sourceType,first, last,  title,date,publisher,medium,magazine, pagenumber, volumenumber);
 			FormatType format=enterformat();
 			citation=new Citation(source,format);
 			
@@ -99,8 +101,8 @@ public class Main {
 			System.out.print("What is the volume?");
 			String volume = keyboard.next().toLowerCase();
 			System.out.print("What is the pagenumber?");
-			String pagenumber= keyboard.next().toLowerCase();
-			source= new Journal(sourceType,first,last,title,  date, publisher, journal, volume,  pagenumber);
+			String pagenumber= keyboard.nextLine().toLowerCase();
+			source= new Journal(sourceType,first,last,title,  date, publisher, journal, volume,  pagenumber,medium);
 			FormatType format=enterformat();
 			citation=new Citation(source,format);
 			

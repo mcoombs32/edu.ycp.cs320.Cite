@@ -1,21 +1,21 @@
 package edu.ycp.cs320.project;
-public class Periodical extends Source{
-	private String magazine,volume,pagenumber;
-	
-	public Periodical(SourceType sourcetype,String first,String last, String title, String date, String publisher,String magazine,String pagenumber,String volume){
-		
-		super(SourceType.PERIODICAL,first,last,title,date,publisher);
-		
-		this.magazine=magazine;
-		this.pagenumber=pagenumber;
-		this.volume=volume;	
-		
-	}
+
+public class Periodical extends Source {
 	
 	public Periodical(){
 		super(SourceType.MAGAZINE);
 
 	}
+	
+private String magazine,pagenumber,volume;
+	public Periodical(SourceType sourceType,String first, String last, String title, String date,
+			String publisher,String magazine, String pagenumber, String volume,String medium) {
+		super(SourceType.MAGAZINE,first, last, title, date, publisher,medium);
+		this.magazine=magazine;
+		this.pagenumber=pagenumber;
+		this.volume=volume;
+	}
+
 
 	public String getmagazine(){
 		return magazine;
@@ -44,4 +44,5 @@ public class Periodical extends Source{
 		setChanged();
 		notifyObservers();
 	}
+
 }

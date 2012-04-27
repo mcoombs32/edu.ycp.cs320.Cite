@@ -1,57 +1,58 @@
 package edu.ycp.cs320.project.gui;
 
-
-
-import javax.swing.JPanel;
 import java.awt.Dimension;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
-import edu.ycp.cs320.project.Book;
-import edu.ycp.cs320.project.Website;
-import edu.ycp.cs320.project.controller.WebsiteController;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
+import edu.ycp.cs320.project.Journal;
+import edu.ycp.cs320.project.controller.JournalController;
 
-public class WebsiteView extends JPanel implements Observer {
+public class JournalView extends JPanel implements Observer {
+
+
+	private Journal model;
+	private JournalController controller;
 	private JTextField firstNameTextBox;
-
-	private Website model;
-	private WebsiteController controller;
 	private JTextField lastNameTextBox;
-	private JTextField URLtextFieldBox;
-
 	private JLabel lblTitle;
 	private JLabel lblDate;
 	private JTextField TitleTextFieldBox;
 	private JTextField DateTextFieldBox;
 	private JTextField PublisherTextField;
-	private JTextField AccessDateField;
-	private JTextField WebsiteName;
+	private JLabel lblPageNumber;
+	private JLabel lblJournalName;
+	private JLabel lblVolume;
+	private JTextField PageNumberTextBox;
+	private JTextField VolumeTextBox;
+	private JTextField JournalNameTextBox;
 
-	public void setModel(Website model) {
+
+
+	public void setModel(Journal model) {
 		this.model = model;
 
 		model.addObserver(this);
 	}
 
-	public void setController(WebsiteController controller) {
+	public void setController(JournalController controller) {
 		this.controller = controller;
 	}
+
+
 
 	/**
 	 * Create the panel.
 	 */
-	public WebsiteView() {
+	public JournalView() {
+
 		setPreferredSize(new Dimension(600, 450));
 		setLayout(null);
 
@@ -89,32 +90,9 @@ public class WebsiteView extends JPanel implements Observer {
 		lastNameTextBox.setColumns(10);
 
 
-		//**************** URL
-		JLabel URLlabel = new JLabel("URL:");
-		URLlabel.setBounds(10, 71, 130, 14);
-		add(URLlabel);
-
-
-		URLtextFieldBox = new JTextField();
-		URLtextFieldBox.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusLost(FocusEvent e){
-				handleURLChange();
-			}
-		});
-
-
-
-		URLtextFieldBox.setBounds(122, 68, 163, 20);
-
-		URLtextFieldBox.setBounds(167, 68, 163, 20);
-
-		add(URLtextFieldBox);
-		URLtextFieldBox.setColumns(10);
-
-		// TITLE
+		///////////////// TITLE
 		lblTitle = new JLabel("Title:");
-		lblTitle.setBounds(10, 96, 130, 14);
+		lblTitle.setBounds(10, 71, 130, 14);
 		add(lblTitle);
 
 
@@ -125,7 +103,7 @@ public class WebsiteView extends JPanel implements Observer {
 				handleTitleChange();
 			}
 		});
-		TitleTextFieldBox.setBounds(167, 93, 163, 20);
+		TitleTextFieldBox.setBounds(167, 68, 163, 20);
 		add(TitleTextFieldBox);
 		TitleTextFieldBox.setColumns(10);
 
@@ -134,7 +112,7 @@ public class WebsiteView extends JPanel implements Observer {
 
 		//******** DATE
 		lblDate = new JLabel("Date Created:");
-		lblDate.setBounds(10, 121, 130, 14);
+		lblDate.setBounds(10, 96, 130, 14);
 		add(lblDate);
 
 
@@ -146,7 +124,7 @@ public class WebsiteView extends JPanel implements Observer {
 				handleDateChange();
 			}
 		});
-		DateTextFieldBox.setBounds(167, 118, 163, 20);
+		DateTextFieldBox.setBounds(167, 93, 163, 20);
 		add(DateTextFieldBox);
 		DateTextFieldBox.setColumns(10);
 
@@ -154,7 +132,7 @@ public class WebsiteView extends JPanel implements Observer {
 
 		// ********** PUBLISHER
 		JLabel lblPublisher = new JLabel("Publisher: ");
-		lblPublisher.setBounds(10, 147, 130, 14);
+		lblPublisher.setBounds(10, 121, 130, 14);
 		add(lblPublisher);
 
 		PublisherTextField = new JTextField();
@@ -164,48 +142,71 @@ public class WebsiteView extends JPanel implements Observer {
 				handlePublisherChange();
 			}
 		});
-		PublisherTextField.setBounds(167, 144, 163, 20);
+		PublisherTextField.setBounds(167, 118, 163, 20);
 		add(PublisherTextField);
 		PublisherTextField.setColumns(10);
 
 
 
-		// ********* DATE ACCESSED
-		JLabel lblAccess = new JLabel("Date Accessed:");
-		lblAccess.setBounds(10, 172, 130, 14);
-		add(lblAccess);
+		//// *********** PAGE NUMBER
+		lblPageNumber = new JLabel("Page Number:");
+		lblPageNumber.setBounds(10, 146, 130, 14);
+		add(lblPageNumber);
 
-
-		AccessDateField = new JTextField();
-		AccessDateField.addFocusListener(new FocusAdapter(){
+		PageNumberTextBox = new JTextField();
+		PageNumberTextBox.addFocusListener(new FocusAdapter(){
 			@Override
 			public void focusLost(FocusEvent e){
-				handleAccessChange();
+				handlePageNumberChange();
 			}
-		});
-		AccessDateField.setBounds(167, 169, 163, 20);
-		add(AccessDateField);
-		AccessDateField.setColumns(10);
+		});	
+		PageNumberTextBox.setBounds(167, 143, 163, 20);
+		add(PageNumberTextBox);
+		PageNumberTextBox.setColumns(10);
 
 
+		///************** VOLUME
+		lblVolume = new JLabel("Volume:");
+		lblVolume.setBounds(10, 171, 130, 14);
+		add(lblVolume);
 
-		// *********** WEBSITE NAME
-		JLabel lblWebsite = new JLabel("Website Name:");
-		lblWebsite.setBounds(10, 197, 130, 14);
-		add(lblWebsite);
-
-		WebsiteName = new JTextField();
-		WebsiteName.addFocusListener(new FocusAdapter(){
+		VolumeTextBox = new JTextField();
+		VolumeTextBox.addFocusListener(new FocusAdapter(){
 			@Override
 			public void focusLost(FocusEvent e){
-				handleWebsiteChange();
+				handleVolumeChange();
 			}
 		});
-		WebsiteName.setBounds(167, 194, 163, 20);
-		add(WebsiteName);
-		WebsiteName.setColumns(10);
+		VolumeTextBox.setBounds(167, 168, 163, 20);
+		add(VolumeTextBox);
+		VolumeTextBox.setColumns(10);
+
 
 	}
+	
+		/*//************** MAGAZINE NAME
+		lblMagazineName = new JLabel("Magazine Name:");
+		lblMagazineName.setBounds(10, 196, 130, 14);
+		add(lblMagazineName);
+
+
+		MagazineNameTextBox = new JTextField();
+		MagazineNameTextBox.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				handleMagazineNameChange();
+			}
+		});
+		MagazineNameTextBox.setBounds(167, 193, 163, 20);
+		add(MagazineNameTextBox);
+		MagazineNameTextBox.setColumns(10);
+
+	}
+*/
+
+
+
+
 
 	protected void handleFirstNameChange() {
 		controller.setFirstName(firstNameTextBox.getText());
@@ -214,11 +215,6 @@ public class WebsiteView extends JPanel implements Observer {
 	protected void handleLastNameChange() {
 		controller.setLastName(lastNameTextBox.getText());
 	}
-
-	protected void handleURLChange() {
-		controller.setURL(URLtextFieldBox.getText());
-	}
-
 	protected void handleTitleChange(){
 		controller.setTitle(TitleTextFieldBox.getText());
 	}
@@ -231,37 +227,41 @@ public class WebsiteView extends JPanel implements Observer {
 		controller.setPublisher(PublisherTextField.getText());
 	}
 
-	protected void handleAccessChange(){
-		controller.setAccess(AccessDateField.getText());
+	protected void handlePageNumberChange(){
+		controller.setPagenumber(PageNumberTextBox.getText());
 	}
 
-	protected void handleWebsiteChange(){
-		controller.setWebsite(WebsiteName.getText());
+	protected void handleVolumeChange(){
+		controller.setVolume(VolumeTextBox.getText());
 	}
+
+	/*protected void handleMagazineNameChange(){
+	controller.setJournalName(JournalNameTextBox.getText());
+}*/
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		System.out.println("updating website view!");
+		System.out.println("updating journal view!");
 		firstNameTextBox.setText(model.getfirst());
 		lastNameTextBox.setText(model.getlast());
-		URLtextFieldBox.setText(model.geturl());
 		TitleTextFieldBox.setText(model.gettitle());
 		DateTextFieldBox.setText(model.getdate());
 		PublisherTextField.setText(model.getpublisher());
-		AccessDateField.setText(model.getaccess());
-		WebsiteName.setText(model.getwebsite());
+		PageNumberTextBox.setText(model.getpagenumber());
+		VolumeTextBox.setText(model.getvolume());
+		//MagazineNameTextBox.setText(model.getmagazine());
 	}
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				Website model = new Website();
+				Journal model = new Journal();
 
-				WebsiteView view = new WebsiteView();
+				JournalView view = new JournalView();
 				view.setModel(model);
 
-				WebsiteController controller = new WebsiteController();
+				JournalController controller = new JournalController();
 				controller.setModel(model);
 
 				view.setController(controller);
@@ -275,4 +275,5 @@ public class WebsiteView extends JPanel implements Observer {
 			}
 		});
 	}
+
 }

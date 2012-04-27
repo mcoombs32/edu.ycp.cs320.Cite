@@ -4,7 +4,9 @@ import java.util.Observable;
 
 public abstract class Source extends Observable {
 	private SourceType sourceType;
-	private String /*source,*/first,last,title,date,publisher;
+
+	private String first,last,title,date,publisher,medium;
+
 	
 	public Source(SourceType sourceType) {
 		this.sourceType = sourceType;
@@ -21,7 +23,8 @@ public abstract class Source extends Observable {
 	 * @param publisher
 	 * 
 	 */
-	public Source(/*String source,*/ SourceType sourceType, String first,String last, String title,String date, String publisher){
+	public Source(/*String source,*/ SourceType sourceType, String first,String last, String title,String date, String publisher, String medium){
+
 		/*this.source=source;*/
 		this.sourceType = sourceType;
 		this.first=first;
@@ -29,6 +32,7 @@ public abstract class Source extends Observable {
 		this.title=title;
 		this.date=date;
 		this.publisher=publisher;
+		this.medium=medium;
 	}
 	
 	/*
@@ -56,7 +60,11 @@ public abstract class Source extends Observable {
 	public String getpublisher(){
 		return publisher;
 	}
-	
+
+	public String getmedium(){
+		return medium;
+	}
+
 	/*
 	public void setsource(String source){
 		this.source=source;
@@ -93,6 +101,5 @@ public abstract class Source extends Observable {
 		notifyObservers();
 	}
 
-	
-	
+
 }
