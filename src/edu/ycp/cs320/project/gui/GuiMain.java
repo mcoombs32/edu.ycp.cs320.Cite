@@ -38,7 +38,9 @@ public class GuiMain extends JFrame implements Observer {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	private JComboBox<SourceType> sourceTypeComboBox;
+
 	private JPanel sourceViewContainerPanel;
 	
 	private PersistanceController perController;
@@ -63,14 +65,17 @@ public class GuiMain extends JFrame implements Observer {
 		sourceViewContainerPanel.setBounds(38, 82, 447, 343);
 		getContentPane().add(sourceViewContainerPanel);
 		sourceViewContainerPanel.setLayout(new CardLayout(0, 0));
-		
+
 		sourceTypeComboBox = new JComboBox<SourceType>();
+
 		sourceTypeComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sourceTypeChanged();
 			}
 		});
+
 		sourceTypeComboBox.setModel(new DefaultComboBoxModel<SourceType>(SourceType.values()));
+
 		sourceTypeComboBox.setBounds(38, 51, 224, 20);
 		getContentPane().add(sourceTypeComboBox);
 		
@@ -91,13 +96,17 @@ public class GuiMain extends JFrame implements Observer {
 		formatLabel.setBounds(38, 443, 96, 14);
 		getContentPane().add(formatLabel);
 		
+
 		JComboBox<FormatType> formatComboBox = new JComboBox<FormatType>();
+
 		formatComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				formatTypeChanged();
 			}
 		});
+
 		formatComboBox.setModel(new DefaultComboBoxModel<FormatType>(FormatType.values()));
+
 		formatComboBox.setBounds(38, 468, 224, 20);
 		getContentPane().add(formatComboBox);
 		

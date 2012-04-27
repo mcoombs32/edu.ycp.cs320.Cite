@@ -29,9 +29,9 @@ public class Citation {
 		// TODO Auto-generated method stub
 		return format;
 	}
-	public String toString() {
-        return source.toString();
-}
+//	public String toString() {
+  //      return source.toString();
+//}
 	/*public String getsource(){
 		return source2;
 	}*/
@@ -148,43 +148,7 @@ public class Citation {
 
 
 
-	private String getmonth(String substring) {
-		if(substring=="01"){
-		return "Jan";
-		}
-	if(substring=="02"){
-		return "Feb";
-		}
-if(substring=="03"){
-	return "Mar";
-	}
-	if(substring=="04"){
-		return "Apr";
-		}
-		if(substring=="05"){
-			return "May";
-			}
-			if(substring=="06"){
-				return "Jun";
-				}
-				if(substring=="07"){
-					return "Jul";
-					}
-					if(substring=="08"){
-						return "Aug";
-						}
-						if(substring=="09"){
-							return "Sep";
-							}	if(substring=="10"){
-								return "Oct";
-						}
-						if(substring=="11"){
-							return "Nov";
-							}	if(substring=="12"){
-								return "Dec";
-						}
-							return null;
-	}
+
 	}
 
 

@@ -19,9 +19,9 @@ private String pubDate;
 		return city;
 		}
 	
-	public String toString() {
-        return city.toString();
-}
+	//public String toString() {
+      //  return city.toString();
+//}
 	public void setcity(String city){
 		this.city=city;
 		}

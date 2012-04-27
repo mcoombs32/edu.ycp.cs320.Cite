@@ -93,7 +93,9 @@ public class Main {
 			System.out.print("What is the volume number?");
 			String volumenumber= keyboard.next();
 			
-			source=new Periodical(sourceType,first, last,  title,date,publisher,magazine, pagenumber, volumenumber);
+
+			source=new Periodical(sourceType,first, last,  title,date,publisher,magazine, pagenumber, volumenumber,medium);
+
 			FormatType format = enterformat();
 			citation=new Citation(source, format);
 			
