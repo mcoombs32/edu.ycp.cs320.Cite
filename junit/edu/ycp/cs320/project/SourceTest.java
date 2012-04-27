@@ -35,7 +35,7 @@ public class SourceTest {
 		journalcite = new Citation(journal,FormatType.MLA);
 		bookcite = new Citation(book,FormatType.MLA);
 		websitecite = new Citation(website,FormatType.MLA);
-		citeMap=new Map<String, Citation>();
+		//citeMap=new Map<String, Citation>();
 		magazineCite = new Citation(magazine,FormatType.MLA);
 		
 	}
