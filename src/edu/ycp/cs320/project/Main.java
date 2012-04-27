@@ -3,7 +3,7 @@ package edu.ycp.cs320.project;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-
+import edu.ycp.cs320.project.FormatType;
 
 
 public class Main {
@@ -91,6 +91,7 @@ public class Main {
 			System.out.print("What is the page number?");
 			String pagenumber= keyboard.nextLine().toLowerCase();
 			System.out.print("What is the volume number?");
+
 			String volumenumber= keyboard.next();
 			
 			source=new Periodical(sourceType,first, last,  title,date,publisher,magazine, pagenumber, volumenumber,medium);
