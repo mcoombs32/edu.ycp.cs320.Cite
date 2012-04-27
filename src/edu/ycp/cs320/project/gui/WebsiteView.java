@@ -23,6 +23,11 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
 public class WebsiteView extends JPanel implements Observer {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private JTextField firstNameTextBox;
 	
 	private Website model;
@@ -112,8 +117,7 @@ public class WebsiteView extends JPanel implements Observer {
 		add(URLtextFieldBox);
 		URLtextFieldBox.setColumns(10);
 		
-		
-		///////////////// TITLE
+
 		lblTitle = new JLabel("Title:");
 		lblTitle.setBounds(10, 96, 130, 14);
 		add(lblTitle);
