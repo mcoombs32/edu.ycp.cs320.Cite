@@ -1,14 +1,14 @@
 package edu.ycp.cs320.project.controller;
 
-import edu.ycp.cs320.project.Periodical;
+import edu.ycp.cs320.project.Journal;
 
-public class PeriodicalController {
-	private Periodical model;
+public class JournalController {
 
-	public void setModel(Periodical model){
+	private Journal model;
+	
+	public void setModel(Journal model){
 		this.model = model;
 	}
-
 	public void setFirstName(String text) {
 		model.setfirst(text);
 	}
@@ -20,7 +20,7 @@ public class PeriodicalController {
 	public void setTitle(String text){
 		model.settitle(text);
 	}
-
+	
 	public void setDate(String text){
 		model.setdate(text);
 	}
@@ -28,21 +28,17 @@ public class PeriodicalController {
 	public void setPublisher(String text){
 		model.setpublisher(text);
 	}
-
-	public void setPageNumber(String text){
-		model.setpagenumber(text);	
-	}
 	
 	public void setVolume(String text){
 		model.setvolume(text);
 	}
 	
-	public void setMagazineName(String text){
-		model.setmagazine(text);
+	public void setPagenumber(String text){
+		model.setpagenumber(text);
 	}
 	public void setmedium(String text) {
 		model.setmedium(text);
 		
 	}
-
+	
 }

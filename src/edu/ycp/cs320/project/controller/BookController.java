@@ -27,13 +27,17 @@ public class BookController {
 		
 	}
 
-	public void setPubDate(String text) {
-		model.setPubDate(text);
+	public void setdate(String text) {
+		model.setdate(text);
 		
 	}
 
 	public void setcity(String text) {
 		model.setcity(text);
+		
+	}
+	public void setmedium(String text) {
+		model.setmedium(text);
 		
 	}
 

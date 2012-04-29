@@ -23,16 +23,13 @@ private String pubDate;
       //  return city.toString();
 //}
 	public void setcity(String city){
+		System.out.println("Setting first name to " + city);
 		this.city=city;
+		setChanged();
+		notifyObservers();
 		}
 
-	public void setPubDate(String text) {
-		this.pubDate = text;
-	}
-
-	public String getPubDate() {
-		return pubDate;
-	}
+	
 
 	
 	

@@ -3,7 +3,7 @@ package edu.ycp.cs320.project;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-
+import edu.ycp.cs320.project.FormatType;
 
 
 public class Main {
@@ -82,20 +82,24 @@ public class Main {
 			citation=new Citation(source,format);
 			
 		}	
-		
+
 
 		if(sourceType == SourceType.PERIODICAL){
 
 			System.out.print("What is the magazine?");
+
+		if(sourceType == SourceType.PERIODICAL){
+			System.out.print("What is the magazine?");
+
 			String magazine = keyboard.nextLine().toLowerCase();
 			System.out.print("What is the page number?");
 			String pagenumber= keyboard.nextLine().toLowerCase();
 			System.out.print("What is the volume number?");
-			String volumenumber= keyboard.next();
-			
-			source=new Periodical(sourceType,first, last,  title,date,publisher,magazine, pagenumber, volumenumber,medium);
-			FormatType format = enterformat();
-			citation=new Citation(source, format);
+			String volumenumber= keyboard.nextLine().toLowerCase();
+			source=new Periodical(sourceType,first, last,  title,date,publisher,medium,magazine, pagenumber, volumenumber);
+			FormatType format=enterformat();
+			citation=new Citation(source,format);
+
 			
 		}
 		if(sourceType == SourceType.JOURNAL){
@@ -113,6 +117,7 @@ public class Main {
 		String cit=citation.formatcit();
 		System.out.print(cit);
 		writetextfile(cit);
+		}
 	}
 
 	
