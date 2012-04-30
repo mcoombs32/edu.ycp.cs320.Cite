@@ -47,7 +47,10 @@ public class Main {
 		Citation citation = null;
 		Source source=null;
 		Scanner keyboard = new Scanner(System.in);
+
+		
 		System.out.print("What is the author first name?");
+
 		String first = keyboard.nextLine().toLowerCase();
 		System.out.print("What is the author last name?");
 		String last = keyboard.nextLine().toLowerCase();
@@ -62,7 +65,9 @@ public class Main {
 		if(sourceType == SourceType.BOOK){
 			System.out.print("What is the city?");
 			String city = keyboard.next().toLowerCase();
+
 			 source=new Book(first, last, title, date, publisher, city,medium);
+
 			 FormatType format=enterformat();
 			citation=new Citation(source,format);
 			
@@ -71,32 +76,43 @@ public class Main {
 			
 		}
 		if(sourceType == SourceType.WEBSITE){
+
 			System.out.print("What is the url?");
+
 			String url = keyboard.nextLine().toLowerCase();
 			System.out.print("What is the access?");
 			String access = keyboard.nextLine().toLowerCase();
 			System.out.print("What is the website?");
 			String website= keyboard.nextLine().toLowerCase();
+
+
 			source=new Website(sourceType,first,last,title,date, publisher,medium,url,access,website);
+
 			FormatType format=enterformat();
 			citation=new Citation(source,format);
 			
 		}	
-		
+
+
+
+
 
 		if(sourceType == SourceType.PERIODICAL){
-
 			System.out.print("What is the magazine?");
+
 			String magazine = keyboard.nextLine().toLowerCase();
 			System.out.print("What is the page number?");
 			String pagenumber= keyboard.nextLine().toLowerCase();
 			System.out.print("What is the volume number?");
+			String volumenumber= keyboard.nextLine().toLowerCase();
+			source=new Periodical(sourceType,first, last,  title,date,publisher,medium,magazine, pagenumber, volumenumber);
+			FormatType format=enterformat();
+			citation=new Citation(source,format);
 
-			String volumenumber= keyboard.next();
 			
-			source=new Periodical(sourceType,first, last,  title,date,publisher,magazine, pagenumber, volumenumber,medium);
-			FormatType format = enterformat();
-			citation=new Citation(source, format);
+			
+			
+			
 			
 		}
 		if(sourceType == SourceType.JOURNAL){
@@ -104,9 +120,13 @@ public class Main {
 			String journal = keyboard.next().toLowerCase();
 			System.out.print("What is the volume?");
 			String volume = keyboard.next().toLowerCase();
+
 			System.out.print("What is the pagenumber?");
 			String pagenumber= keyboard.nextLine().toLowerCase();
 			source= new Journal(sourceType,first,last,title,  date, publisher, journal, volume,  pagenumber,medium);
+
+			
+
 			FormatType format=enterformat();
 			citation=new Citation(source,format);
 			
@@ -114,7 +134,8 @@ public class Main {
 		String cit=citation.formatcit();
 		System.out.print(cit);
 		writetextfile(cit);
-	}
+		}
+	
 
 	
 

@@ -22,6 +22,8 @@ public class SourceTest {
 	private Book a;
 	private Website b;
 	private Periodical c;
+	private Journal d;
+
 
 	@Before
 	public void setUp() {
@@ -33,19 +35,23 @@ public class SourceTest {
 		a=new Book();
 		b=new Website();
 		c=new Periodical();
+		d=new Journal();
+
+
 
 		book=new Book("Chris","Campagnola", "York College Student Review","2013", "York College of Pennsylvania","York,Pa","Print");
 		journal=new Journal(SourceType.JOURNAL, "Chris","Campagnola", "York Science On The Rise","1999", "York College of Pennsylvania","York Science Reporter","5","55-67","Print");
 		website=new Website(SourceType.WEBSITE, "Chris","Campagnola", "York College Problems","1111", "York College of Pennsylvania","www.ycp.edu","04/20/2012","York College of Pennsylvania","Web");
 		magazine=new Periodical(SourceType.PERIODICAL, "Chris","Campagnola", "York Is Rolling Away","1994", "York College of Pennsylvania","York Times","55-66","5","Print");
+		magazineCite=new Citation(magazine,FormatType.MLA);
 		journalcite = new Citation(journal,FormatType.MLA);
 		bookcite = new Citation(book,FormatType.MLA);
 		websitecite = new Citation(website,FormatType.MLA);
-		magazineCite = new Citation(magazine,FormatType.MLA);
 
 	}
 
 	@Test
+
 	public void testbook() throws Exception {
 		assertEquals("Chris", book.getfirst());
 		assertEquals(SourceType.BOOK, book.getSourceType());
@@ -54,11 +60,14 @@ public class SourceTest {
 		assertEquals("2013", book.getdate());
 		assertEquals("York College of Pennsylvania",book.getpublisher());
 		assertEquals("York,Pa", book.getcity());
+
 		assertEquals("Print",book.getmedium());
+
 	}
 
 	@Test
 	public void testwebsite() throws Exception {
+
 		assertEquals("Chris", website.getfirst());
 		assertEquals(SourceType.WEBSITE, website.getSourceType());
 		assertEquals("Campagnola", website.getlast());
@@ -71,10 +80,14 @@ public class SourceTest {
 		assertEquals("Web",website.getmedium());
 	}
 
+
+
 	@Test
 	public void testmagazine() throws Exception {
 		assertEquals("Chris", magazine.getfirst());
+
 		assertEquals(SourceType.PERIODICAL, magazine.getSourceType());
+
 		assertEquals("Campagnola", magazine.getlast());
 		assertEquals("York Is Rolling Away", magazine.gettitle());
 		assertEquals("1994", magazine.getdate());
@@ -99,7 +112,31 @@ public class SourceTest {
 		assertEquals("Print",journal.getmedium());
 	}
 
+	@Test
+	public void testBookMLA() throws Exception {
+		assertEquals(book,bookcite.getSource());
+		assertEquals(FormatType.MLA,bookcite.getformat());
+		assertEquals("Campagnola, Chris. York College Student Review. York,Pa: York College of Pennsylvania, 2013. Print.",bookcite.formatcit());
+	}
+	@Test
+	public void testJournalMLA() throws Exception {
+		assertEquals(journal,journalcite.getjournal());
+		assertEquals(FormatType.MLA, journalcite.getformat());
+		assertEquals("Campagnola, Chris. \"York Science On The Rise\". York Science Reporter 5 (1999): 55-67. Print.",journalcite.formatcit());
+	}
+	@Test
+	public void testWebsiteMLA() throws Exception {
+		assertEquals(website,websitecite.getwebsite());
+		assertEquals(FormatType.MLA, websitecite.getformat());
+		assertEquals("Campagnola, Chris. \"York College Problems\". York College of Pennsylvania. York College of Pennsylvania, 1111. Web. 20 Apr. 2012. <www.ycp.edu>.",websitecite.formatcit());
+	}
+	@Test
 
+	public void testMagMLA() throws Exception {
+		assertEquals(magazine,magazineCite.getmagazine());
+		assertEquals(FormatType.MLA, magazineCite.getformat());
+		assertEquals("Campagnola, Chris. \"York Is Rolling Away\". York Times 1994: 55-66. Print.",magazineCite.formatcit());
+	}
 
 	@Test
 	public void testBookAPA() throws Exception {
@@ -213,6 +250,7 @@ public class SourceTest {
 		assertEquals("34-45",magazine.getpagenumber());
 		assertEquals("101",magazine.getvolumenumber());
 		assertEquals("York Daily",magazine.getmagazine());
+
 	}
 	@Test
 	public void testgetmonth() throws Exception {
@@ -238,6 +276,9 @@ public class SourceTest {
 
 	}
 }
+
+
+
 
 
 

@@ -107,7 +107,7 @@ public class PeriodicalView extends JPanel implements Observer {
 
 
 		//******** DATE
-		lblDate = new JLabel("Date Created:");
+		lblDate = new JLabel("Date Created(YYYY):");
 		lblDate.setBounds(10, 96, 130, 14);
 		add(lblDate);
 

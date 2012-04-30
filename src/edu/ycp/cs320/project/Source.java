@@ -5,13 +5,15 @@ import java.util.Observable;
 public abstract class Source extends Observable {
 	private SourceType sourceType;
 
+
 	private String first,last,title,date,publisher,medium;
 
-	
+
+
 	public Source(SourceType sourceType) {
 		this.sourceType = sourceType;
 	}
-	
+
 	/**
 	 * 
 	 * 
@@ -22,7 +24,9 @@ public abstract class Source extends Observable {
 	 * @param date
 	 * @param publisher
 	 * 
+
 	 */
+
 	public Source(/*String source,*/ SourceType sourceType, String first,String last, String title,String date, String publisher, String medium){
 
 		/*this.source=source;*/
@@ -31,20 +35,22 @@ public abstract class Source extends Observable {
 		this.last=last;
 		this.title=title;
 		this.date=date;
+
 		this.publisher=publisher;
 		this.medium=medium;
+
 	}
-	
+
 	/*
 	public String getsource(){
 		return source;
 	}
-	*/
-	
+	 */
+
 	public SourceType getSourceType() {
 		return sourceType;
 	}
-	
+
 	public String getfirst(){
 		return first;
 	}
@@ -69,7 +75,7 @@ public abstract class Source extends Observable {
 	public void setsource(String source){
 		this.source=source;
 	}
-	*/
+	 */
 	public void setfirst(String first){
 		System.out.println("Setting first name to " + first);
 		this.first=first;
@@ -100,4 +106,26 @@ public abstract class Source extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+
+	public void setmedium(String medium){
+		System.out.println("Setting medium to " + medium);
+		this.medium=medium;
+		setChanged();
+		notifyObservers();
+
+
+	}
+
+
+
+
 }
+/*public String getmonth(String substring) {
+	if(substring.equals("04")){
+		return "Apr";
+	}
+	return substring;
+ *///}
+
+
+

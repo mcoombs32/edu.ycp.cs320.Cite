@@ -9,27 +9,26 @@ private String pubDate;
 		super(SourceType.BOOK);
 	}
 
+
 	public Book(String first, String last, String title, String date,
 			String publisher,String city,String medium) {
 		super(SourceType.BOOK,first, last, title,date,publisher,medium);
 		this.city=city;
 		
+
 	}
 	public String getcity(){
 		return city;
 		}
 
 	public void setcity(String city){
+		System.out.println("Setting first name to " + city);
 		this.city=city;
+		setChanged();
+		notifyObservers();
 		}
 
-	public void setPubDate(String text) {
-		this.pubDate = text;
-	}
-
-	public String getPubDate() {
-		return pubDate;
-	}
+	
 
 	
 	

@@ -40,6 +40,10 @@ public class WebsiteController {
 		public void setWebsite(String text){
 			model.setwebsite(text);
 		}
+		public void setmedium(String text) {
+			model.setmedium(text);
+			
+		}
 	}
 
 

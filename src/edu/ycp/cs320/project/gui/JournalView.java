@@ -1,6 +1,7 @@
 package edu.ycp.cs320.project.gui;
 
 import java.awt.Dimension;
+import java.awt.Window;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.util.Observable;
@@ -33,7 +34,7 @@ public class JournalView extends JPanel implements Observer {
 	private JTextField PageNumberTextBox;
 	private JTextField VolumeTextBox;
 	private JTextField JournalNameTextBox;
-	private JTextField textField;
+
 	private JTextField MediumTextBox;
 
 
@@ -52,8 +53,9 @@ public class JournalView extends JPanel implements Observer {
 
 	/**
 	 * Create the panel.
+	 * @param lblMagazineName 
 	 */
-	public JournalView() {
+	public JournalView(Window lblMagazineName) {
 
 		setPreferredSize(new Dimension(600, 450));
 		setLayout(null);
@@ -113,7 +115,7 @@ public class JournalView extends JPanel implements Observer {
 
 
 		//******** DATE
-		lblDate = new JLabel("Date Created:");
+		lblDate = new JLabel("Date Created(YYYY):");
 		lblDate.setBounds(10, 96, 130, 14);
 		add(lblDate);
 
@@ -182,14 +184,35 @@ public class JournalView extends JPanel implements Observer {
 		VolumeTextBox.setBounds(167, 168, 163, 20);
 		add(VolumeTextBox);
 		VolumeTextBox.setColumns(10);
+
 		
-		
-/*		JLabel lblMedium = new JLabel("Medium:");
-		lblMedium.setBounds(10, 201, 46, 14);
+		// MEDIUM
+		JLabel lblMedium = new JLabel("Medium:");
+		lblMedium.setBounds(10, 200, 46, 14);
 		add(lblMedium);
 		
 		MediumTextBox = new JTextField();
 		MediumTextBox.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				handleMediumChange();
+			}
+		});
+		MediumTextBox.setBounds(166, 199, 164, 20);
+		add(MediumTextBox);
+		MediumTextBox.setColumns(10);
+
+
+	
+	
+		/*//************** MAGAZINE NAME
+		lblMagazineName = new JLabel("Magazine Name:");
+		lblMagazineName.setBounds(10, 196, 130, 14);
+		add(lblMagazineName);
+
+
+		MagazineNameTextBox = new JTextField();
+		MagazineNameTextBox.addFocusListener(new FocusAdapter(){
 			@Override
 			public void focusLost(FocusEvent e){
 				handleMediumChange();
@@ -208,8 +231,12 @@ public class JournalView extends JPanel implements Observer {
 	
 
 
+	
 
 
+	public JournalView() {
+		// TODO Auto-generated constructor stub
+	}
 
 	protected void handleFirstNameChange() {
 		controller.setFirstName(firstNameTextBox.getText());
@@ -237,11 +264,14 @@ public class JournalView extends JPanel implements Observer {
 	protected void handleVolumeChange(){
 		controller.setVolume(VolumeTextBox.getText());
 	}
-/*	protected void handleMediumChange(){
-		controller.setMedium(MediumTextBox.getText());
-	}*/
 
-
+	protected void handleMediumChange() {
+		controller.setmedium(MediumTextBox.getText());
+		
+	}
+	//protected void handleMagazineNameChange(){
+	//controller.setJournalName(JournalNameTextBox.getText());
+//}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
