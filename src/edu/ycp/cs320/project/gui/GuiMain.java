@@ -14,10 +14,12 @@ import javax.swing.DefaultComboBoxModel;
 import edu.ycp.cs320.project.Book;
 import edu.ycp.cs320.project.Citation;
 import edu.ycp.cs320.project.FormatType;
+import edu.ycp.cs320.project.Journal;
 import edu.ycp.cs320.project.Periodical;
 import edu.ycp.cs320.project.SourceType;
 import edu.ycp.cs320.project.Website;
 import edu.ycp.cs320.project.controller.BookController;
+import edu.ycp.cs320.project.controller.JournalController;
 import edu.ycp.cs320.project.controller.PeriodicalController;
 import edu.ycp.cs320.project.controller.PersistanceController;
 import edu.ycp.cs320.project.controller.WebsiteController;
@@ -50,6 +52,8 @@ public class GuiMain extends JFrame implements Observer {
 	private BookView bookView;
 	private WebsiteView websiteView;
 	private JTextField searchField;
+	private Journal journal;
+	private JournalView journalView;
 
 	/**
 	 * Create the frame.
@@ -137,12 +141,21 @@ public class GuiMain extends JFrame implements Observer {
 	}
 
 	protected void formatTypeChanged() {
-		// TODO Auto-generated method stub
+		//changes format
+		
 
 	}
 
 	public void createSourceViews() {
-
+		this.journal = new Journal();
+		this.journalView = new JournalView();
+		journalView.setModel(journal);
+		JournalController journalController = new JournalController();
+		journalView.setController(journalController);
+		journalController.setModel(journal);
+		sourceViewContainerPanel.add(journalView, SourceType.JOURNAL.toString());
+		
+		
 		this.book = new Book();
 		this.bookView = new BookView();
 		bookView.setModel(book);
@@ -166,6 +179,7 @@ public class GuiMain extends JFrame implements Observer {
 		periodicalView.setController(periodicalController);
 		periodicalController.setModel(periodical);
 		sourceViewContainerPanel.add(periodicalView, SourceType.PERIODICAL.toString());
+		
 
 		CardLayout cardLayout = (CardLayout) sourceViewContainerPanel.getLayout();
 		cardLayout.show(sourceViewContainerPanel, SourceType.BOOK.toString());

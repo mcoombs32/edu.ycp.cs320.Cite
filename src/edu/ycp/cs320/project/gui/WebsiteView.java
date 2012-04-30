@@ -183,7 +183,7 @@ public class WebsiteView extends JPanel implements Observer {
 
 		// ********* DATE ACCESSED
 		JLabel lblAccess = new JLabel("Accessed(MM/DD/YYYY):");
-		lblAccess.setBounds(10, 172, 130, 14);
+		lblAccess.setBounds(10, 172, 147, 14);
 		add(lblAccess);
 
 

@@ -147,7 +147,7 @@ public class BookView extends JPanel implements Observer {
 		cityTextBox.setColumns(10);
 		
 		JLabel lblMedium = new JLabel("Medium:");
-		lblMedium.setBounds(10, 171, 46, 14);
+		lblMedium.setBounds(10, 171, 79, 14);
 		add(lblMedium);
 		
 		MediumTextBox = new JTextField();
