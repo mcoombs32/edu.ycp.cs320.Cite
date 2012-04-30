@@ -119,6 +119,7 @@ public class WebsiteView extends JPanel implements Observer {
 		add(URLtextFieldBox);
 		URLtextFieldBox.setColumns(10);
 
+
 		lblTitle = new JLabel("Title:");
 		lblTitle.setBounds(10, 96, 130, 14);
 		add(lblTitle);

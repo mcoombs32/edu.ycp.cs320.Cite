@@ -31,15 +31,16 @@ public class SourceTest {
 		c=new Periodical();
 		d=new Journal();
 
+
+
 		book=new Book("Chris","Campagnola", "York College Student Review","2013", "York College of Pennsylvania","York,Pa","Print");
 		journal=new Journal(SourceType.JOURNAL, "Chris","Campagnola", "York Science On The Rise","1999", "York College of Pennsylvania","York Science Reporter","5","55-67","Print");
 		website=new Website(SourceType.WEBSITE, "Chris","Campagnola", "York College Problems","1111", "York College of Pennsylvania","www.ycp.edu","04/20/2012","York College of Pennsylvania","Web");
 		magazine=new Periodical(SourceType.PERIODICAL, "Chris","Campagnola", "York Is Rolling Away","1994", "York College of Pennsylvania","York Times","55-66","5","Print");
+		magazineCite=new Citation(magazine,FormatType.MLA);
 		journalcite = new Citation(journal,FormatType.MLA);
 		bookcite = new Citation(book,FormatType.MLA);
 		websitecite = new Citation(website,FormatType.MLA);
-		;
-		magazineCite = new Citation(magazine,FormatType.MLA);
 
 	}
 
@@ -52,11 +53,14 @@ public class SourceTest {
 		assertEquals("2013", book.getdate());
 		assertEquals("York College of Pennsylvania",book.getpublisher());
 		assertEquals("York,Pa", book.getcity());
+
 		assertEquals("Print",book.getmedium());
+
 	}
 
 	@Test
 	public void testwebsite() throws Exception {
+
 		assertEquals("Chris", website.getfirst());
 		assertEquals(SourceType.WEBSITE, website.getSourceType());
 		assertEquals("Campagnola", website.getlast());
@@ -69,11 +73,14 @@ public class SourceTest {
 		assertEquals("Web",website.getmedium());
 	}
 
+
+	
 	@Test
 	public void testmagazine() throws Exception {
 		assertEquals("Chris", magazine.getfirst());
+
 		assertEquals(SourceType.PERIODICAL, magazine.getSourceType());
-		assertEquals(SourceType.PERIODICAL, magazine.getSourceType());
+
 		assertEquals("Campagnola", magazine.getlast());
 		assertEquals("York Is Rolling Away", magazine.gettitle());
 		assertEquals("1994", magazine.getdate());
@@ -237,6 +244,7 @@ public void testsetbook() throws Exception {
 	assertEquals("34-45",magazine.getpagenumber());
 	assertEquals("101",magazine.getvolumenumber());
 	assertEquals("York Daily",magazine.getmagazine());
+
 }
 @Test
 public void testgetmonth() throws Exception {

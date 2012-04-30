@@ -11,16 +11,16 @@ import javax.swing.SwingUtilities;
 
 
 import edu.ycp.cs320.project.Periodical;
-import edu.ycp.cs320.project.controller.MagazineController;
+import edu.ycp.cs320.project.controller.PeriodicalController;
 import javax.swing.JLabel;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-public class MagazineView extends JPanel implements Observer {
+public class PeriodicalView extends JPanel implements Observer {
 
 
 	private Periodical model;
-	private MagazineController controller;
+	private PeriodicalController controller;
 	private JTextField firstNameTextBox;
 	private JTextField lastNameTextBox;
 	private JLabel lblTitle;
@@ -34,6 +34,8 @@ public class MagazineView extends JPanel implements Observer {
 	private JTextField PageNumberTextBox;
 	private JTextField VolumeTextBox;
 	private JTextField MagazineNameTextBox;
+	private JLabel lblMedium;
+	private JTextField MediumTextBox;
 
 	public void setModel(Periodical model) {
 		this.model = model;
@@ -41,14 +43,14 @@ public class MagazineView extends JPanel implements Observer {
 		model.addObserver(this);
 	}
 
-	public void setController(MagazineController controller) {
+	public void setController(PeriodicalController controller) {
 		this.controller = controller;
 	}
 
 	/**
 	 * Create the panel.
 	 */
-	public MagazineView() {
+	public PeriodicalView() {
 
 		setPreferredSize(new Dimension(600, 450));
 		setLayout(null);
@@ -195,6 +197,21 @@ public class MagazineView extends JPanel implements Observer {
 		MagazineNameTextBox.setBounds(167, 193, 163, 20);
 		add(MagazineNameTextBox);
 		MagazineNameTextBox.setColumns(10);
+		
+		lblMedium = new JLabel("Medium:");
+		lblMedium.setBounds(10, 221, 46, 14);
+		add(lblMedium);
+		
+		MediumTextBox = new JTextField();
+		MediumTextBox.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				handleMediumChange();
+			}
+		});
+		MediumTextBox.setBounds(167, 218, 163, 20);
+		add(MediumTextBox);
+		MediumTextBox.setColumns(10);
 
 	}
 
@@ -228,7 +245,10 @@ public class MagazineView extends JPanel implements Observer {
 	protected void handleMagazineNameChange(){
 		controller.setMagazineName(MagazineNameTextBox.getText());
 	}
-
+	protected void handleMediumChange() {
+		controller.setmedium(MediumTextBox.getText());
+		
+	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
@@ -250,10 +270,10 @@ public class MagazineView extends JPanel implements Observer {
 			public void run() {
 				Periodical model = new Periodical();
 
-				MagazineView view = new MagazineView();
+				PeriodicalView view = new PeriodicalView();
 				view.setModel(model);
 
-				MagazineController controller = new MagazineController();
+				PeriodicalController controller = new PeriodicalController();
 				controller.setModel(model);
 
 				view.setController(controller);
