@@ -40,5 +40,9 @@ public class JournalController {
 		model.setmedium(text);
 		
 	}
+	public void setJournalName(String text) {
+		// TODO Auto-generated method stub
+		model.setjournal(text);
+	}
 	
 }

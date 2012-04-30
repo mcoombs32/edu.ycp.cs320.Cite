@@ -19,6 +19,7 @@ import edu.ycp.cs320.project.Periodical;
 import edu.ycp.cs320.project.SourceType;
 import edu.ycp.cs320.project.Website;
 import edu.ycp.cs320.project.controller.BookController;
+import edu.ycp.cs320.project.controller.CitationController;
 import edu.ycp.cs320.project.controller.JournalController;
 import edu.ycp.cs320.project.controller.PeriodicalController;
 import edu.ycp.cs320.project.controller.PersistanceController;
@@ -42,8 +43,9 @@ public class GuiMain extends JFrame implements Observer {
 	private static final long serialVersionUID = 1L;
 	private JComboBox sourceTypeComboBox;
 	private JPanel sourceViewContainerPanel;
-
+	private Book abook=new Book("Chris","Campagnola", "York College Student Review","2013", "York College of Pennsylvania","York,Pa","Print");
 	private PersistanceController perController;
+	private CitationController citcontroller;
 	private Book book = new Book();
 	private Citation cite = new Citation(book, FormatType.MLA);
 	private Website website;
@@ -54,6 +56,8 @@ public class GuiMain extends JFrame implements Observer {
 	private WebsiteView websiteView;
 	private JTextField searchField;
 private JournalView journalView;
+private JTextArea outputTextArea;
+private JComboBox formatComboBox;
 	/**
 	 * Create the frame.
 	 */
@@ -61,7 +65,6 @@ private JournalView journalView;
 		setPreferredSize(new Dimension(850, 700));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-
 		sourceViewContainerPanel = new JPanel();
 		sourceViewContainerPanel.setBounds(38, 82, 447, 343);
 		getContentPane().add(sourceViewContainerPanel);
@@ -77,7 +80,7 @@ private JournalView journalView;
 		sourceTypeComboBox.setBounds(38, 51, 224, 20);
 		getContentPane().add(sourceTypeComboBox);
 
-		JTextArea outputTextArea = new JTextArea();
+		outputTextArea = new JTextArea();
 		outputTextArea.setBounds(38, 499, 768, 180);
 		getContentPane().add(outputTextArea);
 
@@ -94,10 +97,13 @@ private JournalView journalView;
 		formatLabel.setBounds(38, 443, 96, 14);
 		getContentPane().add(formatLabel);
 
-		JComboBox formatComboBox = new JComboBox();
+		formatComboBox = new JComboBox();
 		formatComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Citation b=new Citation (book,book.getSourceType(book));
+			
 				formatTypeChanged();
+			
 			}
 		});
 		formatComboBox.setModel(new DefaultComboBoxModel(FormatType.values()));
@@ -140,8 +146,11 @@ private JournalView journalView;
 	}
 
 	protected void formatTypeChanged() {
-		// TODO Auto-generated method stub
-
+		FormatType formatType = (FormatType) formatComboBox.getSelectedItem();
+		citcontroller.format();
+		
+		
+		
 	}
 
 	public void createSourceViews() {
