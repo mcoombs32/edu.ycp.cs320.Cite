@@ -40,4 +40,7 @@ String journal, volume, pagenumber,source;
 		setChanged();
 		notifyObservers();
 		}
+/*	public void setmedium(String medium){
+		this.medium = medium;
+	}*/
 }

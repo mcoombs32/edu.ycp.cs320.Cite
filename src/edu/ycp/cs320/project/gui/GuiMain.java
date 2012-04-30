@@ -19,7 +19,7 @@ import edu.ycp.cs320.project.SourceType;
 import edu.ycp.cs320.project.Website;
 import edu.ycp.cs320.project.controller.BookController;
 import edu.ycp.cs320.project.controller.JournalController;
-import edu.ycp.cs320.project.controller.MagazineController;
+import edu.ycp.cs320.project.controller.PeriodicalController;
 import edu.ycp.cs320.project.controller.WebsiteController;
 
 import java.awt.event.ActionListener;
@@ -37,7 +37,7 @@ public class GuiMain extends JFrame {
 	//
 	private Periodical periodical;
 	private Journal journal;
-	private MagazineView magazineView;
+	private PeriodicalView periodicalView;
 	private JournalView journalView;
 
 	/**
@@ -87,14 +87,14 @@ public class GuiMain extends JFrame {
 		
 		
 		
-		// magazine
+		// periodical
 		this.periodical = new Periodical();
-		this.magazineView = new MagazineView();
-		magazineView.setModel(periodical);
-		MagazineController magazineController = new MagazineController();
-		magazineView.setController(magazineController);
-		magazineController.setModel(periodical);
-		sourceViewContainerPanel.add(magazineView, SourceType.PERIODICAL.toString());
+		this.periodicalView = new PeriodicalView();
+		periodicalView.setModel(periodical);
+		PeriodicalController periodicalController = new PeriodicalController();
+		periodicalView.setController(periodicalController);
+		periodicalController.setModel(periodical);
+		sourceViewContainerPanel.add(periodicalView, SourceType.PERIODICAL.toString());
 		
 		
 		// journal

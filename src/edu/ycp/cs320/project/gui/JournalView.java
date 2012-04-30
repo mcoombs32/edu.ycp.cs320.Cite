@@ -33,6 +33,8 @@ public class JournalView extends JPanel implements Observer {
 	private JTextField PageNumberTextBox;
 	private JTextField VolumeTextBox;
 	private JTextField JournalNameTextBox;
+	private JTextField textField;
+	private JTextField MediumTextBox;
 
 
 
@@ -180,29 +182,30 @@ public class JournalView extends JPanel implements Observer {
 		VolumeTextBox.setBounds(167, 168, 163, 20);
 		add(VolumeTextBox);
 		VolumeTextBox.setColumns(10);
+		
+		
+/*		JLabel lblMedium = new JLabel("Medium:");
+		lblMedium.setBounds(10, 201, 46, 14);
+		add(lblMedium);
+		
+		MediumTextBox = new JTextField();
+		MediumTextBox.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				handleMediumChange();
+			}
+		});
+		MediumTextBox.setBounds(167, 195, 163, 20);
+		add(MediumTextBox);
+		MediumTextBox.setColumns(10);*/
+		
+		
+		
+		
 
 
 	}
 	
-		/*//************** MAGAZINE NAME
-		lblMagazineName = new JLabel("Magazine Name:");
-		lblMagazineName.setBounds(10, 196, 130, 14);
-		add(lblMagazineName);
-
-
-		MagazineNameTextBox = new JTextField();
-		MagazineNameTextBox.addFocusListener(new FocusAdapter(){
-			@Override
-			public void focusLost(FocusEvent e){
-				handleMagazineNameChange();
-			}
-		});
-		MagazineNameTextBox.setBounds(167, 193, 163, 20);
-		add(MagazineNameTextBox);
-		MagazineNameTextBox.setColumns(10);
-
-	}
-*/
 
 
 
@@ -234,10 +237,11 @@ public class JournalView extends JPanel implements Observer {
 	protected void handleVolumeChange(){
 		controller.setVolume(VolumeTextBox.getText());
 	}
+/*	protected void handleMediumChange(){
+		controller.setMedium(MediumTextBox.getText());
+	}*/
 
-	/*protected void handleMagazineNameChange(){
-	controller.setJournalName(JournalNameTextBox.getText());
-}*/
+
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
@@ -275,5 +279,4 @@ public class JournalView extends JPanel implements Observer {
 			}
 		});
 	}
-
 }

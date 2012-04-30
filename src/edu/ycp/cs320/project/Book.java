@@ -18,10 +18,7 @@ private String pubDate;
 	public String getcity(){
 		return city;
 		}
-	
-	//public String toString() {
-      //  return city.toString();
-//}
+
 	public void setcity(String city){
 		this.city=city;
 		}

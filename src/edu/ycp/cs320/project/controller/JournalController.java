@@ -37,5 +37,8 @@ public class JournalController {
 		model.setpagenumber(text);
 	}
 	
+/*	public void setMedium(String text){
+		model.setmedium(text);
+	}*/
 	
 }

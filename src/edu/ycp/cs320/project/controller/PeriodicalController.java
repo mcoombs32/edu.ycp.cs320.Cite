@@ -2,7 +2,7 @@ package edu.ycp.cs320.project.controller;
 
 import edu.ycp.cs320.project.Periodical;
 
-public class MagazineController {
+public class PeriodicalController {
 	private Periodical model;
 
 	public void setModel(Periodical model){
