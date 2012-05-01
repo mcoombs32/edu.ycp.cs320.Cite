@@ -58,6 +58,18 @@ public class GuiMain extends JFrame implements Observer {
 private JournalView journalView;
 private JTextArea outputTextArea;
 private JComboBox formatComboBox;
+private CitationController controller;
+private Citation model;
+private SourceType sourceType=SourceType.BOOK;
+public void setModel(Citation model) {
+	this.model = model;
+
+	
+}
+
+public void setController(CitationController controller) {
+	this.controller = controller;
+}
 	/**
 	 * Create the frame.
 	 */
@@ -147,7 +159,26 @@ private JComboBox formatComboBox;
 
 	protected void formatTypeChanged() {
 		FormatType formatType = (FormatType) formatComboBox.getSelectedItem();
-		citcontroller.format();
+		Citation a = null;
+		//cite.setformattype(formatType);
+		if(sourceType==SourceType.BOOK){
+			a=new Citation(book,formatType);
+		a.setbook(book);
+		}
+		if(sourceType==SourceType.JOURNAL){
+			a=new Citation(journal,formatType);
+		a.setjournal(journal);
+		}
+		if(sourceType==SourceType.WEBSITE){
+			a=new Citation(website,formatType);
+		a.setwebsite(website);
+		}
+		if(sourceType==SourceType.PERIODICAL){
+			a=new Citation(periodical,formatType);
+		a.setmagazine(periodical);
+		}
+		outputTextArea.setText(a.formatcit());
+	
 		
 		
 		
@@ -191,7 +222,7 @@ private JComboBox formatComboBox;
 	}
 
 	protected void sourceTypeChanged() {
-		SourceType sourceType = (SourceType) sourceTypeComboBox.getSelectedItem();
+		 sourceType = (SourceType) sourceTypeComboBox.getSelectedItem();
 		CardLayout cardLayout = (CardLayout) sourceViewContainerPanel.getLayout();
 		cardLayout.show(sourceViewContainerPanel, sourceType.toString());
 	}

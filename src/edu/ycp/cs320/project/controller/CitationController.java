@@ -13,9 +13,9 @@ public class CitationController {
 	public void setModel(Citation model){
 		this.model = model;
 	}
-	public void setFormat(FormatType text) {
+	public void setFormat(FormatType format) {
 		// TODO Auto-generated method stub
-	model.setformattype(text);
+	model.setformattype(format);
 	}
 	public void setbook(Book book){
 		model.setbook(book);
@@ -32,6 +32,7 @@ public class CitationController {
 	public void format() {
 		// TODO Auto-generated method stub
 		model.formatcit();
+		System.out.print(model.formatcit());
 		
 	}
 }

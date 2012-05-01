@@ -63,7 +63,6 @@ public class Citation {
 	public void setjournal(Journal journal){
 		this.journal=journal;
 		
-		
 	}
 	public void setmagazine(Periodical periodical){
 		this.periodical=periodical;
