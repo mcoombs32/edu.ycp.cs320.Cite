@@ -34,6 +34,8 @@ public class JournalView extends JPanel implements Observer {
 	private JTextField VolumeTextBox;
 	private JTextField JournalNameTextBox;
 	private JTextField MediumTextBox;
+	private JLabel lblMagazineName;
+	private JTextField MagazineNameTextBox;
 
 
 
@@ -183,7 +185,8 @@ public class JournalView extends JPanel implements Observer {
 		VolumeTextBox.setColumns(10);
 
 		JLabel lblMedium = new JLabel("Medium:");
-		lblMedium.setBounds(10, 200, 130, 14);
+
+		lblMedium.setBounds(10, 221, 130, 14);
 		add(lblMedium);
 
 		MediumTextBox = new JTextField();
@@ -193,35 +196,37 @@ public class JournalView extends JPanel implements Observer {
 				handleMediumChange();
 			}
 		});
-		MediumTextBox.setBounds(166, 199, 164, 20);
+		MediumTextBox.setBounds(166, 218, 164, 20);
 		add(MediumTextBox);
 		MediumTextBox.setColumns(10);
 
 
+	
+	
+		//************** MAGAZINE NAME
+		lblMagazineName = new JLabel(" Name:");
+		lblMagazineName.setBounds(10, 196, 130, 14);
+		add(lblMagazineName);
 
 
-		/* //************** MAGAZINE NAME
-lblMagazineName = new JLabel("Magazine Name:");
-lblMagazineName.setBounds(10, 196, 130, 14);
-add(lblMagazineName);
+		MagazineNameTextBox = new JTextField();
+		MagazineNameTextBox.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				handleMagazineNameChange();
+			}
 
-
-MagazineNameTextBox = new JTextField();
-MagazineNameTextBox.addFocusListener(new FocusAdapter(){
-@Override
-public void focusLost(FocusEvent e){
-handleMagazineNameChange();
-}
-});
-MagazineNameTextBox.setBounds(167, 193, 163, 20);
-add(MagazineNameTextBox);
-MagazineNameTextBox.setColumns(10);
-
-}
-		 */
-
+			
+		});
+		MagazineNameTextBox.setBounds(167, 193, 163, 20);
+		add(MagazineNameTextBox);
+		MagazineNameTextBox.setColumns(10);
 
 	}
+
+
+
+	
 
 
 	protected void handleFirstNameChange() {
@@ -254,9 +259,10 @@ MagazineNameTextBox.setColumns(10);
 		controller.setmedium(MediumTextBox.getText());
 
 	}
-	/*protected void handleMagazineNameChange(){
-controller.setJournalName(JournalNameTextBox.getText());
-}*/
+
+	protected void handleMagazineNameChange(){
+	controller.setJournalName(JournalNameTextBox.getText());
+}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
