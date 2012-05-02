@@ -42,6 +42,8 @@ public class WebsiteView extends JPanel implements Observer {
 	private JTextField PublisherTextField;
 	private JTextField AccessDateField;
 	private JTextField WebsiteName;
+	private JLabel lblMedium;
+	private JTextField MediumTextField;
 
 	public void setModel(Website model) {
 		this.model = model;
@@ -116,9 +118,6 @@ public class WebsiteView extends JPanel implements Observer {
 
 		add(URLtextFieldBox);
 		URLtextFieldBox.setColumns(10);
-
-		// TITLE
-
 		lblTitle = new JLabel("Title:");
 		lblTitle.setBounds(10, 96, 130, 14);
 		add(lblTitle);
@@ -139,7 +138,7 @@ public class WebsiteView extends JPanel implements Observer {
 
 
 		//******** DATE
-		lblDate = new JLabel("Date Created:");
+		lblDate = new JLabel("Date Created(YYYY):");
 		lblDate.setBounds(10, 121, 130, 14);
 		add(lblDate);
 
@@ -177,8 +176,8 @@ public class WebsiteView extends JPanel implements Observer {
 
 
 		// ********* DATE ACCESSED
-		JLabel lblAccess = new JLabel("Date Accessed:");
-		lblAccess.setBounds(10, 172, 130, 14);
+		JLabel lblAccess = new JLabel("Accessed(MM/DD/YYYY):");
+		lblAccess.setBounds(10, 172, 147, 14);
 		add(lblAccess);
 
 
@@ -210,6 +209,22 @@ public class WebsiteView extends JPanel implements Observer {
 		WebsiteName.setBounds(167, 194, 163, 20);
 		add(WebsiteName);
 		WebsiteName.setColumns(10);
+		
+		lblMedium = new JLabel("Medium:");
+		
+		lblMedium.setBounds(10, 222, 56, 14);
+		add(lblMedium);
+		
+		MediumTextField = new JTextField();
+		MediumTextField.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				handleMediumChange();
+			}
+		});
+		MediumTextField.setBounds(167, 219, 163, 20);
+		add(MediumTextField);
+		MediumTextField.setColumns(10);
 
 	}
 
@@ -244,7 +259,10 @@ public class WebsiteView extends JPanel implements Observer {
 	protected void handleWebsiteChange(){
 		controller.setWebsite(WebsiteName.getText());
 	}
-
+	protected void handleMediumChange() {
+		controller.setmedium(MediumTextField.getText());
+		
+	}
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		System.out.println("updating website view!");

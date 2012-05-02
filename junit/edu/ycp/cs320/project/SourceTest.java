@@ -13,28 +13,58 @@ public class SourceTest {
 	private Book book;
 	private Journal journal;
 	private Website website;
+<<<<<<< HEAD
 	private Periodical magazine;
 
 	private Citation magazineCite;
+=======
+	private Periodical magazine;
+	private Citation magazineCite;
+>>>>>>> 4ae66345ecfabba32564c1009add5c1ea1459be8
 	private Citation bookcite;
 	private Citation websitecite;
 	private Citation journalcite; 
+
 	private Book a;
 	private Website b;
 	private Periodical c;
+<<<<<<< HEAD
 	private Map<String,Citation> citeMap;
 	
+=======
+	private Journal d;
+
+
+>>>>>>> 4ae66345ecfabba32564c1009add5c1ea1459be8
 	@Before
 	public void setUp() {
 
 
+<<<<<<< HEAD
 		book=new Book("Chris","Campagnola", "York College Student Review","2013", "York College of Pennsylvania","York,Pa","Print");
 		journal=new Journal(SourceType.JOURNAL, "Chris","Campagnola", "York Science On The Rise","1999", "York College of Pennsylvania","York Science Reporter","5","55-67","Print");
 		website=new Website(SourceType.WEBSITE, "Chris","Campagnola", "York College Problems","1111", null, null, null, null, null);
+=======
+
+
+
+		a=new Book();
+		b=new Website();
+		c=new Periodical();
+		d=new Journal();
+
+
+
+		book=new Book("Chris","Campagnola", "York College Student Review","2013", "York College of Pennsylvania","York,Pa","Print");
+		journal=new Journal(SourceType.JOURNAL, "Chris","Campagnola", "York Science On The Rise","1999", "York College of Pennsylvania","York Science Reporter","5","55-67","Print");
+		website=new Website(SourceType.WEBSITE, "Chris","Campagnola", "York College Problems","1111", "York College of Pennsylvania","www.ycp.edu","04/20/2012","York College of Pennsylvania","Web");
+>>>>>>> 4ae66345ecfabba32564c1009add5c1ea1459be8
 		magazine=new Periodical(SourceType.PERIODICAL, "Chris","Campagnola", "York Is Rolling Away","1994", "York College of Pennsylvania","York Times","55-66","5","Print");
+		magazineCite=new Citation(magazine,FormatType.MLA);
 		journalcite = new Citation(journal,FormatType.MLA);
 		bookcite = new Citation(book,FormatType.MLA);
 		websitecite = new Citation(website,FormatType.MLA);
+<<<<<<< HEAD
 
 	
 	}
@@ -44,6 +74,15 @@ public class SourceTest {
 
 		assertEquals("Chris", book.getfirst());
 
+=======
+
+	}
+
+	@Test
+
+	public void testbook() throws Exception {
+		assertEquals("Chris", book.getfirst());
+>>>>>>> 4ae66345ecfabba32564c1009add5c1ea1459be8
 		assertEquals(SourceType.BOOK, book.getSourceType());
 		assertEquals("Campagnola", book.getlast());
 		assertEquals("York College Student Review", book.gettitle());
@@ -58,7 +97,11 @@ public class SourceTest {
 	@Test
 	public void testwebsite() throws Exception {
 
+<<<<<<< HEAD
 		assertEquals("Chris", website.getfirst());
+=======
+		assertEquals("Chris", website.getfirst());
+>>>>>>> 4ae66345ecfabba32564c1009add5c1ea1459be8
 		assertEquals(SourceType.WEBSITE, website.getSourceType());
 		assertEquals("Campagnola", website.getlast());
 		assertEquals("York College Problems", website.gettitle());
@@ -70,10 +113,19 @@ public class SourceTest {
 		assertEquals("Web",website.getmedium());
 	}
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 4ae66345ecfabba32564c1009add5c1ea1459be8
 	@Test
 	public void testmagazine() throws Exception {
 		assertEquals("Chris", magazine.getfirst());
 		assertEquals(SourceType.PERIODICAL, magazine.getSourceType());
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4ae66345ecfabba32564c1009add5c1ea1459be8
 		assertEquals("Campagnola", magazine.getlast());
 		assertEquals("York Is Rolling Away", magazine.gettitle());
 		assertEquals("1994", magazine.getdate());
@@ -97,7 +149,6 @@ public class SourceTest {
 		assertEquals("5", journal.getvolume());
 		assertEquals("Print",journal.getmedium());
 	}
-
 
 	@Test
 	public void testBookMLA() throws Exception {
@@ -182,8 +233,95 @@ public class SourceTest {
 		assertEquals(magazine,magazineCite.getmagazine());
 		assertEquals(FormatType.CHICAGO, magazineCite.getformat());
 		assertEquals("Campagnola, Chris. \"York Is Rolling Away\". York Times, 1994.",magazineCite.formatcit());
+<<<<<<< HEAD
 	}}
 
+=======
+	}
+	@Test
+	public void testsetsource() throws Exception {
+		book.setfirst("Joe");
+		book.setlast("Bell");
+		book.setdate("2013");
+		book.settitle("The Wind");
+		book.setpublisher("Book");
+		book.setcity("New York");
+		journal.setjournal("The Daily Planet");
+		journal.setpagenumber("55-67");
+		assertEquals("Joe", book.getfirst());
+		assertEquals(SourceType.BOOK, book.getSourceType());
+		assertEquals("Bell", book.getlast());
+		assertEquals("The Wind", book.gettitle());
+		assertEquals("2013", book.getdate());
+		assertEquals("Book",book.getpublisher());
+		assertEquals("New York", book.getcity());
+		assertEquals("The Daily Planet",journal.getjournal());
+		assertEquals("55-67",journal.getpagenumber());
+
+	}
+	@Test
+	public void testsetbook() throws Exception {
+		book.setfirst("Joe");
+		book.setlast("Bell");
+		book.setdate("2013");
+		book.settitle("The Wind");
+		book.setpublisher("Book");
+		book.setcity("New York");
+		journal.setjournal("The Daily Planet");
+		journal.setpagenumber("55-67");
+		journal.setvolume("5");
+		website.seturl("www.york.edu");
+		website.setaccess("05/06/12");
+		website.setwebsite("York College");
+		magazine.setmagazine("York Daily");
+		magazine.setpagenumber("34-45");
+		magazine.setvolume("101");
+		assertEquals("Joe", book.getfirst());
+		assertEquals(SourceType.BOOK, book.getSourceType());
+		assertEquals("Bell", book.getlast());
+		assertEquals("The Wind", book.gettitle());
+		assertEquals("2013", book.getdate());
+		assertEquals("Book",book.getpublisher());
+		assertEquals("New York", book.getcity());
+		assertEquals("The Daily Planet",journal.getjournal());
+		assertEquals("55-67",journal.getpagenumber());
+		assertEquals("5",journal.getvolume());
+		assertEquals("www.york.edu",website.geturl());
+		assertEquals("05/06/12",website.getaccess());
+		assertEquals("York College",website.getwebsite());
+		assertEquals("34-45",magazine.getpagenumber());
+		assertEquals("101",magazine.getvolumenumber());
+		assertEquals("York Daily",magazine.getmagazine());
+
+	}
+	@Test
+	public void testgetmonth() throws Exception {
+
+		assertEquals("Jan.", website.getmonth("01"));
+		assertEquals("Feb.", website.getmonth("02"));
+		assertEquals("Mar.", website.getmonth("03"));
+		assertEquals("Apr.", website.getmonth("04"));
+		assertEquals("May", website.getmonth("05"));
+		assertEquals("Jun.", website.getmonth("06"));
+		assertEquals("Jul.", website.getmonth("07"));
+		assertEquals("Aug.", website.getmonth("08"));
+		assertEquals("Sep.", website.getmonth("09"));
+		assertEquals("Oct.", website.getmonth("10"));
+		assertEquals("Nov.", website.getmonth("11"));
+		assertEquals("Dec.", website.getmonth("12"));
+		assertEquals(null, website.getmonth("121"));
+	}
+	@Test
+	public void testmappersistance() throws Exception {
+
+
+
+	}
+}
+
+
+
+>>>>>>> 4ae66345ecfabba32564c1009add5c1ea1459be8
 
 
 

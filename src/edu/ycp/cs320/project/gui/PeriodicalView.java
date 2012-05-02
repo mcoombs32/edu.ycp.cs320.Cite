@@ -30,10 +30,10 @@ public class PeriodicalView extends JPanel implements Observer {
 	private JTextField PublisherTextField;
 	private JLabel lblPageNumber;
 	private JLabel lblVolume;
-	private JLabel lblMagazineName;
+	private JLabel lblPeriodicalName;
 	private JTextField PageNumberTextBox;
 	private JTextField VolumeTextBox;
-	private JTextField MagazineNameTextBox;
+	private JTextField PeriodicalNameTextBox;
 
 	public void setModel(Periodical model) {
 		this.model = model;
@@ -107,7 +107,7 @@ public class PeriodicalView extends JPanel implements Observer {
 
 
 		//******** DATE
-		lblDate = new JLabel("Date Created:");
+		lblDate = new JLabel("Date Created(YYYY):");
 		lblDate.setBounds(10, 96, 130, 14);
 		add(lblDate);
 
@@ -180,21 +180,21 @@ public class PeriodicalView extends JPanel implements Observer {
 
 
 		//************** MAGAZINE NAME
-		lblMagazineName = new JLabel("Magazine Name:");
-		lblMagazineName.setBounds(10, 196, 130, 14);
-		add(lblMagazineName);
+		lblPeriodicalName = new JLabel("Periodical Name:");
+		lblPeriodicalName.setBounds(10, 196, 130, 14);
+		add(lblPeriodicalName);
 
 
-		MagazineNameTextBox = new JTextField();
-		MagazineNameTextBox.addFocusListener(new FocusAdapter(){
+		PeriodicalNameTextBox = new JTextField();
+		PeriodicalNameTextBox.addFocusListener(new FocusAdapter(){
 			@Override
 			public void focusLost(FocusEvent e){
-				handleMagazineNameChange();
+				handlePeriodicalNameChange();
 			}
 		});
-		MagazineNameTextBox.setBounds(167, 193, 163, 20);
-		add(MagazineNameTextBox);
-		MagazineNameTextBox.setColumns(10);
+		PeriodicalNameTextBox.setBounds(167, 193, 163, 20);
+		add(PeriodicalNameTextBox);
+		PeriodicalNameTextBox.setColumns(10);
 
 	}
 
@@ -225,8 +225,8 @@ public class PeriodicalView extends JPanel implements Observer {
 		controller.setVolume(VolumeTextBox.getText());
 	}
 
-	protected void handleMagazineNameChange(){
-		controller.setMagazineName(MagazineNameTextBox.getText());
+	protected void handlePeriodicalNameChange(){
+		controller.setMagazineName(PeriodicalNameTextBox.getText());
 	}
 
 
@@ -240,7 +240,7 @@ public class PeriodicalView extends JPanel implements Observer {
 		PublisherTextField.setText(model.getpublisher());
 		PageNumberTextBox.setText(model.getpagenumber());
 		VolumeTextBox.setText(model.getvolumenumber());
-		MagazineNameTextBox.setText(model.getmagazine());
+		PeriodicalNameTextBox.setText(model.getmagazine());
 		
 	}
 

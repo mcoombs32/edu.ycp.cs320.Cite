@@ -10,10 +10,8 @@ public class Website extends Source {
 	private String url,access,website;
 	public Website (SourceType sourceType,String first, String last, String title, String date,
 
-
 			String publisher,String url, String access, String website,String medium) {
 		super(SourceType.WEBSITE,first, last, title, date, publisher,medium);
-
 
 		// TODO Auto-generated constructor stub
 		this.url=url;
