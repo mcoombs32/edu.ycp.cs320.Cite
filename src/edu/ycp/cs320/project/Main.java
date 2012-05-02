@@ -3,7 +3,7 @@ package edu.ycp.cs320.project;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-
+import edu.ycp.cs320.project.FormatType;
 
 
 public class Main {
@@ -63,6 +63,7 @@ public class Main {
 			System.out.print("What is the city?");
 			String city = keyboard.next().toLowerCase();
 			 source=new Book(first, last, title, date, publisher, city,medium);
+
 			 FormatType format=enterformat();
 			citation=new Citation(source,format);
 			
@@ -71,22 +72,26 @@ public class Main {
 			
 		}
 		if(sourceType == SourceType.WEBSITE){
+
 			System.out.print("What is the url?");
+
 			String url = keyboard.nextLine().toLowerCase();
 			System.out.print("What is the access?");
 			String access = keyboard.nextLine().toLowerCase();
 			System.out.print("What is the website?");
 			String website= keyboard.nextLine().toLowerCase();
-			source=new Website(sourceType,first,last,title,date, publisher,medium,url,access,website);
+
+			source=new Website(sourceType,first,last,title,date, publisher, url,access, website, medium);
+
 			FormatType format=enterformat();
 			citation=new Citation(source,format);
 			
 		}	
 		
-
 		if(sourceType == SourceType.PERIODICAL){
 
 			System.out.print("What is the magazine?");
+
 			String magazine = keyboard.nextLine().toLowerCase();
 			System.out.print("What is the page number?");
 			String pagenumber= keyboard.nextLine().toLowerCase();
@@ -98,6 +103,7 @@ public class Main {
 
 			FormatType format = enterformat();
 			citation=new Citation(source, format);
+
 			
 		}
 		if(sourceType == SourceType.JOURNAL){
@@ -105,11 +111,12 @@ public class Main {
 			String journal = keyboard.next().toLowerCase();
 			System.out.print("What is the volume?");
 			String volume = keyboard.next().toLowerCase();
+
 			System.out.print("What is the pagenumber?");
 			String pagenumber= keyboard.nextLine().toLowerCase();
 			source= new Journal(sourceType,first,last,title,  date, publisher, journal, volume,  pagenumber,medium);
-			FormatType format=enterformat();
-			citation=new Citation(source,format);
+
+			//citation=new Citation(source,format);
 			
 		}
 		String cit=citation.formatcit();

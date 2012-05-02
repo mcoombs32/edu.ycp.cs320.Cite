@@ -1,6 +1,7 @@
 package edu.ycp.cs320.project.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -14,13 +15,17 @@ import javax.swing.DefaultComboBoxModel;
 import edu.ycp.cs320.project.Book;
 import edu.ycp.cs320.project.Citation;
 import edu.ycp.cs320.project.FormatType;
+import edu.ycp.cs320.project.Journal;
 import edu.ycp.cs320.project.Periodical;
 import edu.ycp.cs320.project.SourceType;
 import edu.ycp.cs320.project.Website;
+
 import edu.ycp.cs320.project.controller.BookController;
 import edu.ycp.cs320.project.controller.PeriodicalController;
 import edu.ycp.cs320.project.controller.PersistanceController;
+import edu.ycp.cs320.project.controller.JournalController;
 import edu.ycp.cs320.project.controller.WebsiteController;
+
 import edu.ycp.cs320.project.gui.BookView;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -51,12 +56,18 @@ public class GuiMain extends JFrame implements Observer {
 	private PeriodicalView periodicalView;
 	private BookView bookView;
 	private WebsiteView websiteView;
+
 	private JTextField searchField;
+
+	private Journal journal;
+
+	private JournalView journalView;
 
 	/**
 	 * Create the frame.
 	 */
 	public GuiMain() {
+
 		setPreferredSize(new Dimension(850, 700));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -168,6 +179,7 @@ public class GuiMain extends JFrame implements Observer {
 		websiteController.setModel(website);
 		sourceViewContainerPanel.add(websiteView, SourceType.WEBSITE.toString());
 		
+
 		this.periodical = new Periodical();
 		this.periodicalView = new PeriodicalView();
 		periodicalView.setModel(periodical);
@@ -175,6 +187,18 @@ public class GuiMain extends JFrame implements Observer {
 		periodicalView.setController(periodicalController);
 		periodicalController.setModel(periodical);
 		sourceViewContainerPanel.add(periodicalView, SourceType.PERIODICAL.toString());
+
+		
+		// journal
+		this.journal = new Journal();
+		this.journalView = new JournalView();
+		journalView.setModel(journal);
+		JournalController journalController = new JournalController();
+		journalView.setController(journalController);
+		journalController.setModel(journal);
+		sourceViewContainerPanel.add(journalView, SourceType.JOURNAL.toString());
+	
+
 		
 		CardLayout cardLayout = (CardLayout) sourceViewContainerPanel.getLayout();
 		cardLayout.show(sourceViewContainerPanel, SourceType.BOOK.toString());

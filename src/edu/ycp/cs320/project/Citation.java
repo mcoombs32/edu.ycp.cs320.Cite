@@ -4,11 +4,11 @@ public class Citation {
 	private FormatType format;
 	/*
 	private Book book;
-	*/
+	 */
 
 	private Source source;
 	//private String source2;
-	
+
 	/**
 	 * Constructor for a book citation.
 	 * 
@@ -17,6 +17,7 @@ public class Citation {
 	 * @param source2  additional source associated with the book (for example, the book's website)
 	 */
 	public Citation(Source source,FormatType format){
+
 		
 	this.format=format;
 	//this.book=book;
@@ -24,14 +25,15 @@ public class Citation {
 	//this.source2=source2;
 	}
 
-
 	public FormatType getformat() {
 		// TODO Auto-generated method stub
 		return format;
 	}
-//	public String toString() {
-  //      return source.toString();
-//}
+
+	public String toString() {
+		return source.toString();
+	}
+
 	/*public String getsource(){
 		return source2;
 	}*/
@@ -50,15 +52,13 @@ public class Citation {
 	public Periodical getmagazine(){
 		return (Periodical) source;
 	}
+
 	
 	public void setformattype(FormatType format){
 		this.format=format;
 	}
 	
 
-	/*public String createdmla(){
-		return source2;
-	}*/
 
 	public String formatcit() {
 		String cit = null;
@@ -72,16 +72,18 @@ public class Citation {
 			cit=printchicago();
 		}
 		return cit;
-		
+
 	}
 
 	private String printchicago() {
 		String cit = null;
+
 		if(source.getSourceType() == SourceType.BOOK){
 			cit=getbook().getlast()+", "+getbook().getfirst()+". "+getbook().gettitle()+" "+getbook().getcity()+": "+getbook().getpublisher()+", "+getbook().getdate()+".";
 				}
 
 		if(source.getSourceType() == SourceType.PERIODICAL){
+
 
 			cit=getmagazine().getlast()+", "+getmagazine().getfirst()+". \""+getmagazine().gettitle()+"\". "+getmagazine().getmagazine()+", "+getmagazine().getdate()+".";
 		}
@@ -93,14 +95,16 @@ public class Citation {
 		}
 		return cit;
 	}
-
+	
 	private String printapa() {
 		String cit=null;
+
 		if(source.getSourceType() == SourceType.BOOK){
 			 cit=getbook().getlast()+", "+getbook().getfirst().charAt(0)+". ("+getbook().getdate()+"). "+getbook().gettitle()+". "+getbook().getcity()+": "+getbook().getpublisher()+".";
 				}
 
 		if(source.getSourceType() == SourceType.PERIODICAL){
+
 
 			cit=getmagazine().getlast()+", "+getmagazine().getfirst().charAt(0)+". ("+getmagazine().getdate()+"). \""+ getmagazine().gettitle()+"\". "+getmagazine().getmagazine()+", "+getmagazine().getvolumenumber()+", "+getmagazine().getpagenumber()+".";
 		}
@@ -108,22 +112,21 @@ public class Citation {
 			cit=getwebsite().getlast()+", "+getwebsite().getfirst().charAt(0)+". ("+getwebsite().getdate()+"). \""+getwebsite().gettitle()+"\". Retrieved from "+getwebsite().geturl();
 		}
 		if(source.getSourceType() == SourceType.JOURNAL){
+
 			cit=getjournal().getlast()+", "+getjournal().getfirst().charAt(0)+". ("+getjournal().getdate()+"). \""+getjournal().gettitle()+"\". "+getjournal().getjournal()+", "+getjournal().getvolume()+", "+getjournal().getpagenumber()+".";
-		}
+
 		return cit;
 	}
-		
-	
+}
 
-	private String printmla() {
-		// TODO:title in quote
+
+	private String printmla(){
 		String cit=null;
 		if(source.getSourceType() == SourceType.BOOK){
 			cit=getbook().getlast()+", "+getbook().getfirst()+". "+getbook().gettitle()+". "+getbook().getcity()+": "+getbook().getpublisher()+", "+getbook().getdate()+". "+getbook().getmedium()+".";
 				}
 
 		if(source.getSourceType() == SourceType.PERIODICAL){
-
 			cit=getmagazine().getlast()+", "+getmagazine().getfirst()+". \""+getmagazine().gettitle()+"\". "+getmagazine().getmagazine()+" "+getmagazine().getdate()+": "+getmagazine().getpagenumber()+". "+getmagazine().getmedium()+".";
 		}
 		if(source.getSourceType() == SourceType.WEBSITE){
@@ -136,6 +139,7 @@ public class Citation {
 	}
 
 
+}
 
 
 
@@ -148,39 +152,30 @@ public class Citation {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<<<<<<< HEAD
 
 	}
+=======
+>>>>>>> 5cba49ddb6f9fa7bf46df804d45ec417b3782b67
 
 
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
 
 
