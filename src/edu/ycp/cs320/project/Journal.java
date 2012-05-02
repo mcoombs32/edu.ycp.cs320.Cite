@@ -29,6 +29,8 @@ String journal, volume, pagenumber,source;
 		}
 	public void setjournal(String journal){
 		this.journal=journal;
+		setChanged();
+		notifyObservers();
 		}
 	public void setvolume(String volume){
 		System.out.println("Setting volume to " + volume);

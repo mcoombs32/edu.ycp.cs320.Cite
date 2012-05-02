@@ -33,7 +33,10 @@ public class PeriodicalView extends JPanel implements Observer {
 	private JLabel lblPeriodicalName;
 	private JTextField PageNumberTextBox;
 	private JTextField VolumeTextBox;
-	private JTextField PeriodicalNameTextBox;
+
+	private JTextField MagazineNameTextBox;
+	private JTextField MediumtextField;
+
 
 	public void setModel(Periodical model) {
 		this.model = model;
@@ -185,17 +188,41 @@ public class PeriodicalView extends JPanel implements Observer {
 		add(lblPeriodicalName);
 
 
-		PeriodicalNameTextBox = new JTextField();
-		PeriodicalNameTextBox.addFocusListener(new FocusAdapter(){
+		MagazineNameTextBox = new JTextField();
+		MagazineNameTextBox.addFocusListener(new FocusAdapter(){
 			@Override
 			public void focusLost(FocusEvent e){
 				handlePeriodicalNameChange();
 			}
 		});
-		PeriodicalNameTextBox.setBounds(167, 193, 163, 20);
-		add(PeriodicalNameTextBox);
-		PeriodicalNameTextBox.setColumns(10);
 
+		MagazineNameTextBox.setBounds(167, 193, 163, 20);
+		add(MagazineNameTextBox);
+		MagazineNameTextBox.setColumns(10);
+		lblPeriodicalName = new JLabel("Magazine Name:");
+		lblPeriodicalName.setBounds(10, 196, 130, 14);
+		add(lblPeriodicalName);
+		
+		JLabel lblMedium = new JLabel("Medium");
+		lblMedium.setBounds(10, 221, 46, 14);
+		add(lblMedium);
+		
+		MediumtextField = new JTextField();
+		MediumtextField.addFocusListener(new FocusAdapter(){
+			@Override
+			public void focusLost(FocusEvent e){
+				handleMediumChange();
+			}
+
+
+			
+		});
+		MediumtextField.setBounds(167, 218, 163, 20);
+		add(MediumtextField);
+		MediumtextField.setColumns(10);
+
+
+		
 	}
 
 	protected void handleFirstNameChange() {
@@ -226,9 +253,12 @@ public class PeriodicalView extends JPanel implements Observer {
 	}
 
 	protected void handlePeriodicalNameChange(){
-		controller.setMagazineName(PeriodicalNameTextBox.getText());
+		controller.setMagazineName(MagazineNameTextBox.getText());
 	}
-
+	private void handleMediumChange() {
+		controller.setmedium(MediumtextField.getText());
+		
+	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
@@ -240,7 +270,7 @@ public class PeriodicalView extends JPanel implements Observer {
 		PublisherTextField.setText(model.getpublisher());
 		PageNumberTextBox.setText(model.getpagenumber());
 		VolumeTextBox.setText(model.getvolumenumber());
-		PeriodicalNameTextBox.setText(model.getmagazine());
+		MagazineNameTextBox.setText(model.getmagazine());
 		
 	}
 

@@ -15,8 +15,7 @@ public class Main {
 		System.out.print("What type of Source are you using ?");
 		String source = keyboard.next().toLowerCase();
 		SourceType sourceType = convertToSourceType(source);
-		
-		
+
 		enterinformation(sourceType);
 		
 			
