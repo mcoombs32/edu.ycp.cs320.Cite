@@ -7,11 +7,7 @@ public class Citation {
 	 */
 
 	private Source source;
-	private Website website;
-	private Book book;
-	private Journal journal;
-	private Periodical periodical;
-	//private String source2;
+	
 
 	/**
 	 * Constructor for a book citation.
@@ -60,21 +56,6 @@ public class Citation {
 		return (Periodical) source;
 	}
 
-	public void setwebsite(Website website){
-		
-		this.website=website;
-	;
-	}
-	public void setjournal(Journal journal){
-		this.journal=journal;
-		
-	}
-	public void setmagazine(Periodical periodical){
-		this.periodical=periodical;
-	}	
-	public void setbook(Book book){
-		this.book=book;
-	}	
 
 	public void setformattype(FormatType format){
 		this.format=format;
