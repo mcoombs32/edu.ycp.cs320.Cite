@@ -1,6 +1,10 @@
 package edu.ycp.cs320.project;
 
-public class Citation {
+import java.util.Observable;
+
+import edu.ycp.cs320.project.controller.CitationController;
+
+public class Citation extends Observable{
 	private FormatType format;
 	/*
 	private Book book;
@@ -11,8 +15,11 @@ public class Citation {
 	private Book book;
 	private Journal journal;
 	private Periodical periodical;
+	private SourceType type;
 	//private String source2;
 
+	private CitationController citation;
+	
 	/**
 	 * Constructor for a book citation.
 	 * 
@@ -28,14 +35,21 @@ public class Citation {
 	this.source =source;
 	//this.source2=source2;
 	}
+	public Citation() {
+		// TODO Auto-generated constructor stub
+	}
 	public FormatType getformat() {
 		// TODO Auto-generated method stub
 		return format;
 	}
+	public SourceType getsourcetype() {
+		// TODO Auto-generated method stub
+		return type;
+	}
 
-	public String toString() {
-        return source.toString();
-}
+	//public String toString() {
+      //  return source.toString();
+//}
 	/*public String getsource(){
 		return source2;
 	}*/
@@ -58,22 +72,38 @@ public class Citation {
 	public void setwebsite(Website website){
 		
 		this.website=website;
-	;
+		setChanged();
+		notifyObservers();
+	
 	}
 	public void setjournal(Journal journal){
 		this.journal=journal;
+		setChanged();
+		notifyObservers();
 		
 	}
 	public void setmagazine(Periodical periodical){
 		this.periodical=periodical;
+		setChanged();
+		notifyObservers();
 	}	
 	public void setbook(Book book){
+		System.out.print("a");
 		this.book=book;
+		setChanged();
+		notifyObservers();
 	}	
 	public void setformattype(FormatType format){
 		this.format=format;
+		setChanged();
+		notifyObservers();
 	}
-	
+	public void setsourcettype(SourceType type) {
+		this.type=type;
+		setChanged();
+		notifyObservers();
+		
+	}
 
 
 
@@ -153,11 +183,11 @@ public class Citation {
 	private String printmla() {
 		// TODO:title in quote
 		String cit=null;
-		if(source.getSourceType() == SourceType.BOOK){
+		//if(source.getSourceType() == SourceType.BOOK){
 
 			cit=getbook().getlast()+", "+getbook().getfirst()+". "+getbook().gettitle()+". "+getbook().getcity()+": "+getbook().getpublisher()+", "+getbook().getdate()+". "+getbook().getmedium()+".";
 
-				}
+				//}
 
 		if(source.getSourceType() == SourceType.PERIODICAL){
 
@@ -225,6 +255,12 @@ if(substring=="03"){
 						}
 							return null;
 	}
+	public void setCitation(CitationController controller) {
+		// TODO Auto-generated method stub
+		this.citation=controller;
+	}
+	
+	
 	}
 
 

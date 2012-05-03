@@ -2,7 +2,11 @@ package edu.ycp.cs320.project.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
+import java.awt.Dimension;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -45,9 +49,10 @@ public class GuiMain extends JFrame implements Observer {
 	private JPanel sourceViewContainerPanel;
 	private Book abook=new Book("Chris","Campagnola", "York College Student Review","2013", "York College of Pennsylvania","York,Pa","Print");
 	private PersistanceController perController;
-	private CitationController citcontroller;
+
 	private Book book = new Book();
-	private Citation cite = new Citation(book, FormatType.MLA);
+	private Citation cite = new Citation(abook, FormatType.MLA);
+	private Citation a;
 	private Website website;
 	private Journal journal;
 	private Periodical periodical;
@@ -63,6 +68,7 @@ private Citation model;
 private SourceType sourceType=SourceType.BOOK;
 public void setModel(Citation model) {
 	this.model = model;
+	 model.addObserver(this);
 
 	
 }
@@ -159,22 +165,32 @@ public void setController(CitationController controller) {
 
 	protected void formatTypeChanged() {
 		FormatType formatType = (FormatType) formatComboBox.getSelectedItem();
+		
+		
+
+		CitationController controller=new CitationController();
+		Citation model=new Citation();
 		Citation a = null;
-		//cite.setformattype(formatType);
 		if(sourceType==SourceType.BOOK){
-			a=new Citation(book,formatType);
-		a.setbook(book);
+			
+			
+			controller.setCitation(a);
+			model.setCitation(controller);
+			model.setformattype(FormatType.MLA);
+			model.setbook(book);
+			
 		}
 		if(sourceType==SourceType.JOURNAL){
+			//controller.setbook(new Book());
 			a=new Citation(journal,formatType);
 		a.setjournal(journal);
 		}
 		if(sourceType==SourceType.WEBSITE){
-			a=new Citation(website,formatType);
+			//a=new Citation(model.getbook(),formatType);
 		a.setwebsite(website);
 		}
 		if(sourceType==SourceType.PERIODICAL){
-			a=new Citation(periodical,formatType);
+			//a=new Citation(periodical,formatType);
 		a.setmagazine(periodical);
 		}
 		outputTextArea.setText(a.formatcit());
@@ -195,6 +211,7 @@ public void setController(CitationController controller) {
 		
 		this.book = new Book();
 		this.bookView = new BookView();
+		
 		bookView.setModel(book);
 		BookController bookController = new BookController();
 		bookView.setController(bookController);
@@ -231,6 +248,11 @@ public void setController(CitationController controller) {
 		SwingUtilities.invokeLater(new Runnable(){
 			@Override
 			public void run() {
+				
+				
+
+				
+				
 				GuiMain frame = new GuiMain();
 				frame.createSourceViews();
 

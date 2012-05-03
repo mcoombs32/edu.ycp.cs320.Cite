@@ -272,7 +272,7 @@ public class JournalView extends JPanel implements Observer {
 		PublisherTextField.setText(model.getpublisher());
 		PageNumberTextBox.setText(model.getpagenumber());
 		VolumeTextBox.setText(model.getvolume());
-		//MagazineNameTextBox.setText(model.getmagazine());
+		JournalNameTextBox.setText(model.getjournal());
 	}
 
 	public static void main(String[] args) {

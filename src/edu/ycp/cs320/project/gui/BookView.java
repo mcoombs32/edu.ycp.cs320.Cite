@@ -164,6 +164,7 @@ public class BookView extends JPanel implements Observer {
 	}
 	protected void handleMediumChange() {
 		controller.setmedium(MediumTextBox.getText());
+	
 		
 	}
 	protected void handleCityChange() {
