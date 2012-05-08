@@ -58,13 +58,19 @@ public class GuiMain extends JFrame implements Observer {
 	private BookView bookView;
 	private WebsiteView websiteView;
 	private JTextField searchField;
+<<<<<<< HEAD
 
+=======
+	private Journal journal;
+
+>>>>>>> e4019e5196e6104a54d571f0d56c14dd4f85d4cc
 	private JournalView journalView;
 	private JTextArea outputTextArea;
 	private JComboBox formatComboBox;
 	private CitationController controller;
 	private Citation model;
 	private SourceType sourceType=SourceType.BOOK;
+<<<<<<< HEAD
 	private Journal journal;
 public void setModel(Citation model) {
 	this.model = model;
@@ -76,6 +82,17 @@ public void setController(CitationController controller) {
 	this.controller = controller;
 }
 
+=======
+	public void setModel(Citation model) {
+		this.model = model;
+
+
+	}
+
+	public void setController(CitationController controller) {
+		this.controller = controller;
+	}
+>>>>>>> e4019e5196e6104a54d571f0d56c14dd4f85d4cc
 	/**
 	 * Create the frame.
 	 */
@@ -115,15 +132,21 @@ public void setController(CitationController controller) {
 		JLabel formatLabel = new JLabel("Citation Format:");
 		formatLabel.setBounds(38, 443, 96, 14);
 		getContentPane().add(formatLabel);
+<<<<<<< HEAD
 
 		formatComboBox = new JComboBox();
 
+=======
+
+
+		formatComboBox = new JComboBox();
+>>>>>>> e4019e5196e6104a54d571f0d56c14dd4f85d4cc
 		formatComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Citation b=new Citation (book,book.getSourceType(book));
-			
+
 				formatTypeChanged();
-			
+
 			}
 		});
 
@@ -174,25 +197,32 @@ public void setController(CitationController controller) {
 		//cite.setformattype(formatType);
 		if(sourceType==SourceType.BOOK){
 			a=new Citation(book,formatType);
-		a.setbook(book);
+			a.setbook(book);
 		}
 		if(sourceType==SourceType.JOURNAL){
 			a=new Citation(journal,formatType);
-		a.setjournal(journal);
+			a.setjournal(journal);
 		}
 		if(sourceType==SourceType.WEBSITE){
 			a=new Citation(website,formatType);
-		a.setwebsite(website);
+			a.setwebsite(website);
 		}
 		if(sourceType==SourceType.PERIODICAL){
 			a=new Citation(periodical,formatType);
-		a.setmagazine(periodical);
+			a.setmagazine(periodical);
 		}
 		outputTextArea.setText(a.formatcit());
+<<<<<<< HEAD
 	
 		
 		
 
+=======
+
+
+
+
+>>>>>>> e4019e5196e6104a54d571f0d56c14dd4f85d4cc
 	}
 
 	public void createSourceViews() {
@@ -203,8 +233,8 @@ public void setController(CitationController controller) {
 		journalView.setController(journalController);
 		journalController.setModel(journal);
 		sourceViewContainerPanel.add(journalView, SourceType.JOURNAL.toString());
-		
-		
+
+
 		this.book = new Book();
 		this.bookView = new BookView();
 		bookView.setModel(book);
@@ -229,6 +259,7 @@ public void setController(CitationController controller) {
 		periodicalController.setModel(periodical);
 		sourceViewContainerPanel.add(periodicalView, SourceType.PERIODICAL.toString());
 
+<<<<<<< HEAD
 		// journal
 		this.journal = new Journal();
 		this.journalView = new JournalView();
@@ -239,13 +270,15 @@ public void setController(CitationController controller) {
 		sourceViewContainerPanel.add(journalView, SourceType.JOURNAL.toString());
 
 		
+=======
+>>>>>>> e4019e5196e6104a54d571f0d56c14dd4f85d4cc
 
 		CardLayout cardLayout = (CardLayout) sourceViewContainerPanel.getLayout();
 		cardLayout.show(sourceViewContainerPanel, SourceType.BOOK.toString());
 	}
 
 	protected void sourceTypeChanged() {
-		 sourceType = (SourceType) sourceTypeComboBox.getSelectedItem();
+		sourceType = (SourceType) sourceTypeComboBox.getSelectedItem();
 		CardLayout cardLayout = (CardLayout) sourceViewContainerPanel.getLayout();
 		cardLayout.show(sourceViewContainerPanel, sourceType.toString());
 	}

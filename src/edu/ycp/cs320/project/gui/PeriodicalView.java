@@ -33,10 +33,16 @@ public class PeriodicalView extends JPanel implements Observer {
 	private JLabel lblPeriodicalName;
 	private JTextField PageNumberTextBox;
 	private JTextField VolumeTextBox;
+<<<<<<< HEAD
 
 	private JTextField MagazineNameTextBox;
 	private JTextField MediumtextField;
 
+=======
+	private JTextField PeriodicalNameTextBox;
+	private JTextField MagazineNameTextBox;
+	private JTextField MediumtextField;
+>>>>>>> e4019e5196e6104a54d571f0d56c14dd4f85d4cc
 
 	public void setModel(Periodical model) {
 		this.model = model;
@@ -195,6 +201,7 @@ public class PeriodicalView extends JPanel implements Observer {
 				handlePeriodicalNameChange();
 			}
 		});
+<<<<<<< HEAD
 
 		MagazineNameTextBox.setBounds(167, 193, 163, 20);
 		add(MagazineNameTextBox);
@@ -202,7 +209,14 @@ public class PeriodicalView extends JPanel implements Observer {
 		lblPeriodicalName = new JLabel("Magazine Name:");
 		lblPeriodicalName.setBounds(10, 196, 130, 14);
 		add(lblPeriodicalName);
+=======
+		PeriodicalNameTextBox.setBounds(167, 193, 163, 20);
+		add(PeriodicalNameTextBox);
+		PeriodicalNameTextBox.setColumns(10);
+
+>>>>>>> e4019e5196e6104a54d571f0d56c14dd4f85d4cc
 		
+		//MEDIUM
 		JLabel lblMedium = new JLabel("Medium");
 		lblMedium.setBounds(10, 221, 46, 14);
 		add(lblMedium);
@@ -213,7 +227,10 @@ public class PeriodicalView extends JPanel implements Observer {
 			public void focusLost(FocusEvent e){
 				handleMediumChange();
 			}
+<<<<<<< HEAD
 
+=======
+>>>>>>> e4019e5196e6104a54d571f0d56c14dd4f85d4cc
 
 			
 		});
