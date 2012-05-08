@@ -22,6 +22,7 @@ import edu.ycp.cs320.project.Citation;
 import edu.ycp.cs320.project.FormatType;
 import edu.ycp.cs320.project.Journal;
 import edu.ycp.cs320.project.Periodical;
+import edu.ycp.cs320.project.Source;
 import edu.ycp.cs320.project.SourceType;
 import edu.ycp.cs320.project.Website;
 
@@ -51,48 +52,30 @@ public class GuiMain extends JFrame implements Observer {
 	private static final long serialVersionUID = 1L;
 	private JComboBox<SourceType> sourceTypeComboBox;
 	private JPanel sourceViewContainerPanel;
-	private Book abook=new Book("Chris","Campagnola", "York College Student Review","2013", "York College of Pennsylvania","York,Pa","Print");
 	private PersistanceController perController;
-
+	private CitationController citeController;
 	private Book book = new Book();
-
-	private Citation cite = new Citation(abook, FormatType.MLA);
-	private Citation a;
-
+	private Citation cite;
 	private Website website;
 	private Periodical periodical;
 	private PeriodicalView periodicalView;
 	private BookView bookView;
 	private WebsiteView websiteView;
 	private JTextField searchField;
-
-
-
-
+	private CardLayout cardLayout;
+	private Source source;
+	private FormatType formatType;
 	private JournalView journalView;
 	private JTextArea outputTextArea;
-	private JComboBox formatComboBox;
-	private CitationController controller;
-	private Citation model;
-	private SourceType sourceType=SourceType.BOOK;
-
+	private JComboBox<FormatType> formatComboBox;
+	private SourceType sourceType;
 	private Journal journal;
-
-	public void setModel(Citation model) {
-		this.model = model;
-
-
-	}
-
-	public void setController(CitationController controller) {
-		this.controller = controller;
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public GuiMain() {
-
+		
 		setPreferredSize(new Dimension(850, 700));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -116,6 +99,12 @@ public class GuiMain extends JFrame implements Observer {
 		getContentPane().add(outputTextArea);
 
 		JButton generateButton = new JButton("Generate");
+		generateButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				generateCitation();
+			}
+
+		});
 		generateButton.setName("GenerateButton");
 		generateButton.setBounds(285, 465, 89, 23);
 		getContentPane().add(generateButton);
@@ -127,19 +116,16 @@ public class GuiMain extends JFrame implements Observer {
 		JLabel formatLabel = new JLabel("Citation Format:");
 		formatLabel.setBounds(38, 443, 96, 14);
 		getContentPane().add(formatLabel);
-		formatComboBox = new JComboBox();
+		formatComboBox = new JComboBox<FormatType>();
 
 		formatComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Citation b=new Citation (book,book.getSourceType(book));
-
 				formatTypeChanged();
-
 			}
 		});
 
 		formatComboBox.setModel(new DefaultComboBoxModel<FormatType>(FormatType.values()));
-
+		formatType = (FormatType) formatComboBox.getSelectedItem();
 		formatComboBox.setBounds(38, 468, 224, 20);
 		getContentPane().add(formatComboBox);
 
@@ -173,6 +159,25 @@ public class GuiMain extends JFrame implements Observer {
 
 	}
 
+	protected void generateCitation() {
+		if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.BOOK){
+			citeController.setSource(book);
+		}
+		if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.JOURNAL){
+			citeController.setSource(journal);
+		}
+		if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.PERIODICAL){
+			citeController.setSource(periodical);
+		}
+		if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.WEBSITE){
+			citeController.setSource(website);
+		}
+		citeController.setFormat(formatType);
+		citeController.format();
+		outputTextArea.setText(citeController.getFormattedCite());
+					
+	}
+
 	protected void saveCitation(Citation cite2) {
 		perController.save(cite2);
 
@@ -180,39 +185,7 @@ public class GuiMain extends JFrame implements Observer {
 
 	protected void formatTypeChanged() {
 
-		FormatType formatType = (FormatType) formatComboBox.getSelectedItem();
-		
-		
-
-		CitationController controller=new CitationController();
-		Citation model=new Citation();
-		Citation a = null;
-		if(sourceType==SourceType.BOOK){
-	
-			
-			controller.setCitation(a);
-			model.setCitation(controller);
-			model.setformattype(FormatType.MLA);
-			model.setbook(book);
-			
-
-		}
-		if(sourceType==SourceType.JOURNAL){
-			//controller.setbook(new Book());
-			a=new Citation(journal,formatType);
-			a.setjournal(journal);
-		}
-		if(sourceType==SourceType.WEBSITE){
-
-			//a=new Citation(model.getbook(),formatType);
-		a.setwebsite(website);
-		}
-		if(sourceType==SourceType.PERIODICAL){
-			//a=new Citation(periodical,formatType);
-		a.setmagazine(periodical);
-
-		}
-		outputTextArea.setText(a.formatcit());
+		formatType = (FormatType) formatComboBox.getSelectedItem();
 
 	}
 
@@ -228,7 +201,6 @@ public class GuiMain extends JFrame implements Observer {
 
 		this.book = new Book();
 		this.bookView = new BookView();
-		
 		bookView.setModel(book);
 		BookController bookController = new BookController();
 		bookView.setController(bookController);
@@ -250,10 +222,12 @@ public class GuiMain extends JFrame implements Observer {
 		periodicalView.setController(periodicalController);
 		periodicalController.setModel(periodical);
 		sourceViewContainerPanel.add(periodicalView, SourceType.PERIODICAL.toString());
-
-
-
-		CardLayout cardLayout = (CardLayout) sourceViewContainerPanel.getLayout();
+		
+		this.cite = new Citation();
+		this.citeController = new CitationController();
+		citeController.setModel(cite);
+		
+		cardLayout = (CardLayout) sourceViewContainerPanel.getLayout();
 		cardLayout.show(sourceViewContainerPanel, SourceType.BOOK.toString());
 	}
 
@@ -261,17 +235,13 @@ public class GuiMain extends JFrame implements Observer {
 		sourceType = (SourceType) sourceTypeComboBox.getSelectedItem();
 		CardLayout cardLayout = (CardLayout) sourceViewContainerPanel.getLayout();
 		cardLayout.show(sourceViewContainerPanel, sourceType.toString());
+		
 	}
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable(){
 			@Override
 			public void run() {
-				
-				
-
-				
-				
 				GuiMain frame = new GuiMain();
 				frame.createSourceViews();
 

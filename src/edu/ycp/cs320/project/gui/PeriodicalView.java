@@ -188,8 +188,8 @@ public class PeriodicalView extends JPanel implements Observer {
 		add(lblPeriodicalName);
 
 
-		MagazineNameTextBox = new JTextField();
-		MagazineNameTextBox.addFocusListener(new FocusAdapter(){
+		PeriodicalNameTextBox = new JTextField();
+		PeriodicalNameTextBox.addFocusListener(new FocusAdapter(){
 			@Override
 			public void focusLost(FocusEvent e){
 				handlePeriodicalNameChange();

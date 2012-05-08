@@ -5,6 +5,7 @@ import edu.ycp.cs320.project.Citation;
 import edu.ycp.cs320.project.FormatType;
 import edu.ycp.cs320.project.Journal;
 import edu.ycp.cs320.project.Periodical;
+import edu.ycp.cs320.project.Source;
 import edu.ycp.cs320.project.Website;
 
 public class CitationController {
@@ -21,10 +22,7 @@ public class CitationController {
 		System.out.print(book);
 		//model.setbook(book);
 	}
-//	public String toString() {
-  //   return toString();
-//}
-	
+
 	public void setwebsite(Website website){
 		model.setwebsite(website);
 	}
@@ -35,10 +33,7 @@ public class CitationController {
 		model.setmagazine(periodical);
 	}
 	public void format() {
-		// TODO Auto-generated method stub
 		model.formatcit();
-		
-		
 	}
 	public Book getbook() {
 		// TODO Auto-generated method stub
@@ -48,6 +43,19 @@ public class CitationController {
 		this.model=cite;
 		
 	}
+	public void setSource(Source source) {
+		model.setSource(source);
+		
+	}
+	public void setSource(Book book) {
+		model.setSource(book);
+		
+	}
+	public String getFormattedCite() {
+		return model.getFormattedCite();
+	}
+
+
 	
 
 }

@@ -13,15 +13,17 @@ public class MapPersistance  extends Observable implements PersistanceInterface 
 			exists = true;
 		}else if (!exists)
 			citeMap.put(cite.getSource().gettitle(), cite);
-		
+		notifyObservers();
 	}
 
 	@Override
 	public Citation findCite(String title) {
-		if (citeMap.containsKey(title))
+		if (citeMap.containsKey(title)){
 			return citeMap.get(title);
-		else
+			}
+		else{
 			return null;
+	}
 	}
 
 }
