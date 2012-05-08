@@ -68,11 +68,11 @@ public abstract class Source extends Observable {
 		return medium;
 	}
 
-	/*
-	public void setsource(String source){
-		this.source=source;
+	
+	public void setsource(SourceType sourceType){
+		this.sourceType=sourceType;
 	}
-	 */
+
 	public void setfirst(String first){
 		System.out.println("Setting first name to " + first);
 		this.first=first;

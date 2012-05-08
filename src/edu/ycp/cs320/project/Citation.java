@@ -2,7 +2,11 @@ package edu.ycp.cs320.project;
 
 import java.util.Observable;
 
-public class Citation extends Observable {
+
+import edu.ycp.cs320.project.controller.CitationController;
+
+public class Citation extends Observable{
+
 	private FormatType format;
 	/*
 	private Book book;
@@ -13,8 +17,11 @@ public class Citation extends Observable {
 	private Book book;
 	private Journal journal;
 	private Periodical periodical;
+	private SourceType type;
 	//private String source2;
 
+	private CitationController citation;
+	
 	/**
 	 * Constructor for a book citation.
 	 * 
@@ -24,23 +31,28 @@ public class Citation extends Observable {
 	 */
 	public Citation(Source source,FormatType format){
 
-
-		this.format=format;
-		//this.book=book;
-		this.source =source;
-		//this.source2=source2;
+	this.format=format;
+	//this.book=book;
+	this.source =source;
+	//this.source2=source2;
 	}
-
+	public Citation() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public FormatType getformat() {
 		// TODO Auto-generated method stub
 		return format;
 	}
-
-	public String toString() {
-
-		return source.toString();
+	public SourceType getsourcetype() {
+		// TODO Auto-generated method stub
+		return type;
 	}
+
+
+	//public String toString() {
+      //  return source.toString();
+//}
 
 	/*public String getsource(){
 		return source2;
@@ -65,21 +77,38 @@ public class Citation extends Observable {
 	public void setwebsite(Website website){
 		
 		this.website=website;
-	;
+		setChanged();
+		notifyObservers();
+	
 	}
 	public void setjournal(Journal journal){
 		this.journal=journal;
+		setChanged();
+		notifyObservers();
 		
 	}
 	public void setmagazine(Periodical periodical){
 		this.periodical=periodical;
+		setChanged();
+		notifyObservers();
 	}	
 	public void setbook(Book book){
+		System.out.print("a");
 		this.book=book;
+		setChanged();
+		notifyObservers();
 	}	
 
 	public void setformattype(FormatType format){
 		this.format=format;
+		setChanged();
+		notifyObservers();
+	}
+	public void setsourcettype(SourceType type) {
+		this.type=type;
+		setChanged();
+		notifyObservers();
+		
 	}
 
 
@@ -161,10 +190,10 @@ public class Citation extends Observable {
 
 	private String printmla(){
 		String cit=null;
-		if(source.getSourceType() == SourceType.BOOK){
+		//if(source.getSourceType() == SourceType.BOOK){
 
 			cit=getbook().getlast()+", "+getbook().getfirst()+". "+getbook().gettitle()+". "+getbook().getcity()+": "+getbook().getpublisher()+", "+getbook().getdate()+". "+getbook().getmedium()+".";
-				}
+
 
 
 
@@ -201,28 +230,35 @@ public class Citation extends Observable {
 		}
 		if(substring=="05"){
 			return "May";
-		}
-		if(substring=="06"){
-			return "Jun";
-		}
-		if(substring=="07"){
-			return "Jul";
-		}
-		if(substring=="08"){
-			return "Aug";
-		}
-		if(substring=="09"){
-			return "Sep";
-		}	if(substring=="10"){
-			return "Oct";
-		}
-		if(substring=="11"){
-			return "Nov";
-		}	if(substring=="12"){
-			return "Dec";
-		}
-		return null;
+
+			}
+			if(substring=="06"){
+				return "Jun";
+				}
+				if(substring=="07"){
+					return "Jul";
+					}
+					if(substring=="08"){
+						return "Aug";
+						}
+						if(substring=="09"){
+							return "Sep";
+							}	if(substring=="10"){
+								return "Oct";
+						}
+						if(substring=="11"){
+							return "Nov";
+							}	if(substring=="12"){
+								return "Dec";
+						}
+							return null;
 	}
+	public void setCitation(CitationController controller) {
+		// TODO Auto-generated method stub
+		this.citation=controller;
+	}
+
+	
 }
 
 

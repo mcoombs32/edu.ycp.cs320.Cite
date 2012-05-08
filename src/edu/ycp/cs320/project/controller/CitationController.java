@@ -18,8 +18,13 @@ public class CitationController {
 	model.setformattype(format);
 	}
 	public void setbook(Book book){
-		model.setbook(book);
+		System.out.print(book);
+		//model.setbook(book);
 	}
+//	public String toString() {
+  //   return toString();
+//}
+	
 	public void setwebsite(Website website){
 		model.setwebsite(website);
 	}
@@ -32,7 +37,17 @@ public class CitationController {
 	public void format() {
 		// TODO Auto-generated method stub
 		model.formatcit();
-		System.out.print(model.formatcit());
+		
 		
 	}
+	public Book getbook() {
+		// TODO Auto-generated method stub
+		return model.getbook();
+	}
+	public void setCitation(Citation cite) {
+		this.model=cite;
+		
+	}
+	
+
 }

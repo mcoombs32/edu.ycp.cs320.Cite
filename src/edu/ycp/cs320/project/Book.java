@@ -3,10 +3,14 @@ package edu.ycp.cs320.project;
 public class Book extends Source{
 private String city;
 private String pubDate;
-
+private SourceType book;
 	
 	public Book() {
 		super(SourceType.BOOK);
+	}
+
+	public String toString() {
+	     return city.toString();
 	}
 
 
@@ -23,11 +27,13 @@ private String pubDate;
 		}
 
 	public void setcity(String city){
-		System.out.println("Setting first name to " + city);
+		System.out.println("Setting city name to " + city);
 		this.city=city;
 		setChanged();
 		notifyObservers();
 		}
+
+	
 
 	
 

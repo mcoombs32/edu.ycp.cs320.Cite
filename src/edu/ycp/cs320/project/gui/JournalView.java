@@ -186,12 +186,8 @@ public class JournalView extends JPanel implements Observer {
 
 		JLabel lblMedium = new JLabel("Medium:");
 
-<<<<<<< HEAD
-		lblMedium.setBounds(10, 221, 46, 14);
-
-=======
 		lblMedium.setBounds(10, 221, 130, 14);
->>>>>>> e4019e5196e6104a54d571f0d56c14dd4f85d4cc
+
 		add(lblMedium);
 
 		MediumTextBox = new JTextField();
@@ -205,13 +201,7 @@ public class JournalView extends JPanel implements Observer {
 		add(MediumTextBox);
 		MediumTextBox.setColumns(10);
 
-<<<<<<< HEAD
 
-
-=======
-
-	
->>>>>>> e4019e5196e6104a54d571f0d56c14dd4f85d4cc
 	
 		//************** MAGAZINE NAME
 		lblMagazineName = new JLabel("Journal\r\n Name:");
@@ -233,10 +223,7 @@ public class JournalView extends JPanel implements Observer {
 		JournalNameTextBox.setColumns(10);
 
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> e4019e5196e6104a54d571f0d56c14dd4f85d4cc
 
 
 
@@ -277,10 +264,6 @@ public class JournalView extends JPanel implements Observer {
 	protected void handleJournalNameChange(){
 	controller.setJournalName(JournalNameTextBox.getText());
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> e4019e5196e6104a54d571f0d56c14dd4f85d4cc
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
@@ -292,7 +275,7 @@ public class JournalView extends JPanel implements Observer {
 		PublisherTextField.setText(model.getpublisher());
 		PageNumberTextBox.setText(model.getpagenumber());
 		VolumeTextBox.setText(model.getvolume());
-		//MagazineNameTextBox.setText(model.getmagazine());
+		JournalNameTextBox.setText(model.getjournal());
 	}
 
 	public static void main(String[] args) {
