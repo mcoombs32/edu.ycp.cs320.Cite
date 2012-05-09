@@ -46,6 +46,11 @@ import java.util.Observer;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GuiMain extends JFrame implements Observer {
 	/**
@@ -63,13 +68,15 @@ public class GuiMain extends JFrame implements Observer {
 	private Periodical periodical;
 	private MapPersistance map;
 	
-	private ArrayList<Citation> resultList = new ArrayList<Citation>();
+	private int numResults = 0;
+	private Citation[] resultList = new Citation[100];
+	private String[] title = new String[100];
 	private PeriodicalView periodicalView;
 	private BookView bookView;
 	private WebsiteView websiteView;
 	
+	private JList<String> resultJList;
 	private JTextField searchField;
-	
 	private CardLayout cardLayout;
 	private FormatType formatType;
 	private JournalView journalView;
@@ -137,6 +144,12 @@ public class GuiMain extends JFrame implements Observer {
 		getContentPane().add(formatComboBox);
 
 		searchField = new JTextField();
+		searchField.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				searchField.setText("");
+			}
+		});
 		searchField.setText("To search for a citation, enter the title here.");
 		searchField.setBounds(530, 23, 261, 20);
 		getContentPane().add(searchField);
@@ -151,10 +164,6 @@ public class GuiMain extends JFrame implements Observer {
 		searchButton.setBounds(531, 51, 89, 23);
 		getContentPane().add(searchButton);
 
-		JTextArea resultArea = new JTextArea();
-		resultArea.setBounds(530, 107, 260, 318);
-		getContentPane().add(resultArea);
-
 		JLabel lblResults = new JLabel("Results:");
 		lblResults.setBounds(530, 82, 61, 14);
 		getContentPane().add(lblResults);
@@ -167,16 +176,39 @@ public class GuiMain extends JFrame implements Observer {
 		});
 		saveButton.setBounds(396, 465, 89, 23);
 		getContentPane().add(saveButton);
+		
+		resultJList = new JList<String>();
+		resultJList.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				handleSavedRecall();
+			}
+		});
+		
+	
+		resultJList.setBounds(540, 112, 251, 313);
+		getContentPane().add(resultJList);
 
 
 	}
 
+	protected void handleSavedRecall() {
+		outputTextArea.append(resultList[resultJList.getSelectedIndex()].getFormattedCite()+"\n");
+		
+	}
+
 	protected void findCite(String lowerCase) {
 		
-		if (perController.Search(lowerCase) != null)
-			resultList.add(perController.Search(lowerCase));
+		if (perController.Search(lowerCase) != null){
+			resultList[numResults] = perController.Search(lowerCase);
+			title[numResults] = perController.Search(lowerCase).getSource().gettitle();
+			numResults++;
+		}
+		
 		else
 			outputTextArea.append("Citation not found!\n");
+		
+		resultJList.setListData(title);
 		
 	}
 

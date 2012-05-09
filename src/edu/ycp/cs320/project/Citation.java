@@ -24,12 +24,7 @@ public class Citation extends Observable{
 	 * @param format   the format in which to generation the citation
 	 * @param source2  additional source associated with the book (for example, the book's website)
 	 */
-	public Citation(Source source,FormatType format){
 
-	this.format=format;
-	this.source =source;
-
-	}
 	public Citation() {}
 
 	public FormatType getformat() {
@@ -45,18 +40,39 @@ public class Citation extends Observable{
 		return this.source;
 	}
 	public Book getbook(){
-		return (Book) source;
+		return book;
 	}
 	public Website getwebsite(){
-		return (Website) source;
+		return website;
 	}
 	public Journal getjournal(){
-		return (Journal) source;
+		return journal;
 	}
 	public Periodical getmagazine(){
-		return (Periodical) source;
+		return periodical;
 	}
 
+	public void setSource(Source source) {
+		this.source = source;
+		
+		if(source.getSourceType() == SourceType.BOOK){
+			this.setbook((Book) source);
+		}
+
+		if(source.getSourceType() == SourceType.PERIODICAL){
+			this.setmagazine((Periodical) source);
+		}
+		if(source.getSourceType() == SourceType.WEBSITE){
+			this.setwebsite((Website) source);
+		}
+		if(source.getSourceType() == SourceType.JOURNAL){
+			this.setjournal((Journal) source);
+		}
+		
+		setChanged();
+		notifyObservers();
+		
+	}
 	public void setwebsite(Website website){
 		
 		this.website=website;
@@ -115,7 +131,7 @@ public class Citation extends Observable{
 		String cit = null;
 
 		if(source.getSourceType() == SourceType.BOOK){
-			cit=getbook().getlast()+", "+getbook().getfirst()+". "+getbook().gettitle()+" "+getbook().getcity()+": "+getbook().getpublisher()+", "+getbook().getdate()+".";
+			cit=source.getlast()+", "+getbook().getfirst()+". "+getbook().gettitle()+" "+getbook().getcity()+": "+getbook().getpublisher()+", "+getbook().getdate()+".";
 		}
 
 		if(source.getSourceType() == SourceType.PERIODICAL){
@@ -173,9 +189,7 @@ public class Citation extends Observable{
 		return cit;
 
 	}
-	public void setSource(Source source2) {
-		this.source = source2;
-	}
+
 
 }
 
