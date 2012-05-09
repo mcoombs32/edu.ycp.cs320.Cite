@@ -7,6 +7,7 @@ import java.awt.EventQueue;
 import java.awt.Dimension;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JFrame;
@@ -21,6 +22,7 @@ import edu.ycp.cs320.project.Book;
 import edu.ycp.cs320.project.Citation;
 import edu.ycp.cs320.project.FormatType;
 import edu.ycp.cs320.project.Journal;
+import edu.ycp.cs320.project.MapPersistance;
 import edu.ycp.cs320.project.Periodical;
 import edu.ycp.cs320.project.Source;
 import edu.ycp.cs320.project.SourceType;
@@ -54,16 +56,21 @@ public class GuiMain extends JFrame implements Observer {
 	private JPanel sourceViewContainerPanel;
 	private PersistanceController perController;
 	private CitationController citeController;
-	private Book book = new Book();
+	
+	private Book book;
 	private Citation cite;
 	private Website website;
 	private Periodical periodical;
+	private MapPersistance map;
+	
+	private ArrayList<Citation> resultList = new ArrayList<Citation>();
 	private PeriodicalView periodicalView;
 	private BookView bookView;
 	private WebsiteView websiteView;
+	
 	private JTextField searchField;
+	
 	private CardLayout cardLayout;
-	private Source source;
 	private FormatType formatType;
 	private JournalView journalView;
 	private JTextArea outputTextArea;
@@ -136,6 +143,11 @@ public class GuiMain extends JFrame implements Observer {
 		searchField.setColumns(10);
 
 		JButton searchButton = new JButton("Search");
+		searchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				findCite(searchField.getText().toLowerCase());
+			}
+		});
 		searchButton.setBounds(531, 51, 89, 23);
 		getContentPane().add(searchButton);
 
@@ -159,22 +171,31 @@ public class GuiMain extends JFrame implements Observer {
 
 	}
 
+	protected void findCite(String lowerCase) {
+		
+		if (perController.Search(lowerCase) != null)
+			resultList.add(perController.Search(lowerCase));
+		else
+			outputTextArea.append("Citation not found!\n");
+		
+	}
+
 	protected void generateCitation() {
 		if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.BOOK){
 			citeController.setSource(book);
 		}
-		if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.JOURNAL){
+		else if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.JOURNAL){
 			citeController.setSource(journal);
 		}
-		if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.PERIODICAL){
+		else if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.PERIODICAL){
 			citeController.setSource(periodical);
 		}
-		if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.WEBSITE){
+		else if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.WEBSITE){
 			citeController.setSource(website);
 		}
 		citeController.setFormat(formatType);
 		citeController.format();
-		outputTextArea.setText(citeController.getFormattedCite());
+		outputTextArea.append(citeController.getFormattedCite()+"\n");
 					
 	}
 
@@ -186,6 +207,7 @@ public class GuiMain extends JFrame implements Observer {
 	protected void formatTypeChanged() {
 
 		formatType = (FormatType) formatComboBox.getSelectedItem();
+		citeController.setFormat(formatType);
 
 	}
 
@@ -227,6 +249,10 @@ public class GuiMain extends JFrame implements Observer {
 		this.citeController = new CitationController();
 		citeController.setModel(cite);
 		
+		this.map = new MapPersistance();
+		this.perController = new PersistanceController();
+		perController.setModel(map);
+		
 		cardLayout = (CardLayout) sourceViewContainerPanel.getLayout();
 		cardLayout.show(sourceViewContainerPanel, SourceType.BOOK.toString());
 	}
@@ -235,6 +261,18 @@ public class GuiMain extends JFrame implements Observer {
 		sourceType = (SourceType) sourceTypeComboBox.getSelectedItem();
 		CardLayout cardLayout = (CardLayout) sourceViewContainerPanel.getLayout();
 		cardLayout.show(sourceViewContainerPanel, sourceType.toString());
+		if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.BOOK){
+			citeController.setSource(book);
+		}
+		else if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.JOURNAL){
+			citeController.setSource(journal);
+		}
+		else if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.PERIODICAL){
+			citeController.setSource(periodical);
+		}
+		else if ((SourceType) sourceTypeComboBox.getSelectedItem() == SourceType.WEBSITE){
+			citeController.setSource(website);
+		}
 		
 	}
 

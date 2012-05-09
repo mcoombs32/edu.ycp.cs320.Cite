@@ -114,19 +114,11 @@ public class Citation extends Observable{
 	private String printchicago() {
 		String cit = null;
 
-		// TODO Auto-generated method stub
-
-
-
 		if(source.getSourceType() == SourceType.BOOK){
 			cit=getbook().getlast()+", "+getbook().getfirst()+". "+getbook().gettitle()+" "+getbook().getcity()+": "+getbook().getpublisher()+", "+getbook().getdate()+".";
-
-
 		}
 
 		if(source.getSourceType() == SourceType.PERIODICAL){
-
-
 			cit=getmagazine().getlast()+", "+getmagazine().getfirst()+". \""+getmagazine().gettitle()+"\". "+getmagazine().getmagazine()+", "+getmagazine().getdate()+".";
 		}
 		if(source.getSourceType() == SourceType.WEBSITE){
@@ -142,19 +134,11 @@ public class Citation extends Observable{
 	private String printapa() {
 		String cit=null;
 
-
-		if(source.getSourceType() == SourceType.BOOK){
-			cit=getbook().getlast()+", "+getbook().getfirst().charAt(0)+". ("+getbook().getdate()+"). "+getbook().gettitle()+". "+getbook().getcity()+": "+getbook().getpublisher()+".";
-		}
-
-
-
 		if(source.getSourceType() == SourceType.BOOK){
 			cit=getbook().getlast()+", "+getbook().getfirst().charAt(0)+". ("+getbook().getdate()+"). "+getbook().gettitle()+". "+getbook().getcity()+": "+getbook().getpublisher()+".";
 		}
 
 		if(source.getSourceType() == SourceType.PERIODICAL){
-
 
 			cit=getmagazine().getlast()+", "+getmagazine().getfirst().charAt(0)+". ("+getmagazine().getdate()+"). \""+ getmagazine().gettitle()+"\". "+getmagazine().getmagazine()+", "+getmagazine().getvolumenumber()+", "+getmagazine().getpagenumber()+".";
 		}

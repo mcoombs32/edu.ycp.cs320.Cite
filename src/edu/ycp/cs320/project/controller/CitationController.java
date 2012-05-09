@@ -36,7 +36,6 @@ public class CitationController {
 		model.formatcit();
 	}
 	public Book getbook() {
-		// TODO Auto-generated method stub
 		return model.getbook();
 	}
 	public void setCitation(Citation cite) {
@@ -45,10 +44,6 @@ public class CitationController {
 	}
 	public void setSource(Source source) {
 		model.setSource(source);
-		
-	}
-	public void setSource(Book book) {
-		model.setSource(book);
 		
 	}
 	public String getFormattedCite() {

@@ -7,7 +7,9 @@ public class Website extends Source {
 		super(SourceType.WEBSITE);
 	}
 	
-	private String url,access,website;
+	private String url;
+	private String access;
+	private String website;
 	public Website (SourceType sourceType,String first, String last, String title, String date,
 
 			String publisher,String url, String access, String website,String medium) {
