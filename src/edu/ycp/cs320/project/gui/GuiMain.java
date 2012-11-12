@@ -57,7 +57,7 @@ public class GuiMain extends JFrame implements Observer {
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	private JComboBox<SourceType> sourceTypeComboBox;
+	private JComboBox sourceTypeComboBox;
 	private JPanel sourceViewContainerPanel;
 	private PersistanceController perController;
 	private CitationController citeController;
@@ -75,13 +75,13 @@ public class GuiMain extends JFrame implements Observer {
 	private BookView bookView;
 	private WebsiteView websiteView;
 	
-	private JList<String> resultJList;
+	private JList resultJList;
 	private JTextField searchField;
 	private CardLayout cardLayout;
 	private FormatType formatType;
 	private JournalView journalView;
 	private JTextArea outputTextArea;
-	private JComboBox<FormatType> formatComboBox;
+	private JComboBox formatComboBox;
 	private SourceType sourceType;
 	private Journal journal;
 
@@ -97,14 +97,14 @@ public class GuiMain extends JFrame implements Observer {
 		sourceViewContainerPanel.setBounds(38, 82, 447, 343);
 		getContentPane().add(sourceViewContainerPanel);
 		sourceViewContainerPanel.setLayout(new CardLayout(0, 0));
-		sourceTypeComboBox = new JComboBox<SourceType>();
+		sourceTypeComboBox = new JComboBox();
 		sourceTypeComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sourceTypeChanged();
 			}
 		});
 
-		sourceTypeComboBox.setModel(new DefaultComboBoxModel<SourceType>(SourceType.values()));
+		sourceTypeComboBox.setModel(new DefaultComboBoxModel(SourceType.values()));
 		sourceTypeComboBox.setBounds(38, 51, 224, 20);
 		getContentPane().add(sourceTypeComboBox);
 
@@ -130,7 +130,7 @@ public class GuiMain extends JFrame implements Observer {
 		JLabel formatLabel = new JLabel("Citation Format:");
 		formatLabel.setBounds(38, 443, 96, 14);
 		getContentPane().add(formatLabel);
-		formatComboBox = new JComboBox<FormatType>();
+		formatComboBox = new JComboBox();
 
 		formatComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -138,7 +138,7 @@ public class GuiMain extends JFrame implements Observer {
 			}
 		});
 
-		formatComboBox.setModel(new DefaultComboBoxModel<FormatType>(FormatType.values()));
+		formatComboBox.setModel(new DefaultComboBoxModel(FormatType.values()));
 		formatType = (FormatType) formatComboBox.getSelectedItem();
 		formatComboBox.setBounds(38, 468, 224, 20);
 		getContentPane().add(formatComboBox);
@@ -177,7 +177,7 @@ public class GuiMain extends JFrame implements Observer {
 		saveButton.setBounds(396, 465, 89, 23);
 		getContentPane().add(saveButton);
 		
-		resultJList = new JList<String>();
+		resultJList = new JList();
 		resultJList.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
